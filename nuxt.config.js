@@ -16,7 +16,8 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/fp-favicon.png' },
+      { rel: 'icon', type: 'image/x-icon', href: '/fp-favicon.gif' },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Saira+Extra+Condensed:wght@600;700&display=swap" },
       {rel:"stylesheet", href:"https://unpkg.com/swiper@8/swiper-bundle.min.css"}
     ],
