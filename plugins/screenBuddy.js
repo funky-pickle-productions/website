@@ -2,6 +2,7 @@ const screens = require('../tailwind.config.js').default.theme.screens
 import {uid,capitalize} from '@/assets/helpers'
 
 function initScreenBuddy(){
+  return
   let functions = {}
 
   Object.keys(screens).forEach(screen => {

@@ -26,6 +26,7 @@ export default {
 
     let timeout = null
     let html = document.documentElement
+
     window.addEventListener('resize',()=>{
       timeout && clearTimeout(timeout)
       timeout = setTimeout(()=> html.classList.remove('is-resizing'),100)
@@ -73,13 +74,12 @@ export default {
       gsap.to(el,.5,{...this.from,ease:'power2.in',opacity:0,onComplete:done})
     },
     beforeEnter(el){
-      window.scrollTo(0,0)
       gsap.set(el,{...this.to,opacity:0})
     },
     enter(el,done){
-      window.scrollTo(0,0)
       let images = document.querySelectorAll('.image')
       this.$loaded(images,{background: true},()=>{
+        window.scrollTo(0,0)
         gsap.to(el,.5,{x:0,y:0,opacity:1,ease:'power2.out',onComplete:done})
       })
     },

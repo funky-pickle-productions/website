@@ -2,11 +2,11 @@
   <button
     id="nav__button"
     :class="{}"
-    class="hamburger-button md:hidden fixed bottom-30 right-20 z-100 h-70px w-70px rounded-full bg-black p-15px flex flex-col justify-center items-center"
+    class="hamburger-button md:hidden fixed bottom-30 right-20 z-100 h-70px w-70px rounded-full bg-black flex flex-col justify-center items-center"
     ref="btn"
     @click="$bus.$emit('TOGGLE_MOBILE_NAV')"
   >
-    <div v-for="i in 3" class="hamburger h-2px w-full bg-white my-3px" ref="bar"/>
+    <div v-for="i in 3" class="hamburger h-2px w-40px bg-white my-3px" ref="bar"/>
   </button>
 </template>
 

@@ -40,11 +40,10 @@ main{
   transition: transform .2s, box-shadow .2s;
   transform: scale(1.0001);
   box-shadow: 5px 5px 0px theme('colors.black');
-  outline: 1px solid theme('colors.black');
+  border: 1px solid theme('colors.black');
 }
 
-.button:active,
-.button-wrapper button:active{
+.button:active{
   transform: scale(.95);
   box-shadow: 2px 2px 0px theme('colors.black');
 }
