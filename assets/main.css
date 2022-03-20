@@ -4,8 +4,7 @@ html{
 
 body{
   font-size: 1.2rem;
-  background-color: rgba(theme('colors.bluergb'),.03);
-  background-image: url('/dots.svg');
+  background-color: rgba(theme('colors.bluergb'),.04);
   background-size: 30px 30px;
   background-position: top left;
   background-repeat: repeat;

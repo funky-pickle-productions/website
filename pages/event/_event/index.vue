@@ -2,7 +2,7 @@
   <main id="event" ref="page">
     <div class="bg-white relative z-50">
 
-      <div class="relative z-10 pt-400px md:pt-200px">
+      <div class="relative z-10 pt-300px md:pt-200px">
         <div class="absolute inset-0 -bottom-100px md:-bottom-100 overflow-hidden">
           <Landing :image="data.background" />
         </div>
@@ -16,13 +16,17 @@
           <h1 v-html="data.title" class="font-header font-bold text-center uppercase leading-09 text-30 md:text-50"/>
       </Container>
 
-      <StickyHeader
-        scrollId="#event"
-        :items="links"
-        :backgroundStyles="{background:data.primary || null}"
-        ref="stickyHeader"
-        mobileLabel="Event Links"
-      />
+      <StickyHeader scrollId="#event" ref="stickyHeader" :height="90">
+      <div class="h-full font-bold flex justify-center items-center" :style="{background:data.primary || null}">
+        <template v-if="data.links.length > 0">
+          <template v-for="link in data.links">
+            <nuxt-link class="button bg-white mx-05" v-html="link.label" :to="`/event/${uid}${link.link.uid ? '/' + link.link.uid : ''}`"/>
+          </template>
+        </template>
+        <h3 v-else class="text-white">Registration Coming Soon</h3>
+      </div>
+
+      </StickyHeader>
 
     </div>
 
@@ -70,6 +74,7 @@
 import {random} from '@/assets/helpers'
 import config from '@/tailwind.config.js'
 export default {
+  name:"EventPage",
   async asyncData({redirect, store, params, $prismic, payload }) {
     let res = null;
     let uid = params.event;
@@ -129,17 +134,6 @@ export default {
         (s.primary.publish || s.primary.publish == null) && slices.push({...s,id:`${s.slice_type}-${i}`})
       })
       return slices
-    },
-    links(){
-      if (this.data.links.length == 0) return [
-        {label:'Registration Coming Soon'}
-      ]
-      return this.data.links.map(link => {
-        return {
-          label: link.label,
-          onClick: ()=> this.$router.push(`/event/${this.uid}/${link.link.uid}`)
-        }
-      })
     }
   },
   methods:{

@@ -58,7 +58,9 @@ export default {
       pages.results.forEach((data) => routes.push({ route: `/${data.uid == 'home' ? '' : data.uid}`, payload: data }));
 
       let events = await client.query(Prismic.Predicates.at("document.type", "event"));
-      events.results.forEach((data) => routes.push({ route: `/event/${data.uid}`, payload: data }));
+      events.results.forEach((data) => {
+        routes.push({ route: `/event/${data.uid}`, payload: data })
+      });
 
       return routes;
     },

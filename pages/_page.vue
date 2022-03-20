@@ -1,7 +1,7 @@
 <template lang="html">
   <main id="page" :key="$route.path">
-    <Landing v-if="data.title" :image="data.image" :title="data.title"/>
-    <StickyHeader v-if="header" :items="header" scrollId="#page" ref="header" mobileLabel="Sections"/>
+    <Landing v-if="data.title" :image="data.image" :video="data.video" :title="data.title"/>
+    <NavSlices v-if="data.header" :slices="slices" scrollId="#page"/>
     <Slices :slices="slices" class="page-content"/>
   </main>
 </template>
@@ -38,20 +38,6 @@ export default {
     this.$bus.$emit('LOADED')
   },
   computed:{
-    header(){
-      let header = []
-      if(!this.data.header) return false
-      this.slices.forEach(s => {
-        if (s.primary.title  && typeof s.primary.title == 'string'){
-          header.push({
-            label: s.primary.title,
-            href:`#${s.id}`,
-            onClick:()=> this.scrollTo(s.id)
-          })
-        }
-      })
-      return header
-    },
     slices(){
       if(!this.data.slices) return []
 
@@ -60,12 +46,6 @@ export default {
         (s.primary.publish || s.primary.publish == null) && slices.push({...s,id:`${s.slice_type}-${i}`})
       })
       return slices
-    }
-  },
-  methods:{
-    scrollTo(id){
-      let el = document.getElementById(id).childNodes[0]
-      gsap.to(window,1,{ease: 'power2.out', scrollTo:{y:el,offsetY: this.$refs.header.$el.offsetHeight + 50}})
     }
   }
 }

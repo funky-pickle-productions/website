@@ -42,21 +42,6 @@
             "placeholder": ""
           },
           "type": "Text"
-        },
-        "background": {
-          "config": {
-            "label": "Background",
-            "placeholder": "",
-            "options": [
-              "white",
-              "pink",
-              "black",
-              "lime",
-              "none"
-            ],
-            "default_value": "white"
-          },
-          "type": "Select"
         }
       },
       "items": {

@@ -7,64 +7,55 @@
       {
         "type": "text",
         "required": false,
-        "label": "expedite turn-key metrics",
-        "key": "seize e-business deliverables",
-        "placeholder": "enhance 24/365 markets",
-        "options": "redefine turn-key deliverables"
+        "label": "reinvent B2C initiatives",
+        "key": "benchmark end-to-end eyeballs",
+        "placeholder": "mesh front-end web services",
+        "options": "orchestrate visionary architectures"
       },
       {
-        "type": "text",
-        "required": true,
-        "label": "leverage impactful relationships",
-        "key": "engage B2C channels",
-        "placeholder": "leverage world-class applications",
-        "options": "matrix sticky models"
-      },
-      {
-        "type": "tel",
+        "type": "email",
         "required": false,
-        "label": "recontextualize magnetic users",
-        "key": "embrace mission-critical niches",
-        "placeholder": "streamline visionary users",
-        "options": "streamline enterprise systems"
+        "label": "repurpose out-of-the-box interfaces",
+        "key": "mesh real-time action-items",
+        "placeholder": "scale back-end web-readiness",
+        "options": "orchestrate wireless interfaces"
+      },
+      {
+        "type": "email",
+        "required": false,
+        "label": "productize extensible communities",
+        "key": "incubate synergistic markets",
+        "placeholder": "architect impactful e-business",
+        "options": "engage frictionless e-services"
+      },
+      {
+        "type": "radio",
+        "required": false,
+        "label": "visualize plug-and-play systems",
+        "key": "monetize innovative architectures",
+        "placeholder": "leverage magnetic schemas",
+        "options": "recontextualize user-centric blockchains"
       },
       {
         "type": "select",
         "required": true,
-        "label": "empower bricks-and-clicks metrics",
-        "key": "unleash mission-critical ROI",
-        "placeholder": "unleash sexy solutions",
-        "options": "enhance customized partnerships"
-      },
-      {
-        "type": "text",
-        "required": false,
-        "label": "utilize value-added communities",
-        "key": "disintermediate value-added platforms",
-        "placeholder": "leverage dynamic interfaces",
-        "options": "syndicate web-enabled interfaces"
-      },
-      {
-        "type": "text",
-        "required": false,
-        "label": "implement customized supply-chains",
-        "key": "whiteboard extensible content",
-        "placeholder": "incubate intuitive networks",
-        "options": "expedite e-business portals"
+        "label": "e-enable innovative channels",
+        "key": "enable customized blockchains",
+        "placeholder": "deploy strategic communities",
+        "options": "transition cutting-edge infrastructures"
       }
     ],
     "primary": {
-      "publish": false,
-      "title": "integrate global e-tailers",
+      "publish": true,
+      "title": "enable cutting-edge portals",
       "description": [
         {
           "type": "paragraph",
-          "text": "In excepteur exercitation quis in dolore. Voluptate dolore dolore labore incididunt reprehenderit minim duis labore ex nostrud nisi adipisicing.",
+          "text": "Irure velit et anim exercitation voluptate minim nulla ex cillum consectetur magna. Enim sint ea non Lorem non fugiat velit ullamco qui deserunt anim.",
           "spans": []
         }
       ],
-      "action": "repurpose proactive convergence",
-      "background": "lime"
+      "action": "engineer user-centric relationships"
     }
   }
 ]

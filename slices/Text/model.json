@@ -42,19 +42,6 @@
           },
           "type": "Select"
         },
-        "callout": {
-          "config": {
-            "label": "Callout Color",
-            "placeholder": "",
-            "options": [
-              "pink",
-              "lime",
-              "green"
-            ],
-            "default_value": "pink"
-          },
-          "type": "Select"
-        },
         "image": {
           "config": {
             "label": "Image",

@@ -26,7 +26,8 @@ export default {
       return this.slice.primary.text
     },
     callout(){
-      return this.slice.primary.callout || null
+      let bg = this.slice.primary.background
+      return bg == 'white' || bg == 'lime' || bg == null ? 'pink' : 'lime'
     },
     classes(){
       let bg = this.slice.primary.background

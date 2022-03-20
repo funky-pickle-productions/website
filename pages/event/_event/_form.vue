@@ -7,29 +7,25 @@
     </div>
 
     <Container noTop doubleBottom class="relative z-20">
-      <div class="bg-white px-20 py-50 lg:px-50 shadow-b-blue rounded-lg">
+      <div class="bg-white px-20 py-50 lg:px-50 graphic-box rounded-lg">
 
-        <h3 v-html="event.title" :style="{ color: event.primary }" class="text-15 font-bold text-center mb-20"/>
+        <div class="text-center">
+          <h3 v-html="event.title" :style="{ color: event.primary }" class="text-13 md:text-15 font-bold mb-20 leading-12"/>
+          <h1 v-html="data.title" class="font-header font-bold uppercase leading-09 text-40 md:text-60"/>
+        </div>
 
-        <Marquee v-if="data.title">
-          <h1 v-html="data.title" class="font-header font-bold uppercase leading-09 text-60 px-20"/>
-        </Marquee>
-
-        <div class="mt-space bg-white shadow-b-blue rounded-lg">
+        <div class="overflow-hidden p-05">
           <div class="flex flex-row">
-            <template v-for="(slice,i) in slices">
-              <button class="flex-auto py-10 px-20 text-white" :style="{ color: event.primary }"  v-html="`Step ${i+1}`"/>
-            </template>
-          </div>
-          <div class="flex flex-row overflow-hidden p-40">
             <template v-for="slice in slices">
-              <div class="flex-shrink-0 w-full">
+              <div class="flex-shrink-0 w-full py-20">
                 <ElementForm v-if="slice.slice_type == 'form'" :fields="slice.items" multiColumn/>
                 <StripeForm v-else-if="slice.slice_type == 'stripe'" :data="slice"/>
               </div>
             </template>
           </div>
-
+          <div class="text-center">
+            <button class="button bg-pink text-white" v-html="'next'"/>
+          </div>
         </div>
 
 

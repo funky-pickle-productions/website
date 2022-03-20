@@ -45,6 +45,7 @@ export default{
     }),
     backgroundPosition: {
       "center-top": "center top",
+      "center-bottom": "center top",
     },
     lineHeight: {
       '08': ".8",

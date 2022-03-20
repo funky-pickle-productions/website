@@ -1,5 +1,5 @@
 <template lang="html">
-  <Container class="bios-section">
+  <Container class="bios-section"  :id="slice.id || null">
     <div class="bg-white rounded-lg graphic-box overflow-hidden flex flex-col lg:flex-row">
 
       <div class="flex-initial flex flex-row md:flex-col">

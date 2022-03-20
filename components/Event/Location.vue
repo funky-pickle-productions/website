@@ -10,7 +10,7 @@
         <p v-if="cityState" v-html="cityState"/>
       </div>
     </div>
-    <div v-if="map" class="p-10 location-map flex-grow flex-shrink-0 xl:mt-0">
+    <div v-if="map" class="location-map flex-grow flex-shrink-0 xl:mt-0">
       <div id="map" class="w-full min-w-300px h-400px rounded-md overflow-hidden"/>
     </div>
   </EventWidget>
@@ -43,33 +43,36 @@ export default {
     initMap() {
       let lat = this.map.latitude;
       let lon = this.map.longitude;
-      let attribution = "";
-
-      attribution += `Map tiles by <a href="http://stamen.com/">Stamen Design</a>`;
-      attribution += `under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0.</a>`;
-      attribution += `Data by <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>,`;
-      attribution += `under <a href="http://www.openstreetmap.org/copyright">ODbL.</a>`;
+      let attribution= ""
+      attribution +=`© <a href="https://stadiamaps.com/">Stadia Maps</a>,`
+      attribution += `© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>`;
 
       let map = new L.Map("map", {
         center: new L.LatLng(lat, lon),
-        zoom: 13,
+        zoom: 16,
         touchZoom: false,
         scrollWheelZoom: false
       });
 
       let marker = L.marker([lat, lon]).addTo(map);
 
-      let Stamen_Toner = L.tileLayer("https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.{ext}", {
+      let tiles = L.tileLayer("https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png", {
         attribution,
         subdomains: "abcd",
         minZoom: 12,
-        maxZoom: 17,
-        ext: "png",
+        maxZoom: 17
       });
-      map.addLayer(Stamen_Toner);
+
+      map.addLayer(tiles);
 
       setTimeout(map.invalidateSize, 1500);
     }
   }
 }
 </script>
+
+<style media="screen">
+  .leaflet-control-attribution{
+    font-size: 8px;
+  }
+</style>
