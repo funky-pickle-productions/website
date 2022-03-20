@@ -1,5 +1,5 @@
 <template lang="html">
-  <nav id="top-nav" class="fixed top-0 left-0 right-0 md:hidden bg-white shadow-b-blue py-10 flex justify-center z-100">
+  <nav id="top-nav" class="fixed top-0 left-0 right-0 md:hidden bg-white nav-bottom-shadow py-10 flex justify-center z-100">
     <nuxt-link to="/">
       <logo horizontal color spin class="h-50px"/>
     </nuxt-link>
@@ -33,14 +33,10 @@ export default {
 
     this.anim = gsap.to('#top-nav',1,{y:0,ease: 'expo.inOut',paused: true})
 
-    ScreenBuddy.onMd((bigger)=>{
-      this.trigger && this.trigger.kill()
-      if (bigger) return
-      this.trigger = ScrollTrigger.create({
-        start: 0,
-        end: 99999,
-        onUpdate:(s)=> (this.hide = s.direction == 1)
-      })
+    this.trigger = ScrollTrigger.create({
+      start: 0,
+      end: 99999,
+      onUpdate:(s)=> (this.hide = s.direction == 1)
     })
   },
   methods:{
@@ -55,4 +51,5 @@ export default {
   #top-nav{
     transform: translateY(-100%);
   }
+  .nav-bottom-shadow{box-shadow: 0px 2px 2px rgba(theme('colors.bluergb'),.25);}
 </style>

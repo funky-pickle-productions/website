@@ -26,6 +26,7 @@ export default {
 
     let timeout = null
     let html = document.documentElement
+    
     window.addEventListener('resize',()=>{
       timeout && clearTimeout(timeout)
       timeout = setTimeout(()=> html.classList.remove('is-resizing'),100)

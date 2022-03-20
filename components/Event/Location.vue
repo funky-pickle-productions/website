@@ -10,9 +10,7 @@
         <p v-if="cityState" v-html="cityState"/>
       </div>
     </div>
-    <div v-if="map" class="location-map flex-grow flex-shrink-0 xl:mt-0">
-      <div id="map" class="w-full min-w-300px h-400px rounded-md overflow-hidden"/>
-    </div>
+    <div v-if="map" id="map" class="w-full min-w-300px h-400px flex-grow flex-shrink-0"/>
   </EventWidget>
 </template>
 
