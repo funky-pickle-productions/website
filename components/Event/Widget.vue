@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="rounded-lg bg-white graphic-box" :class="{'p-10':!full}">
+  <div class="rounded-lg bg-white graphic-box overflow-hidden" :class="{'p-10':!full}">
     <slot/>
   </div>
 </template>
