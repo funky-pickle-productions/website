@@ -1,17 +1,19 @@
 <template lang="html">
   <nav id="mobile-nav" class="md:hidden fixed top-0 left-0 w-full h-full bg-black text-white p-30px z-90 font-header font-bold uppercase text-40 leading-09 flex justify-center items-center">
-    <SliceZone :slices="links" :resolver="resolver"/>
+    <div>
+      <template v-for="link in links">
+        <Link :slice="link"/>
+      </template>
+    </div>
   </nav>
 </template>
 
 <script>
 import {mapState} from 'vuex'
-import {resolver} from '@/assets/helpers'
+import Link from '@/slices/Link'
 export default {
-  data:()=>({
-    resolver,
-    hide: true
-  }),
+  data:()=>({hide: true}),
+  components:{Link},
   watch:{
     hide(h){
       h ? this.closeMenu() : this.openMenu()

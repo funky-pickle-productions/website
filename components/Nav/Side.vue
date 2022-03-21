@@ -4,18 +4,18 @@
       <Logo spin color class="w-full"/>
     </nuxt-link>
     <nav class="font-header font-bold uppercase text-20 leading-09">
-      <SliceZone :slices="links" :resolver="resolver"/>
+      <template v-for="link in links">
+        <Link :slice="link"/>
+      </template>
     </nav>
   </aside>
 </template>
 
 <script>
+import Link from '@/slices/Link'
 import {mapState} from 'vuex'
-import {resolver} from '@/assets/helpers'
 export default {
-  data:()=>({
-    resolver
-  }),
+  components:{Link},
   computed:mapState({
     links: state => state.settings.links
   })

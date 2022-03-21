@@ -1,6 +1,6 @@
 <template lang="html">
   <footer class="bg-pink text-white text-center">
-    <Container>
+    <div class="gutters py-space">
       <prismic-rich-text :field="data.text"/>
       <div class="mt-20 flex flex-row justify-center">
         <template v-for="item in data.social">
@@ -9,7 +9,7 @@
           </a>
         </template>
       </div>
-    </Container>
+    </div>
   </footer>
 </template>
 

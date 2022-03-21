@@ -1,15 +1,38 @@
 <template lang="html">
   <main id="page" :key="$route.path">
-    <Landing v-if="data.title" :image="data.image" :video="data.video" :title="data.title"/>
-    <NavSlices v-if="data.header" :slices="slices" scrollId="#page"/>
-    <Slices :slices="slices" class="page-content"/>
+
+    <Landing
+      v-if="data.title"
+      :image="data.image"
+      :video="data.video"
+      :title="data.title"
+    />
+
+    <NavSlices
+      v-if="data.header"
+      :slices="slices"
+      scrollId="#page"
+    />
+
+    <template v-for="(slice,i) in slices">
+      <component
+        :class="{'pb-space-2x': i == slices.length - 1}"
+        class="gutters pt-space-2x"
+        :is="components[slice.slice_type]"
+        :slice="slice"
+        :id="slice.id"
+        />
+    </template>
+
   </main>
 </template>
 
 <script>
+import {components} from '@/slices'
 export default {
   name: 'Page',
-  async asyncData({ redirect, store, route, $prismic, payload }) {
+  async asyncData({ error, store, route, $prismic, payload }) {
+
     let res = null;
     let page = route.path.replaceAll("/", "") || 'home';
     let data = store.state.pages[page];
@@ -28,11 +51,13 @@ export default {
     }
 
     if (data) return { data,page }
-    redirect('/404')
+
+    error({statusCode: 404});
 
   },
   data:()=>({
     data: {},
+    components
   }),
   mounted(){
     this.$bus.$emit('LOADED')
@@ -43,7 +68,9 @@ export default {
 
       let slices = []
       this.data.slices.forEach((s,i) => {
-        (s.primary.publish || s.primary.publish == null) && slices.push({...s,id:`${s.slice_type}-${i}`})
+        if(s.primary.publish || s.primary.publish == null){
+          slices.push({...s,id:`${s.slice_type}-${i + 1}`})
+        }
       })
       return slices
     }

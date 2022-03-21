@@ -1,12 +1,5 @@
 <template>
-  <component
-    v-if="sponsors.length > 0"
-    :is="useContainer ? 'Container' : 'div'"
-    doubleTop doubleBottom outerTop outerBottom
-    class="sponsors-section"
-    :class="{'bg-black text-white':useContainer}"
-    :id="slice.id || null"
-  >
+  <div v-if="sponsors.length > 0" class="sponsors-section" :class="{'bg-black text-white':useContainer}">
 
     <Title v-if="title" :value="title" class="mb-40" :knockout="useContainer"/>
     <prismic-rich-text v-if="description" :field="description" class="mb-40"/>
@@ -19,14 +12,14 @@
       </template>
     </div>
 
-  </component>
+  </div>
 </template>
 
 <script>
 
 export default {
   name: "SponsorsSlice",
-  props: ['slice','useContainer'],
+  props: ['slice'],
   computed:{
     title(){
       return this.slice.primary.title || null

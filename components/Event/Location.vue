@@ -1,6 +1,6 @@
 <template lang="html">
   <EventWidget full class="flex flex-row flex-wrap items-center justify-center">
-    <div class="flex-initial p-20 text-center">
+    <div class="flex-initial py-20 px-30 text-center">
       <div class="flex flex-row items-center mb-05" v-if="venue">
         <Icon wayfinder  class="pr-10 h-20"/>
         <h3 v-html="venue" class="text-13 md:text-16 font-bold"></h3>
@@ -10,7 +10,7 @@
         <p v-if="cityState" v-html="cityState"/>
       </div>
     </div>
-    <div v-if="map" id="map" class="w-full min-w-300px h-400px flex-grow flex-shrink-0"/>
+    <div v-if="map" id="map" class="min-w-300px h-400px flex-grow flex-shrink-0"/>
   </EventWidget>
 </template>
 

@@ -1,9 +1,3 @@
-import {components} from '@/slices'
-
-export function resolver({sliceName}){
-  return components[sliceName]
-}
-
 export function camelize(str) {
   return str.indexOf("_") > 0
     ? str

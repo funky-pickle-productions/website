@@ -1,17 +1,16 @@
 <template>
-  <component :is="useContainer ? 'Container' : 'div'" :id="slice.id || null">
+  <div class="table-section">
     <Title v-if="title" :value="title" class="mb-40"/>
     <prismic-rich-text v-if="description" :field="description" class="mb-40"/>
-
     <ElementTable :headers="headers" :rows="rows" class="graphic-box"/>
-  </component>
+  </div>
 </template>
 
 <script>
 
 export default {
   name: "Table",
-  props: ['slice','useContainer'],
+  props: ['slice'],
   async fetch(){
     if(!this.slice.primary.link) return
     let res = await fetch(this.slice.primary.link)
