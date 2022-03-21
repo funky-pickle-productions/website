@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="landing h-500px relative overflow-hidden z-20 flex justify-center items-center gutters" ref="trigger">
+  <div class="landing-section h-500px relative overflow-hidden z-20 flex justify-center items-center gutters" ref="trigger">
 
     <prismic-rich-text v-if="title.length > 0" :field="title" class="font-header font-bold uppercase leading-09 text-70 sm:text-80 text-lime text-center md:text-left"/>
 
@@ -48,3 +48,15 @@ export default {
   }
 }
 </script>
+
+<style lang="css">
+.landing-section{
+  padding-top: theme('spacing.nav-top');
+}
+
+@media screen and (min-width:theme('screens.md')){
+  .landing-section{
+    padding-top:0px;
+  }
+}
+</style>
