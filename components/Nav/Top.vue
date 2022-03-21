@@ -1,5 +1,5 @@
 <template lang="html">
-  <nav id="top-nav" class="fixed top-0 left-0 right-0 md:hidden bg-white nav-bottom-shadow py-10 flex justify-center z-100">
+  <nav id="top-nav" class="fixed top-0 left-0 right-0 md:hidden bg-white nav-bottom-shadow h-nav-top flex justify-center items-center  z-100">
     <nuxt-link to="/">
       <logo horizontal color spin class="h-50px"/>
     </nuxt-link>
