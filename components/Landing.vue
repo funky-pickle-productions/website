@@ -1,5 +1,5 @@
 <template lang="html">
-  <container class="landing h-500px relative overflow-hidden z-20 flex justify-center items-center" ref="trigger">
+  <div class="landing h-500px relative overflow-hidden z-20 flex justify-center items-center gutters" ref="trigger">
 
     <prismic-rich-text v-if="title.length > 0" :field="title" class="font-header font-bold uppercase leading-09 text-70 sm:text-80 text-lime text-center md:text-left"/>
 
@@ -15,7 +15,7 @@
     </div>
 
     <div class="absolute inset-0 z-back-2 bg-black"/>
-  </container>
+  </div>
 </template>
 
 <script>

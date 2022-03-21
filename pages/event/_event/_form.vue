@@ -6,7 +6,8 @@
       </div>
     </div>
 
-    <Container noTop doubleBottom class="relative z-20">
+    <div class="relative z-20 gutters pb-space-2x">
+
       <div class="bg-white px-20 py-50 lg:px-50 graphic-box rounded-lg">
 
         <div class="text-center">
@@ -28,41 +29,36 @@
           </div>
         </div>
 
-
       </div>
 
-    </Container>
+    </div>
   </main>
 </template>
 
 <script>
 import { random } from "@/assets/helpers";
 export default {
-  async asyncData({ payload, redirect, store, params, $prismic }) {
+  async asyncData({ payload, error, store, params, $prismic }) {
 
     let eventId = params.event;
     let formId = params.form;
-    let event = store.state.events[eventId];
-    let data = store.state.forms[formId];
+    let event = store.state.events[eventId] || null;
+    let data = store.state.forms[formId] || payload || null;
 
-    if (!event) {
-      let res1 = await $prismic.api.getByUID("event", eventId);
-      if (res1) {
-        store.commit("EVENT", [eventId, res1.data]);
-        event = res1.data;
-      }
+    async function get(t,s,id){
+      let res = await $prismic.api.getByUID(t, id);
+      res && store.commit(s, [id, res.data]);
+      return res ? res.data : null
     }
 
-    if (!data) {
-      let res2 = await $prismic.api.getByUID('form',formId);
-      if (res2) {
-        store.commit("FORM", [formId, res2.data]);
-        data = res2.data;
-      }
-    }
+    if (!event) event = get('event','EVENT',eventId)
+    if (!data) data = get('form','FORM',formId)
 
-    if (data && event) return { data, event };
-    redirect("/404");
+    if (data && event) {
+      let form = event.links.find(l => l.link.uid == formId)
+      if(form) return { data, event }
+    }
+    error({statusCode: 404});
   },
   data: () => ({
     data: {},
@@ -89,9 +85,6 @@ export default {
       let link = this.event.links.find((l) => l.link.uid == this.$route.params.form);
       return link || {};
     },
-  },
-  methods: {
-
-  },
+  }
 };
 </script>

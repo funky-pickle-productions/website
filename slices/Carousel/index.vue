@@ -1,5 +1,5 @@
 <template>
-  <component :is="useContainer ? 'Container' : 'div'" v-if="slides.length > 0" class="carousel-section w-full" :id="slice.id || null">
+  <div v-if="slides.length > 0" class="carousel-section w-full">
 
     <Title v-if="title" :value="title" class="mb-40"/>
     <prismic-rich-text v-if="description" :field="description" class="mb-40"/>
@@ -16,14 +16,14 @@
         </div>
       </ElementCarousel>
 
-  </component>
+  </div>
 </template>
 
 <script>
 import config from '@/tailwind.config.js'
 export default {
   name: "CarouselSlice",
-  props: ['slice','useContainer'],
+  props: ['slice'],
   computed:{
     title(){
       return this.slice.primary.title || null

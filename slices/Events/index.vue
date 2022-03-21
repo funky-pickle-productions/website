@@ -1,5 +1,5 @@
 <template>
-  <component  :is="useContainer ? 'Container' : 'div'" class="event-section" :id="slice.id || null">
+  <div class="event-section">
 
     <Title v-if="title" :value="title" class="mb-40"/>
     <prismic-rich-text v-if="description" :field="description" class="mb-40"/>
@@ -48,7 +48,7 @@
       <nuxt-link :to="'/events'" v-html="'View All Events'" class="button button-pink"/>
     </div>
 
-  </component>
+  </div>
 </template>
 
 <script>
@@ -56,7 +56,7 @@ import { getDay, getMonth } from "@/assets/helpers";
 import { mapState } from "vuex";
 export default {
   name: "EventsSlice",
-  props:['slice','useContainer'],
+  props:['slice'],
   computed: {
     ...mapState({
       eventsData: (state) => state.lists.events,

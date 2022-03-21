@@ -1,162 +1,188 @@
 <template lang="html">
   <main id="event" ref="page">
     <div class="bg-white relative z-50">
-
       <div class="relative z-10 pt-300px md:pt-200px">
         <div class="absolute inset-0 -bottom-100px md:-bottom-100 overflow-hidden">
           <Landing :image="data.background" />
         </div>
       </div>
 
-      <Container noTop noBottom class="relative z-20">
-        <prismic-image :field="data.banner" class="rounded-lg graphic-box"/>
-      </Container>
-
-      <Container>
-          <h1 v-html="data.title" class="font-header font-bold text-center uppercase leading-09 text-30 md:text-50"/>
-      </Container>
-
-      <StickyHeader scrollId="#event" ref="stickyHeader" :height="90">
-      <div class="h-full font-bold flex justify-center items-center" :style="{background:data.primary || null}">
-        <template v-if="data.links.length > 0">
-          <template v-for="link in data.links">
-            <nuxt-link class="button bg-white mx-05" v-html="link.label" :to="`/event/${uid}${link.link.uid ? '/' + link.link.uid : ''}`"/>
-          </template>
-        </template>
-        <h3 v-else class="text-white">Registration Coming Soon</h3>
+      <div class="relative z-20 gutters">
+        <prismic-image :field="data.banner" class="rounded-lg graphic-box" />
       </div>
 
-      </StickyHeader>
+      <div class="gutters py-space">
+        <h1 v-html="data.title" class="font-header font-bold text-center uppercase leading-09 text-30 md:text-50"/>
+      </div>
 
+      <StickyHeader scrollId="#event" :height="90">
+        <div
+          class="h-full font-bold flex justify-center items-center"
+          :style="{ background: data.primary || null }"
+          ref="stickyHeader"
+        >
+          <template v-if="data.links.length > 0">
+            <template v-for="link in data.links">
+              <nuxt-link
+                class="button bg-white mx-05"
+                v-html="link.label"
+                :to="`/event/${uid}${link.link.uid ? '/' + link.link.uid : ''}`"
+              />
+            </template>
+          </template>
+          <h3 v-else class="text-white">Registration Coming Soon</h3>
+        </div>
+      </StickyHeader>
     </div>
 
-    <Container noBottom class="relative z-10" :style="{fill:data.primary}">
+    <div class="relative z-10 gutters pt-space-2x" :style="{ fill: data.primary }">
       <div class="-m-05 flex flex-row flex-wrap">
-        <EventDate :date="data.date" class="m-05 flex-auto"/>
-        <EventWeather :uid="uid" class="m-05 flex-auto"/>
-        <EventLocation class="m-05 flex-initial w-full" :address="data.address" :map="data.map" :city="data.city" :state="data.state" :venue="data.venue"/>
+        <EventDate :date="data.date" class="m-05 flex-auto" />
+        <EventWeather :uid="uid" class="m-05 flex-auto" />
+        <EventLocation
+          class="m-05 flex-initial w-full"
+          :address="data.address"
+          :map="data.map"
+          :city="data.city"
+          :state="data.state"
+          :venue="data.venue"
+        />
       </div>
-    </Container>
+    </div>
 
-    <Container class="relative z-10" :class="{'flex flex-row': slices}" ref="slices">
+    <div
+      class="relative z-10 gutters pt-space-2x"
+      :class="{ 'flex flex-row pb-space': slices, 'pb-space-2x': !slices }"
+      ref="slices"
+    >
       <template v-if="slices">
         <div class="flex-auto">
-          <Slices :slices="slices" class="page-content" inline/>
+          <template v-for="(slice, i) in slices">
+            <component
+              class="pb-space"
+              :is="components[slice.slice_type]"
+              :slice="slice"
+              :id="slice.id"
+            />
+          </template>
         </div>
 
-        <div class="flex-initial hidden xl:block">
-
-          <aside ref="sidebar" class="flex flex-col pl-20">
-            <template v-for="(item,i) in slices">
+        <div class="flex-initial hidden xl:block pl-20">
+          <aside ref="sidebar" class="flex flex-col">
+            <template v-for="(slice, i) in slices">
               <button
-                v-if="item.primary.title && item.id"
-                v-html="item.primary.title"
-                :data-id="item.id"
-                @click="()=>scrollTo(item.id)"
+                v-if="slice.primary.title"
+                v-html="slice.primary.title"
+                @click="() => scrollTo(slice.id)"
                 class="button bg-pink text-white"
-                :class="{'mb-05':i < slices.length - 1}"
-                />
+                :class="{ 'mb-05': i < slices.length - 1 }"
+              />
             </template>
           </aside>
-
         </div>
       </template>
-      <div v-else class="text-center">
-        <h1 class="font-bold text-16 leading-12" :style="{color: data.primary}">More Information Coming Soon!</h1>
-      </div>
-    </Container>
 
+      <div v-else class="text-center">
+        <h1 class="font-bold text-16 leading-12" :style="{ color: data.primary }">
+          More Information Coming Soon!
+        </h1>
+      </div>
     </div>
   </main>
 </template>
 
 <script>
-import {random} from '@/assets/helpers'
-import config from '@/tailwind.config.js'
+import { random } from "@/assets/helpers";
+import config from "@/tailwind.config.js";
+import { components } from "@/slices";
 export default {
-  name:"EventPage",
-  async asyncData({redirect, store, params, $prismic, payload }) {
+  name: "EventPage",
+  async asyncData({ error, store, params, $prismic, payload }) {
     let res = null;
     let uid = params.event;
-    let data  = store.state.events[uid]
+    let data = store.state.events[uid];
 
-    if (payload){
+    if (payload) {
       store.commit("EVENT", [uid, payload.data]);
-      data = payload.data
+      data = payload.data;
     }
 
     if (!data) {
       res = await $prismic.api.getByUID("event", uid);
-      if(res){
+      if (res) {
         store.commit("EVENT", [uid, res.data]);
-        data = res.data
+        data = res.data;
       }
     }
 
     if (data) return { data, uid };
 
-    redirect('/404')
+    error({ statusCode: 404 });
   },
   data: () => ({
     data: null,
-    uid: null
+    uid: null,
+    components,
   }),
-  mounted(){
-    this.$bus.$emit('LOADED')
+  mounted() {
+    this.$bus.$emit("LOADED");
 
-    gsap.set('#event .bg-pink',{background: this.data.primary})
-    gsap.set('#event .bg-green',{background: this.data.secondary})
+    setTimeout(() => {
+      gsap.set("#event .bg-pink", { background: this.data.primary });
+      gsap.set("#event .bg-green", { background: this.data.secondary });
 
-    if (this.slices){
-      let sticky = this.$refs.stickyHeader.$el
-      let sidebar = this.$refs.sidebar
+      if (this.slices) {
+        let sticky = this.$refs.stickyHeader;
+        let sidebar = this.$refs.sidebar;
 
-      this.sidebarAnim = ScrollTrigger.create({
-        trigger: this.$refs.slices.$el,
-        start:()=>`top top+=${sticky.offsetHeight}`,
-        end: ()=> `bottom top+=${sidebar.offsetHeight + sticky.offsetHeight + (this.getSpace() * 2)}`,
-        pin: this.$refs.sidebar,
-        pinSpacing: false,
-        invalidateOnRefresh:true
-      })
-
-    }
+        this.sidebarAnim = ScrollTrigger.create({
+          trigger: this.$refs.slices,
+          start: () => `top top`,
+          end: () => `bottom top+=${sidebar.offsetHeight + sticky.offsetHeight + this.getSpace() * 3}`,
+          pin: this.$refs.sidebar,
+          pinSpacing: false,
+          invalidateOnRefresh: true,
+        });
+      }
+    }, 500);
   },
-  destroyed(){
-    this.sidebarAnim && this.sidebarAnim.kill()
+  destroyed() {
+    this.sidebarAnim && this.sidebarAnim.kill();
   },
-  computed:{
-    slices(){
-      if(!this.data.slices || this.data.slices.length == 0) return null
+  computed: {
+    slices() {
+      if (!this.data.slices || this.data.slices.length == 0) return null;
 
-      let slices = []
-      this.data.slices.forEach((s,i) => {
-        (s.primary.publish || s.primary.publish == null) && slices.push({...s,id:`${s.slice_type}-${i}`})
-      })
-      return slices
-    }
-  },
-  methods:{
-    getSpace(){
-      let space = parseInt(config.theme.spacing.space)
-      let size = window.innerWidth >= parseInt(config.theme.screens.md) ? 'desktop' : 'mobile'
-      let rem = parseInt(config.theme.fontSize[size])
-      return space * rem
+      let slices = [];
+      this.data.slices.forEach((s, i) => {
+        if (s.primary.publish || s.primary.publish == null) {
+          slices.push({ ...s, id: `${s.slice_type}-${i + 1}` });
+        }
+      });
+      return slices;
     },
-    scrollTo(id){
-      let el = document.getElementById(id)
-      let offset = this.$refs.stickyHeader.$el.offsetHeight + this.getSpace() - 5
-      gsap.to(window,1,{ease: 'power2.out', scrollTo:{y:el,offsetY:offset}})
-    }
-  }
-}
+  },
+  methods: {
+    getSpace() {
+      let space = parseInt(config.theme.spacing.space);
+      let size = window.innerWidth >= parseInt(config.theme.screens.md) ? "desktop" : "mobile";
+      let rem = parseInt(config.theme.fontSize[size]);
+      return space * rem;
+    },
+    scrollTo(id) {
+      let el = document.getElementById(id);
+      let offset = this.getSpace() * 2 - 2;
+      gsap.to(window, 1, {ease: "power2.out",scrollTo: { y: el, offsetY: offset }});
+    },
+  },
+};
 </script>
 
 <style lang="css">
-  #event .page-content > div{
-    margin-top: theme('spacing.space')
-  }
-  #event .page-content > div:first-child{
-    margin-top: 0px;
-  }
+#event .page-content > div {
+  margin-top: theme("spacing.space");
+}
+#event .page-content > div:first-child {
+  margin-top: 0px;
+}
 </style>

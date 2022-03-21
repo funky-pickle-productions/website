@@ -1,5 +1,5 @@
 <template>
-<component :is="useContainer ? 'Container' : 'div'" class="text-section" :id="slice.id || null">
+<div class="text-section" >
   <Title v-if="title" :value="title" class="mb-40"/>
   <div class="rounded-lg overflow-hidden graphic-box" :class="classes">
     <prismic-image v-if="image" :field="image"/>
@@ -7,14 +7,14 @@
       <ElementText :field="text" :calloutColor="callout"/>
     </div>
   </div>
-</component>
+</div>
 </template>
 
 <script>
 
 export default {
   name: "TextSlice",
-  props: ["slice","useContainer"],
+  props: ["slice"],
   computed:{
     title(){
       return this.slice.primary.title || null
@@ -44,15 +44,6 @@ export default {
 </script>
 
 <style lang="css">
-  .text-content *:last-child{
-    margin-bottom:0px;
-  }
-  .text-section + .text-section{
-    padding-top: 20px;
-  }
-  .text-section + .form-section{
-    padding-top: 0px;
-  }
   .text-section h1{
     text-align: center;
   }

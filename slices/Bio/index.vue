@@ -1,5 +1,5 @@
 <template lang="html">
-  <Container class="bios-section"  :id="slice.id || null">
+  <div class="bios-section">
     <div class="bg-white rounded-lg graphic-box overflow-hidden flex flex-col lg:flex-row">
 
       <div class="flex-initial flex flex-row md:flex-col">
@@ -16,7 +16,7 @@
       </div>
 
     </div>
-  </Container>
+  </div>
 </template>
 
 <script>
@@ -30,10 +30,8 @@ export default {
 </script>
 
 <style media="screen">
-.text-section + .bios-section{
-  padding-top: 0px;
-}
-.bios-section + .bios-section{
-  padding-top: 0px;
+.text-section + .bios-section.pt-space-2x,
+.bios-section + .bios-section.pt-space-2x{
+  padding-top: theme('spacing.space')
 }
 </style>

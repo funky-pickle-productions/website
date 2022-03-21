@@ -1,47 +1,26 @@
 <template lang="html">
+  <div class="overflow-hidden bg-white pb-space-2x">
+      <div class="relative z-10 py-space w-full" ref="trigger">
 
-  <component :is="useContainer ? 'Container' : 'div'" doubleTop doubleBottom outerBottom :class="containerClasses" class="overflow-hidden">
-    <div class="relative z-10 py-space w-full" ref="trigger">
+        <prismic-rich-text :field="slice.primary.title" class="intro-title font-header font-bold uppercase leading-09 text-center lg:text-left"/>
 
-      <prismic-rich-text :field="slice.primary.title" class="intro-title font-header font-bold uppercase leading-09 text-center lg:text-left"/>
-
-      <div class="absolute inset-0 flex flex-row justify-center lg:justify-end z-back-1">
-        <icon ball :class="ballClasses" ref="ball" class="flex-shrink-0 h-full"/>
-      </div>
+        <div class="absolute inset-0 flex flex-row justify-center lg:justify-end z-back-1">
+          <icon ball ref="ball" class="flex-shrink-0 h-full fill-lime"/>
+        </div>
 
     </div>
-  </component>
-
+  </div>
 </template>
 
 <script>
 export default {
   name:"IntroSlice",
-  props:['slice','useContainer'],
+  props:['slice'],
   mounted(){
     setTimeout(this.initAnim,500)
   },
   destroyed(){
     this.anim && this.anim.kill()
-  },
-  computed:{
-    containerClasses(){
-      let bg = this.slice.primary.background
-      return{
-        'bg-white': bg == 'white' || bg == null,
-        'bg-lime': bg == 'lime',
-        'bg-green': bg == 'green',
-        'bg-pink': bg == 'pink',
-        'bg-black': bg == 'black'
-      }
-    },
-    ballClasses(){
-      let bg = this.slice.primary.background
-      return{
-        'fill-lime': bg != 'lime',
-        'fill-white': bg == 'lime'
-      }
-    }
   },
   methods:{
     initAnim(){

@@ -9,6 +9,8 @@
 
 <script>
 export default {
-  layout:'blank'
+  mounted(){
+    this.$bus.$emit('LOADED')
+  }
 }
 </script>
