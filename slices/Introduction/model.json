@@ -11,6 +11,15 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "Introduction",
       "primary": {
+        "publish": {
+          "config": {
+            "label": "Publish",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          },
+          "type": "Boolean"
+        },
         "title": {
           "type": "StructuredText",
           "config": {

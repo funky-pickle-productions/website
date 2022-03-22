@@ -11,6 +11,15 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "Carousel",
       "primary": {
+        "publish": {
+          "config": {
+            "label": "Publish",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": true
+          },
+          "type": "Boolean"
+        },
         "title": {
           "config": {
             "label": "Title",

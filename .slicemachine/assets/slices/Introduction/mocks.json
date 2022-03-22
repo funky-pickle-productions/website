@@ -5,14 +5,15 @@
     "slice_type": "introduction",
     "items": [],
     "primary": {
+      "publish": true,
       "title": [
         {
           "type": "heading1",
-          "text": "Benchmark wireless web services",
+          "text": "Productize plug-and-play portals",
           "spans": []
         }
       ],
-      "background": "lime"
+      "background": "black"
     }
   }
 ]

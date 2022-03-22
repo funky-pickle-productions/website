@@ -1,5 +1,5 @@
 <template>
-<div class="text-section" >
+<section class="text-section" >
   <Title v-if="title" :value="title" class="mb-40"/>
   <div class="rounded-lg overflow-hidden graphic-box" :class="classes">
     <prismic-image v-if="image" :field="image"/>
@@ -7,7 +7,7 @@
       <ElementText :field="text" :calloutColor="callout"/>
     </div>
   </div>
-</div>
+</section>
 </template>
 
 <script>

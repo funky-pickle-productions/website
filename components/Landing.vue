@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="landing-section h-500px relative overflow-hidden z-20 flex justify-center items-center gutters" ref="trigger">
+  <section class="landing-section h-500px relative overflow-hidden z-20 flex justify-center items-center gutters" ref="trigger">
 
     <prismic-rich-text v-if="title.length > 0" :field="title" class="relative z-10 font-header font-bold uppercase leading-09 text-70 sm:text-80 text-lime text-center md:text-left"/>
 
@@ -21,7 +21,7 @@
       <ElementVideo :data="video" background ref="video"/>
     </div>
 
-  </div>
+  </section>
 </template>
 
 <script>

@@ -1,9 +1,9 @@
 <template lang="html">
-  <div class="bios-section">
+  <section class="bios-section">
     <div class="bg-white rounded-lg graphic-box overflow-hidden flex flex-col lg:flex-row">
 
       <div class="flex-initial flex flex-row md:flex-col">
-        <div v-for="c in colors" class="h-20 md:h-auto md:w-10 flex-auto" :class="`bg-${c}`"/>
+        <div v-for="c in colors" class="h-20 md:h-auto md:w-10 flex-auto" :class="`bg-${c}`" />
       </div>
 
       <div class="flex flex-col md:flex-row p-30">
@@ -16,24 +16,25 @@
       </div>
 
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
-export default {
-  name: 'BiosSlice',
-  props:['slice'],
-  data:()=>({
-    colors: ['black','pink','green']
-  })
-}
+  export default {
+    name: 'BiosSlice',
+    props: ['slice'],
+    data: () => ({
+      colors: ['black', 'pink', 'green']
+    })
+  }
 </script>
 
 <style media="screen">
-.text-section + .bios-section.pt-space-2x{
-  padding-top: theme('spacing.space')
-}
-.bios-section + .bios-section.pt-space-2x{
-  padding-top: theme('spacing.20')
-}
+  .text-section+.bios-section.pt-space-2x {
+    padding-top: theme('spacing.space')
+  }
+
+  .bios-section+.bios-section.pt-space-2x {
+    padding-top: theme('spacing.20')
+  }
 </style>
