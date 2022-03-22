@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="overflow-hidden bg-white pb-space-2x">
+  <div class="intro-section overflow-hidden bg-white pb-space-2x">
       <div class="relative z-10 py-space w-full" ref="trigger">
 
         <prismic-rich-text :field="slice.primary.title" class="intro-title font-header font-bold uppercase leading-09 text-center lg:text-left"/>
@@ -24,11 +24,11 @@ export default {
   },
   methods:{
     initAnim(){
-      this.anim = gsap.to(this.$refs.ball.$el,{rotate:180,ease:'none', scrollTrigger:{
+      this.anim = gsap.to(this.$refs.ball.$el,{rotate:180,ease:'none',force3D:true,scrollTrigger:{
         trigger: this.$refs.trigger,
         scrub: 1,
         start: 0,
-        end: 'bottom top'
+        end: 'bottom top',
       }})
     }
   }
@@ -36,6 +36,10 @@ export default {
 </script>
 
 <style lang="css">
+
+  .intro-section{
+    box-shadow: 0px 2px 5px rgba(theme('colors.bluergb'),.1)
+  }
   .intro-title{
     font-size: 15vw
   }

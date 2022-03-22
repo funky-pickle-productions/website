@@ -30,7 +30,7 @@
               />
             </template>
           </template>
-          <h3 v-else class="text-white">Registration Coming Soon</h3>
+          <h3 v-else class="text-white text-16">Registration Coming Soon</h3>
         </div>
       </StickyHeader>
     </div>
@@ -83,7 +83,7 @@
       </template>
 
       <div v-else class="text-center">
-        <h1 class="font-bold text-16 leading-12" :style="{ color: data.primary }">
+        <h1 class="inline-block font-bold text-16 leading-12 graphic-box rounded-lg text-white p-20" :style="{ background: data.primary }">
           More Information Coming Soon!
         </h1>
       </div>
@@ -95,8 +95,11 @@
 import { random } from "@/assets/helpers";
 import config from "@/tailwind.config.js";
 import { components } from "@/slices";
+import pageTransition from '@/assets/pageTransition'
+
 export default {
   name: "EventPage",
+  transition: pageTransition,
   async asyncData({ error, store, params, $prismic, payload }) {
     let res = null;
     let uid = params.event;
@@ -116,7 +119,6 @@ export default {
     }
 
     if (data) return { data, uid };
-
     error({ statusCode: 404 });
   },
   data: () => ({
@@ -147,6 +149,7 @@ export default {
     }, 500);
   },
   destroyed() {
+    this.$bus.$emit('UNLOADED')
     this.sidebarAnim && this.sidebarAnim.kill();
   },
   computed: {

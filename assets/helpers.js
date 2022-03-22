@@ -168,6 +168,11 @@ export function LightenDarkenColor(color, percent) {
   return "#"+RR+GG+BB;
 }
 
-export function random(min, max) { // min and max included
+export function randomArray(a){
+  let int = parseInt(random(0,a.length - 1))
+  return a[int]
+}
+
+export function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }

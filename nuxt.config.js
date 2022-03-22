@@ -1,4 +1,7 @@
 const Prismic = require("@prismicio/client");
+import config from './tailwind.config.js'
+import {randomArray} from './assets/helpers'
+let colors = [config.theme.colors.pink,config.theme.colors.lime,config.theme.colors.green,config.theme.colors.black]
 
 export default {
   target: 'static',
@@ -30,8 +33,7 @@ export default {
   },
   css: ['@/assets/main.css'],
   plugins: [
-    { src: "@/plugins/eventBus.js", ssr: true },
-    { src: "@/plugins/imagesLoaded.js", ssr: false }
+    { src: "@/plugins/bus.js", ssr: true }
   ],
   buildModules: ['@nuxtjs/tailwindcss','@nuxtjs/prismic','@braid/vue-formulate/nuxt'],
   modules: [],

@@ -1,15 +1,15 @@
 <template lang="html">
   <div id="site" class="md:pl-nav-side">
+
     <Preloader/>
     <NavTop/>
     <NavMobile/>
     <NavSide/>
     <NavButton/>
-    <div class="relative">
-      <nuxt/>
-    </div>
+    <nuxt/>
     <Signup/>
     <EndMatter/>
+    <div id="cover" class="hidden fixed inset-0 z-80"/>
 
   </div>
 </template>
@@ -32,20 +32,6 @@ export default {
   },
   mounted(){
     document.documentElement.style.opacity = 1
-  },
-  data:()=>({
-    to:null,
-    from:null,
-  }),
-  computed:{
-    pages(){
-      if(!this.$store.state.settings.links) return {}
-      let pages = {'/':1}
-      this.$store.state.settings.links.forEach((l,i) => {
-        pages[`/${l.primary.link.uid}`] = i + 2
-      })
-      return pages
-    }
   }
 }
 </script>

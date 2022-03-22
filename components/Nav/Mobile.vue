@@ -31,12 +31,12 @@ export default {
     },
     openMenu(){
       this.$bus.$emit('MOBILE_NAV_VISIBLE')
-      gsap.to('#mobile-nav',1,{x:0,ease: 'expo.inOut'})
+      gsap.to('#mobile-nav',.5,{x:0,ease: 'expo.inOut'})
       setTimeout(()=> window.addEventListener('click',this.handleClick),100)
     },
     closeMenu(){
       this.$bus.$emit('MOBILE_NAV_HIDDEN')
-      gsap.to('#mobile-nav',1,{x:'-100%',ease: 'expo.inOut'})
+      gsap.to('#mobile-nav',.5,{x:'-100%',ease: 'expo.inOut'})
       window.removeEventListener('click',this.handleClick)
     }
   }

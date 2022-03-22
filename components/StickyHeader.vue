@@ -1,11 +1,7 @@
 <template lang="html">
-  <div class="relative z-50" ref="spacer" v-if="scrollId" :style="{height:`${height}px`}">
-    <header class="absolute inset-0 sticky-header" ref="header">
-      <div ref="wrapper" :style="{height:`${height}px`}">
-        <slot/>
-      </div>
-    </header>
-  </div>
+  <header v-if="scrollId" class="sticky-header z-80" ref="header" :style="{height:`${height}px`}">
+    <slot/>
+  </header>
 </template>
 
 <script>
@@ -17,24 +13,20 @@ export default {
   },
   mounted(){
     if (!this.scrollId) return
-    setTimeout(this.initHeader,500)
+
+    this.anim = ScrollTrigger.create({
+      trigger: this.scrollId,
+      start: ()=> `top top-=${getPosition(this.$refs.header).top}`,
+      end: ()=> `bottom top+=${this.$refs.header.offsetHeight}`,
+      pin: this.$refs.header,
+      pinSpacing: false,
+      onToggle:(e)=> this.$bus.$emit('PAUSE_TOP_NAV',e.isActive),
+      invalidateOnRefresh:true
+    })
+
   },
   destroyed(){
     this.anim && this.anim.kill()
-  },
-  methods:{
-    initHeader(){
-      this.anim = ScrollTrigger.create({
-        trigger: this.scrollId,
-        start: ()=> `top top-=${getPosition(this.$refs.header).top}`,
-        end: ()=> `bottom top+=${this.$refs.header.offsetHeight}`,
-        pin: this.$refs.header,
-        pinSpacer: this.$refs.spacer,
-        pinSpacing: false,
-        onToggle:(e)=> this.$bus.$emit('PAUSE_TOP_NAV',e.isActive),
-        invalidateOnRefresh:true
-      })
-    }
   }
 }
 </script>

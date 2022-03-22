@@ -37,7 +37,9 @@
 
 <script>
 import { random } from "@/assets/helpers";
+import mixins from '@/mixins/mixins'
 export default {
+  mixins:[mixins],
   async asyncData({ payload, error, store, params, $prismic }) {
 
     let eventId = params.event;
@@ -68,6 +70,9 @@ export default {
   }),
   mounted() {
     this.$bus.$emit("LOADED");
+  },
+  destroyed(){
+    this.$bus.$emit('UNLOADED')
   },
   computed: {
     slices(){
