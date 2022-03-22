@@ -44,7 +44,7 @@
 
     </template>
 
-    <div v-if="slice.primary.count" class="mt-40 text-center">
+    <div v-if="slice.primary.count" class="mt-40 text-center lg:text-left">
       <nuxt-link :to="'/events'" v-html="'View All Events'" class="button button-pink"/>
     </div>
 

@@ -6,6 +6,7 @@
       :image="data.image"
       :video="data.video"
       :title="data.title"
+      :svg="data.svg"
     />
 
     <NavSlices
@@ -29,7 +30,9 @@
 
 <script>
 import {components} from '@/slices'
+import mixins from '@/mixins/mixins'
 export default {
+  mixins:[mixins],
   name: 'Page',
   async asyncData({ error, store, route, $prismic, payload }) {
 
@@ -59,9 +62,6 @@ export default {
     data: {},
     components
   }),
-  mounted(){
-    this.$bus.$emit('LOADED')
-  },
   computed:{
     slices(){
       if(!this.data.slices) return []

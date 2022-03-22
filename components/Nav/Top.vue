@@ -8,40 +8,63 @@
 
 <script>
 import {mapState} from 'vuex'
+import config from '@/tailwind.config.js'
 export default {
   data:()=>({
-    hide: true,
-    pause: false
+    visible: false,
+    pause: false,
+    active:false
   }),
   watch:{
-    pause(p){
-      this.hide = p
-      this.toggleTopNav()
+    pause(pause){
+      pause ? this.hideNav() : this.toggleNav()
     },
-    hide(){
-      this.toggleTopNav()
-    },
-    $route(){
-      this.pause = false
+    active(active){
+      active ? this.on() : this.off()
     }
   },
   mounted(){
-    this.$bus.$once('REVEAL',()=> this.hide = false)
-    this.$bus.$on('PAUSE_TOP_NAV',(x)=> this.pause = x)
-    this.$bus.$on('MOBILE_NAV_VISIBLE',()=> this.anim.play())
-    this.$bus.$on('MOBILE_NAV_HIDDEN',this.toggleTopNav)
+    this.breakpoint = parseInt(config.theme.screens.md)
+    window.addEventListener('resize',this.handleResize)
+    this.handleResize()
 
-    this.anim = gsap.to('#top-nav',1,{y:0,ease: 'expo.inOut',paused: true})
-
-    this.trigger = ScrollTrigger.create({
-      start: 0,
-      end: 99999,
-      onUpdate:(s)=> (this.hide = s.direction == 1)
-    })
+    this.$bus.$on('PAUSE_TOP_NAV',(x) => this.pause = x)
   },
   methods:{
-    toggleTopNav(){
-      this.anim[this.hide || this.pause ? 'reverse' : 'play']()
+    handleResize(){
+      this.active = window.innerWidth < this.breakpoint
+    },
+    handleUpdate(s){
+      if(s.direction == -1 && !this.visible) this.showNav()
+      if(s.direction == 1 && this.visible) this.hideNav()
+    },
+    on(){
+      this.$bus.$on('UNLOADED',this.hideNav)
+      this.$bus.$on('LOADED',this.showNav)
+      this.$bus.$on('MOBILE_NAV_HIDDEN',this.toggleNav)
+      this.$bus.$on('MOBILE_NAV_VISIBLE',this.showNav)
+      this.anim = gsap.to('#top-nav',.5,{y:0,paused: true,ease:'expo.inOut'})
+      this.trigger = ScrollTrigger.create({start: 0,end: 99999,onUpdate:this.handleUpdate})
+      this.showNav()
+    },
+    off(){
+      this.$bus.$off('UNLOADED',this.hideNav)
+      this.$bus.$off('LOADED',this.showNav)
+      this.$bus.$off('MOBILE_NAV_HIDDEN',this.toggleNav)
+      this.$bus.$off('MOBILE_NAV_VISIBLE',this.showNav)
+      this.anim && this.anim.kill()
+      this.trigger && this.trigger.kill()
+    },
+    toggleNav(){
+      this.visible ? this.showNav() : this.hideNav()
+    },
+    showNav(){
+      this.visible = true
+      this.anim && this.anim.play()
+    },
+    hideNav(){
+      this.visible = false
+      this.anim && this.anim.reverse()
     }
   }
 }

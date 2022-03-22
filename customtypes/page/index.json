@@ -45,6 +45,14 @@
         },
         "type": "Embed"
       },
+      "svg": {
+        "config": {
+          "label": "SVG Background",
+          "placeholder": "",
+          "select": "media"
+        },
+        "type": "Link"
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

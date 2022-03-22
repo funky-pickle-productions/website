@@ -30,8 +30,10 @@ export default {
 </script>
 
 <style media="screen">
-.text-section + .bios-section.pt-space-2x,
-.bios-section + .bios-section.pt-space-2x{
+.text-section + .bios-section.pt-space-2x{
   padding-top: theme('spacing.space')
+}
+.bios-section + .bios-section.pt-space-2x{
+  padding-top: theme('spacing.20')
 }
 </style>

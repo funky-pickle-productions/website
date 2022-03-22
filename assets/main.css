@@ -16,31 +16,13 @@ main{
   overflow: hidden;
 }
 
-.page-enter-active,
-.page-leave-active {
-  transition: opacity .4s, transform .4s;
-}
-
-.page-leave-active{
-  transition-timing-function: ease-in;
-}
-.page-enter-active{
-  transition-timing-function: ease-out;
-}
-
-.page-enter{
-  opacity: 0;
-  transform: translateY(-50px);
-}
-
-.page-leave-to {
-  opacity: 0;
-  transform: translateY(50px);
-}
-
 .graphic-box{
   box-shadow: 5px 5px 0px theme('colors.black');
   border: 1px solid theme('colors.black');
+}
+
+.bg-fade-v{
+  background: linear-gradient(180deg,rgba(theme('colors.blackrgb'),0) 0%,rgba(theme('colors.blackrgb'),1) 100%)
 }
 
 .gutters{
@@ -63,7 +45,8 @@ main{
   border: 1px solid theme('colors.black');
 }
 
-.button:active{
+.button:active,
+.button-wrapper button:active{
   transform: scale(.95);
   box-shadow: 2px 2px 0px theme('colors.black');
 }
