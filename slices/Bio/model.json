@@ -11,6 +11,15 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "Bio",
       "primary": {
+        "publish": {
+          "config": {
+            "label": "Publish",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": true
+          },
+          "type": "Boolean"
+        },
         "name": {
           "config": {
             "label": "Name",

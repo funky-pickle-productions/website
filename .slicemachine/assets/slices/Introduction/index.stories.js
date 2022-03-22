@@ -18,7 +18,7 @@ export const _Default = () => ({
   },
   data() {
     return {
-      mock: {"variation":"default","name":"Default","slice_type":"introduction","items":[],"primary":{"title":[{"type":"heading1","text":"Benchmark wireless web services","spans":[]}],"background":"lime"},"id":"_Default"}
+      mock: {"variation":"default","name":"Default","slice_type":"introduction","items":[],"primary":{"publish":true,"title":[{"type":"heading1","text":"Productize plug-and-play portals","spans":[]}],"background":"black"},"id":"_Default"}
     }
   },
   template: '<SliceZone :slices="[mock]" :resolver="resolve" />'

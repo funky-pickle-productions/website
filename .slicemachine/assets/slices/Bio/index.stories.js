@@ -18,7 +18,7 @@ export const _Default = () => ({
   },
   data() {
     return {
-      mock: {"variation":"default","name":"Default","slice_type":"bio","items":[],"primary":{"name":"benchmark cross-platform networks","text":[{"type":"paragraph","text":"Nostrud sunt incididunt aliquip est adipisicing laboris aliquip id cillum pariatur dolore dolor cillum.","spans":[]}]},"id":"_Default"}
+      mock: {"variation":"default","name":"Default","slice_type":"bio","items":[],"primary":{"publish":false,"name":"revolutionize one-to-one vortals","text":[{"type":"paragraph","text":"Exercitation adipisicing commodo cupidatat laboris et duis Lorem eiusmod incididunt consectetur laborum minim et ad.","spans":[]}]},"id":"_Default"}
     }
   },
   template: '<SliceZone :slices="[mock]" :resolver="resolve" />'

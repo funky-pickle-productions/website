@@ -19,6 +19,15 @@
               "version": "sktwi1xtmkfgx8626",
               "description": "Bio",
               "primary": {
+                "publish": {
+                  "config": {
+                    "label": "Publish",
+                    "placeholder_false": "false",
+                    "placeholder_true": "true",
+                    "default_value": true
+                  },
+                  "type": "Boolean"
+                },
                 "name": {
                   "config": {
                     "label": "Name",
@@ -47,11 +56,12 @@
             "slice_type": "bio",
             "items": [],
             "primary": {
-              "name": "benchmark cross-platform networks",
+              "publish": false,
+              "name": "revolutionize one-to-one vortals",
               "text": [
                 {
                   "type": "paragraph",
-                  "text": "Nostrud sunt incididunt aliquip est adipisicing laboris aliquip id cillum pariatur dolore dolor cillum.",
+                  "text": "Exercitation adipisicing commodo cupidatat laboris et duis Lorem eiusmod incididunt consectetur laborum minim et ad.",
                   "spans": []
                 }
               ]
@@ -89,6 +99,15 @@
               "version": "sktwi1xtmkfgx8626",
               "description": "Carousel",
               "primary": {
+                "publish": {
+                  "config": {
+                    "label": "Publish",
+                    "placeholder_false": "false",
+                    "placeholder_true": "true",
+                    "default_value": true
+                  },
+                  "type": "Boolean"
+                },
                 "title": {
                   "config": {
                     "label": "Title",
@@ -159,7 +178,7 @@
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1601933973783-43cf8a7d4c5f?w=900&h=500&fit=crop"
+                  "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?w=900&h=500&fit=crop"
                 },
                 "link": {
                   "link_type": "Web",
@@ -168,14 +187,14 @@
                 "title": [
                   {
                     "type": "heading1",
-                    "text": "Implement compelling action-items",
+                    "text": "Envisioneer frictionless paradigms",
                     "spans": []
                   }
                 ],
                 "description": [
                   {
                     "type": "paragraph",
-                    "text": "Aute mollit commodo qui eu commodo mollit anim incididunt veniam exercitation Lorem. Voluptate anim eiusmod occaecat ullamco aute do Lorem ut ipsum excepteur.",
+                    "text": "Et do ullamco deserunt laborum cupidatat quis. Elit eu id minim id. Consectetur eiusmod consequat labore qui sit labore consequat consectetur occaecat consequat veniam.",
                     "spans": []
                   }
                 ]
@@ -188,34 +207,35 @@
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9?w=900&h=500&fit=crop"
+                  "url": "https://images.unsplash.com/photo-1600861194802-a2b11076bc51?w=900&h=500&fit=crop"
                 },
                 "link": {
                   "link_type": "Web",
-                  "url": "http://twitter.com"
+                  "url": "https://prismic.io"
                 },
                 "title": [
                   {
                     "type": "heading1",
-                    "text": "Grow frictionless bandwidth",
+                    "text": "Synthesize cross-platform functionalities",
                     "spans": []
                   }
                 ],
                 "description": [
                   {
                     "type": "paragraph",
-                    "text": "Dolor et magna sunt ut irure eu esse duis non.",
+                    "text": "Aute sunt labore sunt minim cillum eu exercitation ea consequat tempor.",
                     "spans": []
                   }
                 ]
               }
             ],
             "primary": {
-              "title": "exploit killer functionalities",
+              "publish": false,
+              "title": "deploy cutting-edge e-tailers",
               "description": [
                 {
                   "type": "paragraph",
-                  "text": "Proident eiusmod velit pariatur velit excepteur sunt exercitation nisi ex dolore laboris. Nulla do ut id labore amet enim ipsum adipisicing deserunt aliquip.",
+                  "text": "Id exercitation nostrud eu laboris magna nulla consectetur cillum cupidatat ex anim mollit do esse nulla. Est eiusmod adipisicing non duis qui enim dolore laboris. Deserunt enim magna aute sint cillum anim quis mollit.",
                   "spans": []
                 }
               ]
@@ -524,6 +544,15 @@
               "version": "sktwi1xtmkfgx8626",
               "description": "Introduction",
               "primary": {
+                "publish": {
+                  "config": {
+                    "label": "Publish",
+                    "placeholder_false": "false",
+                    "placeholder_true": "true",
+                    "default_value": false
+                  },
+                  "type": "Boolean"
+                },
                 "title": {
                   "type": "StructuredText",
                   "config": {
@@ -560,14 +589,15 @@
             "slice_type": "introduction",
             "items": [],
             "primary": {
+              "publish": true,
               "title": [
                 {
                   "type": "heading1",
-                  "text": "Benchmark wireless web services",
+                  "text": "Productize plug-and-play portals",
                   "spans": []
                 }
               ],
-              "background": "lime"
+              "background": "black"
             }
           }
         },
