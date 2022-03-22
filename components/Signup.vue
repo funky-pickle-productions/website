@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="signup-section gutters py-space bg-lime relative overflow-hidden z-30">
+  <section class="signup-section gutters py-space bg-lime relative overflow-hidden z-30">
 
     <div class="relative z-20 flex flex-col xl:flex-row items-center text-center xl:text-left">
       <div class="flex-auto mb-20 xl:mb-0 xl:mr-30">
@@ -14,7 +14,7 @@
       <div class="h-full bg-cover bg-center" :style="{backgroundImage:`url(/fp_giraffe.svg)`}" />
     </div>
 
-  </div>
+  </section>
 </template>
 
 <script>

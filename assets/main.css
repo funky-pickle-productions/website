@@ -43,24 +43,26 @@ main{
   transform: scale(1.0001);
   box-shadow: 5px 5px 0px theme('colors.black');
   border: 1px solid theme('colors.black');
-}
-
-.button:active,
-.button-wrapper button:active{
-  transform: scale(.95);
-  box-shadow: 2px 2px 0px theme('colors.black');
-}
-
-.button.button-pink,
-.button-wrapper.button-pink button{
   background: theme('colors.pink');
   color: white;
+}
+
+.button:hover,
+.button-wrapper button:hover{
+  background: theme('colors.green');
+  box-shadow: 7px 7px 0px theme('colors.black');
 }
 
 .button.button-wide,
 .button-wrapper.button-wide button{
   padding-left: 5rem;
   padding-right: 5rem;
+}
+
+.button:active,
+.button-wrapper button:active{
+  transform: scale(.95);
+  box-shadow: 2px 2px 0px theme('colors.black');
 }
 
 .button.button-disabled,

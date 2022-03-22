@@ -1,9 +1,9 @@
 <template>
-  <div class="table-section">
+  <section class="table-section">
     <Title v-if="title" :value="title" class="mb-40"/>
     <prismic-rich-text v-if="description" :field="description" class="mb-40"/>
     <ElementTable :headers="headers" :rows="rows" class="graphic-box"/>
-  </div>
+  </section>
 </template>
 
 <script>

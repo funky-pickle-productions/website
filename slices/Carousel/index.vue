@@ -1,5 +1,5 @@
 <template>
-  <div v-if="slides.length > 0" class="carousel-section w-full">
+  <section v-if="slides.length > 0" class="carousel-section w-full">
 
     <Title v-if="title" :value="title" class="mb-40"/>
     <prismic-rich-text v-if="description" :field="description" class="mb-40"/>
@@ -16,7 +16,7 @@
         </div>
       </ElementCarousel>
 
-  </div>
+  </section>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="form-section">
+  <section class="form-section">
     <div :class="{'rounded-lg overflow-hidden graphic-box': !inline}">
 
       <div v-if="title" class="pl-20 md:pl-50 p-10 bg-lime border-b border-black">
@@ -12,7 +12,7 @@
       </div>
 
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

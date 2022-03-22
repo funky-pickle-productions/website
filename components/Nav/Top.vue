@@ -1,9 +1,9 @@
 <template lang="html">
-  <nav id="top-nav" class="fixed top-0 left-0 right-0 md:hidden bg-white nav-bottom-shadow h-nav-top flex justify-center items-center  z-100">
+  <header id="top-header" class="fixed top-0 left-0 right-0 md:hidden bg-white header-bottom-shadow h-nav-top flex justify-center items-center  z-100">
     <nuxt-link to="/">
       <logo horizontal color spin class="h-50px"/>
     </nuxt-link>
-  </nav>
+  </header>
 </template>
 
 <script>
@@ -47,7 +47,7 @@ export default {
       this.$bus.$on('LOADED',this.delayShowNav)
       this.$bus.$on('MOBILE_NAV_HIDDEN',this.toggleNav)
       this.$bus.$on('MOBILE_NAV_VISIBLE',this.showNav)
-      this.anim = gsap.to('#top-nav',.5,{y:0,paused: true,ease:'expo.inOut'})
+      this.anim = gsap.to('#top-header',.5,{y:0,paused: true,ease:'expo.inOut'})
       this.trigger = ScrollTrigger.create({start: 0,end: 99999,onUpdate:this.handleUpdate})
     },
     off(){
@@ -78,8 +78,8 @@ export default {
 </script>
 
 <style lang="css">
-  #top-nav{
+  #top-header{
     transform: translateY(-100%);
   }
-  .nav-bottom-shadow{box-shadow: 0px 2px 2px rgba(theme('colors.bluergb'),.25);}
+  .header-bottom-shadow{box-shadow: 0px 2px 2px rgba(theme('colors.bluergb'),.25);}
 </style>
