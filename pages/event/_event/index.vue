@@ -95,11 +95,11 @@
 import { random } from "@/assets/helpers";
 import config from "@/tailwind.config.js";
 import { components } from "@/slices";
-import pageTransition from '@/assets/pageTransition'
+import mixins from '@/mixins/mixins'
 
 export default {
+  mixins:[mixins],
   name: "EventPage",
-  transition: pageTransition,
   async asyncData({ error, store, params, $prismic, payload }) {
     let res = null;
     let uid = params.event;
@@ -127,8 +127,6 @@ export default {
     components,
   }),
   mounted() {
-    this.$bus.$emit("LOADED");
-
     setTimeout(() => {
       gsap.set("#event .bg-pink", { background: this.data.primary });
       gsap.set("#event .bg-green", { background: this.data.secondary });
@@ -149,7 +147,6 @@ export default {
     }, 500);
   },
   destroyed() {
-    this.$bus.$emit('UNLOADED')
     this.sidebarAnim && this.sidebarAnim.kill();
   },
   computed: {
