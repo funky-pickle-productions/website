@@ -9,16 +9,6 @@
 
         <icon ball ref="ball" class="intro-ball fill-lime"/>
 
-        <!-- <div class="absolute inset-0 z-back-1 text-center md:text-right">
-          <div ref="ball" class="h-full inline-flex flex-row justify-center items-center">
-            <icon ball class="flex-shrink-0 h-full fill-lime"/>
-          </div>
-        </div> -->
-
-        <!-- <div class="absolute inset-0 flex flex-row justify-center lg:justify-end z-back-1">
-          <icon ball ref="ball" class="flex-shrink-0 h-full fill-lime"/>
-        </div> -->
-
     </div>
   </section>
 </template>
