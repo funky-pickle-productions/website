@@ -41,14 +41,16 @@ export default {
     this.renderVideo = !isMobile && this.video.embed_url
     this.renderImage = hasImage && !this.renderVideo
 
-    this.$nextTick(()=>{
-      this.anim = gsap.to('.landing-media',{y:100,ease:'none',force3D:true, scrollTrigger:{
-        trigger: this.$refs.trigger,
-        scrub: true,
-        start: 0,
-        end: 'bottom top'
-      }})
-    })
+    if (!isMobile){
+      this.$nextTick(()=>{
+        this.anim = gsap.to('.landing-media',{y:100,ease:'none',force3D:true, scrollTrigger:{
+          trigger: this.$refs.trigger,
+          scrub: true,
+          start: 0,
+          end: 'bottom top'
+        }})
+      })
+    }
 
   },
   destroyed(){
