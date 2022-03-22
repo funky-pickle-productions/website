@@ -59,9 +59,9 @@ export default {
   }
   .intro-ball{
     position: absolute;
-    left: -27.5%;
-    right:-27.5%;
+    left:-27.5%;
     top:0px;
+    height: 100%;
     z-index: -1;
   }
   @media screen and (min-width: theme('screens.sm')){
@@ -69,11 +69,7 @@ export default {
       font-size: 3.5rem;
     }
     .intro-ball{
-      max-height:100%;
-      top:0px;
       left:10%;
-      right:10%;
-      bottom:0px;
     }
   }
   @media screen and (min-width: theme('screens.md')){
