@@ -60,7 +60,7 @@ export default {
     },
     showNav(){
       this.visible = true
-      this.anim && this.anim.play()
+      !this.pause && this.anim && this.anim.play()
     },
     hideNav(){
       this.visible = false
