@@ -33,7 +33,8 @@ export default {
   },
   css: ['@/assets/main.css'],
   plugins: [
-    { src: "@/plugins/bus.js", ssr: true }
+    { src: "@/plugins/bus.js", ssr: true },
+    { src: "@/plugins/signature.js", ssr: false }
   ],
   buildModules: ['@nuxtjs/tailwindcss','@nuxtjs/prismic','@braid/vue-formulate/nuxt'],
   modules: [],

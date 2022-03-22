@@ -18,38 +18,42 @@ export default {
   watch:{
     pause(pause){
       pause ? this.hideNav() : this.toggleNav()
-    },
-    active(active){
-      active ? this.on() : this.off()
     }
   },
-  mounted(){
+  created(){
+    if (process.server) return
     this.breakpoint = parseInt(config.theme.screens.md)
     window.addEventListener('resize',this.handleResize)
     this.handleResize()
 
     this.$bus.$on('PAUSE_TOP_NAV',(x) => this.pause = x)
   },
+  destroyed(){
+    this.off()
+    window.removeEventListener('resize',this.handleResize)
+  },
   methods:{
     handleResize(){
-      this.active = window.innerWidth < this.breakpoint
+      window.innerWidth < this.breakpoint && !this.active && this.on()
+      window.innerWidth >= this.breakpoint && this.active && this.off()
     },
     handleUpdate(s){
       if(s.direction == -1 && !this.visible) this.showNav()
       if(s.direction == 1 && this.visible) this.hideNav()
     },
     on(){
+      this.active = true
       this.$bus.$on('UNLOADED',this.hideNav)
-      this.$bus.$on('LOADED',this.showNav)
+      this.$bus.$on('LOADED',this.delayShowNav)
       this.$bus.$on('MOBILE_NAV_HIDDEN',this.toggleNav)
       this.$bus.$on('MOBILE_NAV_VISIBLE',this.showNav)
       this.anim = gsap.to('#top-nav',.5,{y:0,paused: true,ease:'expo.inOut'})
       this.trigger = ScrollTrigger.create({start: 0,end: 99999,onUpdate:this.handleUpdate})
-      this.showNav()
     },
     off(){
+      this.active = false
       this.$bus.$off('UNLOADED',this.hideNav)
-      this.$bus.$off('LOADED',this.showNav)
+      this.$bus.$off('LOADED',this.delayShowNav)
       this.$bus.$off('MOBILE_NAV_HIDDEN',this.toggleNav)
       this.$bus.$off('MOBILE_NAV_VISIBLE',this.showNav)
       this.anim && this.anim.kill()
@@ -57,6 +61,9 @@ export default {
     },
     toggleNav(){
       this.visible ? this.showNav() : this.hideNav()
+    },
+    delayShowNav(){
+      setTimeout(this.showNav,1000)
     },
     showNav(){
       this.visible = true
