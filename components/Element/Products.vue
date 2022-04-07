@@ -86,7 +86,7 @@ export default {
 
       for(let i = 0; i < this.products.length; i++){
 
-        let res = await fetch(`/.netlify/functions/get-products`,{
+        let res = await fetch(`${this.$config.baseUrl}/.netlify/functions/get-products`,{
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ pid: this.products[i].pid }),

@@ -36,7 +36,7 @@ export default {
     },
     async initialize(){
 
-      let response = await fetch("/.netlify/functions/payment-intent", {
+      let response = await fetch(`${this.$config.baseUrl}/.netlify/functions/payment-intent`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({type:'create',products: this.products}),

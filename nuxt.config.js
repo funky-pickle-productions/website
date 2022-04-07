@@ -50,7 +50,7 @@ export default {
   },
   publicRuntimeConfig: {
     stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
-    baseUrl: process.env.BASE_URL || 'http://localhost:8888'
+    baseUrl: process.env.NODE_ENV == 'production' ? 'https://www.funkypickle.com' : 'http://localhost:8888'
   },
   generate: {
     fallback: "404.html",
