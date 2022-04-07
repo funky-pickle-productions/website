@@ -169,7 +169,6 @@ export default {
     },
     handleError(err){
       this.updateButtonLabel()
-      //display something about error
     },
     handleNext(){
       gsap.to(window,.5,{scrollTo:{y:this.$refs.top}})
