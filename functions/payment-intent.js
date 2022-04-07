@@ -10,42 +10,42 @@ exports.handler = async (event, context) => {
   if (event.httpMethod === "OPTIONS") return {statusCode: 200,headers};
 
   let data = JSON.parse(event.body)
-  let paymentIntent = {}
+  let amount = 0
+  let paymentIntent = null
 
   try {
 
-    if (data.type == 'create'){
+    for(let i = 0; i < data.products.length; i++){
+      let product = data.products[i]
+      let res = await stripe.prices.retrieve(product.id)
+      amount += res.unit_amount * product.quantity
+    }
 
-      let amount = 0
+    switch(data.method){
 
-      for(let i = 0; i < data.products.length; i++){
-        let product = data.products[i]
-        let res = await stripe.prices.retrieve(product.id)
-        amount += res.unit_amount * product.quantity
-      }
 
-      paymentIntent = await stripe.paymentIntents.create({
-        currency: "usd",
-        amount: amount,
-        description: "Payment for goods",
-      });
+      case 'create':
+        paymentIntent = await stripe.paymentIntents.create({
+          currency: "usd",
+          amount: amount,
+          description: "Payment for goods"
+        });
+        return { statusCode: 200,headers,body:JSON.stringify({clientSecret:paymentIntent.client_secret,id:paymentIntent.id})};
 
-    } else if (data.type == 'cancel'){
 
-      paymentIntent = await stripe.paymentIntents.cancel(data.id);
+      case 'update':
+
+        paymentIntent = await stripe.paymentIntents.update(data.id,{amount});
+
+        return paymentIntent
+               ? { statusCode: 200,headers,body:JSON.stringify({success:true})}
+               : {statusCode: 400,headers,body:JSON.stringify({success:false})};
 
     }
 
-    return { statusCode: 200,headers,body:JSON.stringify(paymentIntent)};
 
   } catch (err) {
     console.log(err);
-    return {
-      statusCode: 400,
-      headers,
-      body: JSON.stringify({
-        status: err,
-      }),
-    };
+    return {statusCode: 400,headers,body: JSON.stringify({status: err})};
   }
 };
