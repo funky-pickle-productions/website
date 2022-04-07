@@ -4,32 +4,23 @@ const headers = {
     "Access-Control-Allow-Headers": "Content-Type",
   };
 
+
 exports.handler = async (event, context) => {
   // CORS
-  if (event.httpMethod === "OPTIONS") {
-    return {
-      statusCode: 200,
-      headers,
-    };
-  }
+  if (event.httpMethod === "OPTIONS") return {statusCode: 200,headers,};
 
   try {
-    const paymentIntent = await stripe.paymentIntents.create({
-      currency: "usd",
-      amount: 50,
-      description: "Register For Event",
-    });
+    let data = JSON.parse(event.body)
+    let res = await stripe.prices.retrieve(data.pid,{expand:['product']})
 
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({
-        clientSecret: paymentIntent.client_secret,
-      }),
+      body: JSON.stringify(res),
     };
+
   } catch (err) {
     console.log(err);
-
     return {
       statusCode: 400,
       headers,
