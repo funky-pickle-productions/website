@@ -4,6 +4,7 @@ const headers = {
     "Access-Control-Allow-Headers": "Content-Type",
   };
 
+console.log(process.env.STRIPE_SECRET_KEY,process.env)
 
 exports.handler = async (event, context) => {
   // CORS
