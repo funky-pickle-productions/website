@@ -1,20 +1,20 @@
 {
-  "id": "1365be40-c862-4ca3-8a35-39d9146f13d6",
-  "uid": "voluptates-excepturi-vero",
+  "id": "cf2b1f81-731e-4d83-befd-92312cefafd2",
+  "uid": "dolorem-molestiae-cumque",
   "type": "event",
   "data": {
-    "title": "streamline revolutionary deliverables",
-    "date": "2018-08-16",
-    "venue": "aggregate bleeding-edge infomediaries",
-    "address": "implement open-source markets",
-    "city": "embrace proactive metrics",
-    "state": "South Dakota",
+    "title": "architect B2C experiences",
+    "date": "2016-02-13",
+    "venue": "empower integrated mindshare",
+    "address": "strategize best-of-breed initiatives",
+    "city": "drive frictionless e-markets",
+    "state": "Oregon",
     "map": {
-      "latitude": 48.8583736,
-      "longitude": 2.2922926
+      "latitude": 48.8703712,
+      "longitude": 2.3865198
     },
-    "primary": "#055602",
-    "secondary": "#74b969",
+    "primary": "#1aaf8c",
+    "secondary": "#70e7d0",
     "ball": {
       "dimensions": {
         "width": 900,
@@ -22,7 +22,7 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=900&h=500&fit=crop"
     },
     "banner": {
       "dimensions": {
@@ -31,7 +31,7 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1601933973783-43cf8a7d4c5f?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1593642633279-1796119d5482?w=900&h=500&fit=crop"
     },
     "background": {
       "dimensions": {
@@ -40,25 +40,47 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1587905069134-008460d7a636?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab?w=900&h=500&fit=crop"
     },
-    "links": [
+    "checkout": [
       {
-        "label": "empower innovative ROI",
+        "label": "unleash proactive eyeballs",
+        "link": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        },
+        "sheet": "matrix seamless schemas"
+      },
+      {
+        "label": "enhance robust applications",
+        "link": {
+          "link_type": "Web",
+          "url": "https://slicemachine.dev"
+        },
+        "sheet": "mesh revolutionary convergence"
+      },
+      {
+        "label": "empower integrated web services",
+        "link": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        },
+        "sheet": "whiteboard 24/7 content"
+      },
+      {
+        "label": "incubate cross-media models",
         "link": {
           "link_type": "Web",
           "url": "http://google.com"
         },
-        "sheet": "brand front-end portals"
-      },
-      {
-        "label": "synthesize synergistic channels",
-        "link": {
-          "link_type": "Web",
-          "url": "http://twitter.com"
-        },
-        "sheet": "expedite plug-and-play architectures"
+        "sheet": "recontextualize next-generation platforms"
       }
+    ],
+    "links": [
+      {},
+      {},
+      {},
+      {}
     ]
   }
 }

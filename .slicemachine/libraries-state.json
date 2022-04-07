@@ -405,7 +405,8 @@
                       "tel",
                       "textarea",
                       "select",
-                      "radio"
+                      "radio",
+                      "date"
                     ],
                     "default_value": "text"
                   },
@@ -459,57 +460,41 @@
             "slice_type": "form",
             "items": [
               {
+                "type": "select",
+                "required": false,
+                "label": "revolutionize 24/365 convergence",
+                "key": "evolve extensible infomediaries",
+                "placeholder": "strategize impactful infrastructures",
+                "options": "target end-to-end portals"
+              },
+              {
                 "type": "text",
                 "required": false,
-                "label": "reinvent B2C initiatives",
-                "key": "benchmark end-to-end eyeballs",
-                "placeholder": "mesh front-end web services",
-                "options": "orchestrate visionary architectures"
+                "label": "reinvent granular web services",
+                "key": "transition transparent partnerships",
+                "placeholder": "productize ubiquitous networks",
+                "options": "expedite dot-com ROI"
               },
               {
-                "type": "email",
-                "required": false,
-                "label": "repurpose out-of-the-box interfaces",
-                "key": "mesh real-time action-items",
-                "placeholder": "scale back-end web-readiness",
-                "options": "orchestrate wireless interfaces"
-              },
-              {
-                "type": "email",
-                "required": false,
-                "label": "productize extensible communities",
-                "key": "incubate synergistic markets",
-                "placeholder": "architect impactful e-business",
-                "options": "engage frictionless e-services"
-              },
-              {
-                "type": "radio",
-                "required": false,
-                "label": "visualize plug-and-play systems",
-                "key": "monetize innovative architectures",
-                "placeholder": "leverage magnetic schemas",
-                "options": "recontextualize user-centric blockchains"
-              },
-              {
-                "type": "select",
+                "type": "text",
                 "required": true,
-                "label": "e-enable innovative channels",
-                "key": "enable customized blockchains",
-                "placeholder": "deploy strategic communities",
-                "options": "transition cutting-edge infrastructures"
+                "label": "utilize killer experiences",
+                "key": "e-enable compelling supply-chains",
+                "placeholder": "deliver e-business deliverables",
+                "options": "repurpose dot-com schemas"
               }
             ],
             "primary": {
               "publish": true,
-              "title": "enable cutting-edge portals",
+              "title": "drive sexy web services",
               "description": [
                 {
                   "type": "paragraph",
-                  "text": "Irure velit et anim exercitation voluptate minim nulla ex cillum consectetur magna. Enim sint ea non Lorem non fugiat velit ullamco qui deserunt anim.",
+                  "text": "Ea deserunt commodo commodo. Cillum ea consequat aliquip sunt ullamco. Mollit eiusmod culpa aliquip culpa do nulla anim ex nisi laborum sit do exercitation.",
                   "spans": []
                 }
               ],
-              "action": "engineer user-centric relationships"
+              "action": "deliver intuitive schemas"
             }
           }
         },
@@ -872,6 +857,114 @@
             "height": 714
           }
         }
+      },
+      "products": {
+        "library": "slices",
+        "id": "products",
+        "name": "Products",
+        "description": "Products",
+        "model": {
+          "id": "products",
+          "type": "SharedSlice",
+          "name": "Products",
+          "description": "Products",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Products",
+              "primary": {
+                "title": {
+                  "config": {
+                    "label": "Title",
+                    "placeholder": ""
+                  },
+                  "type": "Text"
+                }
+              },
+              "items": {
+                "option": {
+                  "config": {
+                    "label": "Required Option",
+                    "placeholder_false": "false",
+                    "placeholder_true": "true",
+                    "default_value": false
+                  },
+                  "type": "Boolean"
+                },
+                "pid": {
+                  "config": {
+                    "label": "Price ID",
+                    "placeholder": ""
+                  },
+                  "type": "Text"
+                },
+                "key": {
+                  "config": {
+                    "label": "Field Key",
+                    "placeholder": ""
+                  },
+                  "type": "Text"
+                },
+                "max": {
+                  "config": {
+                    "label": "Maximum Quantity",
+                    "placeholder": ""
+                  },
+                  "type": "Number"
+                },
+                "min": {
+                  "config": {
+                    "label": "Minimum Quantity",
+                    "placeholder": ""
+                  },
+                  "type": "Number"
+                }
+              }
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "products",
+            "items": [
+              {
+                "option": true,
+                "pid": "visualize value-added metrics",
+                "key": "enable visionary networks",
+                "max": 6498,
+                "min": 8143
+              },
+              {
+                "option": false,
+                "pid": "syndicate strategic web services",
+                "key": "incubate best-of-breed metrics",
+                "max": 5294,
+                "min": 5246
+              },
+              {
+                "option": false,
+                "pid": "embrace impactful partnerships",
+                "key": "synthesize compelling infomediaries",
+                "max": 1584,
+                "min": 8521
+              }
+            ],
+            "primary": {
+              "title": "incubate front-end web-readiness"
+            }
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "isDirectory": true,
+          "extension": "vue"
+        },
+        "screenshotPaths": {}
       },
       "sponsors": {
         "library": "slices",

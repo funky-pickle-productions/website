@@ -3,7 +3,8 @@
     "events": {},
     "home": {},
     "event": {
-      "forms": {}
+      "forms": {},
+      "checkout": {}
     },
     "settings": {
       "signup-title": {
@@ -28,7 +29,11 @@
       }
     },
     "registration": {},
-    "form": {}
+    "form": {},
+    "event-registration": {
+      "form": {}
+    },
+    "checkout": {}
   },
   "slices": {
     "Events": {
@@ -142,6 +147,12 @@
     "Bio": {
       "default": {
         "primary": {}
+      }
+    },
+    "Products": {
+      "default": {
+        "primary": {},
+        "items": {}
       }
     }
   }

@@ -8,7 +8,10 @@
 
       <div :class="{'bg-white p-20 md:px-50 md:py-40':!inline}">
         <prismic-rich-text v-if="description" :field="description" class="mb-30 font-bold text-15"/>
-        <ElementForm :fields="slice.items" :action="this.slice.primary.action" :multiColumn="!this.slice.primary.inline"/>
+        <ElementForm v-if="!$slots.default" :fields="slice.items" :action="slice.primary.action" :multiColumn="!slice.primary.inline"/>
+        <ElementForm v-else :fields="slice.items" :multiColumn="!slice.primary.inline" @submit="$emit('submit',$event)">
+          <slot/>
+        </ElementForm>
       </div>
 
     </div>
@@ -18,7 +21,7 @@
 <script>
 export default {
   name:"FormSlice",
-  props:['slice','useContainer'],
+  props:['slice'],
   computed:{
     inline(){
       return this.slice.primary.inline

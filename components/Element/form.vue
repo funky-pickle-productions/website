@@ -1,10 +1,10 @@
 <template lang="html">
-  <FormulateForm class="form-element" :class="{'multi-column': multiColumn}" @submit="handleSubmit">
+  <FormulateForm class="form-element" :name="name" :class="{'multi-column': multiColumn}" @submit="handleSubmit">
 
-    <div class="formulate-fields -m-05">
+    <div class="formulate-fields -m-07">
       <template v-for="field in formFields">
         <FormulateInput
-          class="m-05 text-left"
+          class="m-07 text-left"
           :class="{'field-required':field.required}"
           :type="field.type"
           :name="field.key"
@@ -18,7 +18,7 @@
     </div>
 
     <div class="mt-30" v-if="action">
-      <FormulateInput type="submit" class="button-wrapper button-pink" :value="status || buttonLabel"/>
+      <FormulateInput type="submit" class="button-wrapper button-pink" name="submit" :value="status || buttonLabel"/>
     </div>
 
   </FormulateForm>
@@ -28,9 +28,11 @@
 export default {
   props:{
     multiColumn:Boolean,
+    once: {type:Boolean,default:true},
+    name: {type:String, defualt: null},
     fields: {type:Array, default: ()=>[]},
     buttonLabel:{type:String,default:'Submit'},
-    action:{type:String,default:null}
+    action:{type:String,default:null},
   },
   data:()=>({
     status:null,
@@ -44,8 +46,18 @@ export default {
     formFields(){
       return this.fields.map(s => {
         let type = s.type || 'text'
-        let options = s.options ? s.options.split(',').map(v => v.trim()) : null
         let validation = this.getValidation(type,s.required)
+        let options = null
+
+        if(s.options){
+          if(type == 'radio'){
+            options = {}
+            s.options.split(',').forEach(v => options[v] = v)
+          } else {
+            options = s.options.split(',').map(v => v.trim())
+          }
+        }
+
         return{...s,type,options,validation}
       })
     }
@@ -61,20 +73,19 @@ export default {
       this.errors = this.errorsSet.size
     },
     async handleSubmit(data){
-      if (this.sent) return
+      if (this.sent && this.once) return
 
-      if(!this.action){
-        this.$emit('submit',data)
-      } else {
+      this.$emit('submit',data)
 
+      if (this.action){
         let formData = new FormData()
         Object.keys(data).forEach(key => formData.append(key,data[key]))
         this.status = "Sending..."
         await fetch(this.action, {method: 'POST',body:formData})
         this.status = "Sent!"
         this.sent = true
-
       }
+
     }
   }
 }
@@ -124,11 +135,11 @@ export default {
   display: inline-block;
 }
 
-.formulate-form .formulate-input.field-required label::after{
+/* .formulate-form .formulate-input.field-required label::after{
   content:'*';
   color: theme('colors.pink');
   margin-left:5px;
-}
+} */
 
 .formulate-input-element--select{
   position: relative;

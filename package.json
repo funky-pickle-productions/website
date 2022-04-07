@@ -15,12 +15,14 @@
     "core-js": "^3.15.1",
     "imagesloaded": "^5.0.0",
     "nuxt": "^2.15.7",
-    "stripe": "^8.209.0"
+    "stripe": "^8.211.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@nuxtjs/prismic": "^1.4.0",
     "@nuxtjs/tailwindcss": "^4.2.0",
     "postcss": "^8.3.5",
-    "slice-machine-ui": "^0.3.1"
+    "slice-machine-ui": "^0.3.1",
+    "vue-stripe-elements-plus": "^1.0.3"
   }
 }

@@ -21,12 +21,12 @@
           :style="{ background: data.primary || null }"
           ref="stickyHeader"
         >
-          <template v-if="data.links.length > 0">
-            <template v-for="link in data.links">
+          <template v-if="data.checkout.length > 0">
+            <template v-for="link in data.checkout">
               <nuxt-link
-                class="button bg-white mx-05"
+                class="flex-auto max-w-150 text-center button button-lime mx-05"
                 v-html="link.label"
-                :to="`/event/${uid}${link.link.uid ? '/' + link.link.uid : ''}`"
+                :to="{path:`/checkout/${link.link.uid}`,query:{type:'event',uid}}"
               />
             </template>
           </template>
@@ -56,6 +56,7 @@
       ref="slices"
     >
       <template v-if="slices">
+
         <div class="flex-auto">
           <template v-for="(slice, i) in slices">
             <component
@@ -80,6 +81,7 @@
             </template>
           </aside>
         </div>
+
       </template>
 
       <div v-else class="text-center">
@@ -102,7 +104,7 @@ export default {
   name: "EventPage",
   async asyncData({ error, store, params, $prismic, payload }) {
     let res = null;
-    let uid = params.event;
+    let uid = params.id;
     let data = store.state.events[uid];
 
     if (payload) {

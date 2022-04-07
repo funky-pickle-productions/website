@@ -24,6 +24,8 @@ export default {
       invalidateOnRefresh:true
     })
 
+    setTimeout(()=> ScrollTrigger.refresh,500)
+
   },
   destroyed(){
     this.anim && this.anim.kill()

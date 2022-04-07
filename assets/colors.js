@@ -1,5 +1,6 @@
 export default{
   gray: "#efedf2",
+  darkGray:'#797980',
   lime: "#e4fe57",
   green: "#18bb37",
   pink: "#ff0093",
@@ -7,6 +8,7 @@ export default{
   white: "#ffffff",
   blue: "#00aeef",
   grayrgb: "239,237,242",
+  darkGrayrgb:"121 121 128",
   limergb: "228,254,87",
   greenrgb: "114,201,72",
   pinkrgb: "255,0,147",

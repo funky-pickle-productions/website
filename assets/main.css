@@ -39,7 +39,7 @@ main{
   border-radius: .25rem;
   width: auto;
   font-weight: bold;
-  transition: transform .2s, box-shadow .2s;
+  transition: transform .2s, box-shadow .2s, background .2s;
   transform: scale(1.0001);
   box-shadow: 5px 5px 0px theme('colors.black');
   border: 1px solid theme('colors.black');
@@ -47,9 +47,33 @@ main{
   color: white;
 }
 
+.button.button-white,
+.button-wrapper.button-white button{
+  background: white;
+  color: theme('colors.black');
+}
+
+.button.button-lime,
+.button-wrapper.button-lime button{
+  background: theme('colors.lime');
+  color: theme('colors.black');
+}
+
 .button:hover,
 .button-wrapper button:hover{
   background: theme('colors.green');
+  box-shadow: 7px 7px 0px theme('colors.black');
+}
+
+.button.button-white:hover,
+.button-wrapper.button-white button:hover{
+  background: theme('colors.lime');
+  box-shadow: 7px 7px 0px theme('colors.black');
+}
+
+.button.button-lime:hover,
+.button-wrapper.button-lime button:hover{
+  background: white;
   box-shadow: 7px 7px 0px theme('colors.black');
 }
 
@@ -59,29 +83,27 @@ main{
   padding-right: 5rem;
 }
 
+.button.button-grow,
+.button-wrapper.button-grow button{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:100%;
+}
+
 .button:active,
 .button-wrapper button:active{
   transform: scale(.95);
   box-shadow: 2px 2px 0px theme('colors.black');
 }
 
-.button.button-disabled,
-.button-wrapper.button-disabled button{
+.button.disabled,
+.button-wrapper.disabled button{
   pointer-events: none;
-  background: theme('colors.black');
-  position: relative;
-}
-
-.button.button-disabled::after,
-.button-wrapper.button-disabled button::after{
-  content:'';
-  position: absolute;
-  top: 0px;
-  left:0px;
-  right:0px;
-  bottom:0px;
-  background: white;
-  opacity: .6;
+  box-shadow: 5px 5px 0px theme('colors.darkGray');
+  border: 1px solid theme('colors.darkGray');
+  background: theme('colors.gray');
+  color: theme('colors.darkGray')
 }
 
 .no-scrollbar::-webkit-scrollbar {
