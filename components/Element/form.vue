@@ -127,7 +127,7 @@ export default {
   width:100%;
   margin: 0px;
   background: white;
-  font-size: 1rem;
+  font-size: 16px;
   appearance:none;
 }
 .formulate-form label{

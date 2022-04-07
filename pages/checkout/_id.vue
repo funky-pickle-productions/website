@@ -73,27 +73,14 @@ import {formatDate} from '@/assets/helpers'
 export default {
   mixins:[mixins],
   name:'Checkout',
-  async asyncData({ error, store, params,query, $prismic, payload }) {
+  async asyncData({ error, store, params, $prismic, payload }) {
     let res = null;
     let uid = params.id;
     let data = store.state.checkouts[uid];
-    let instance = null
-    let type = query.type
 
     if (payload) {
       store.commit("CHECKOUT", [uid, payload.data]);
       data = payload.data;
-    }
-
-    if(type == 'event'){
-      instance = store.state.events[query.uid]
-      if (!instance){
-        res = await $prismic.api.getByUID("event", query.uid);
-        if (res) {
-          store.commit("EVENT", [query.uid, res.data]);
-          instance = res.data;
-        }
-      }
     }
 
     if (!data) {
@@ -104,11 +91,16 @@ export default {
       }
     }
 
-    if (data) return { data,instance,type};
+    if (data) return { data};
+
     error({ statusCode: 404 });
   },
+  mounted(){
+    this.initQuery()
+  },
   data: () => ({
-    query:{},
+    instance:null,
+    type: null,
     step: 1,
     data: null,
     formData:null,
@@ -144,6 +136,25 @@ export default {
   },
   methods:{
     formatDate,
+    async initQuery(){
+      
+      this.type = this.$route.query.type
+
+      switch(this.type){
+        case 'event':
+          let uid = this.$route.query.uid
+          this.instance = this.$store.state.events[uid]
+          if (!this.instance){
+            let res = await this.$prismic.api.getByUID("event", uid);
+            if (res){
+              this.$store.commit("EVENT", [uid, res.data]);
+              this.instance = res.data;
+            }
+          }
+        break;
+      }
+
+    },
     initSuccess(){
       gsap.timeline()
       .to(this.$refs.content,.5,{scale:.5,opacity:0,ease:'expo.out'},0)
