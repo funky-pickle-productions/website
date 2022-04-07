@@ -94,18 +94,22 @@ export default {
 
         let data = await res.json()
 
-        let item = {
-          ...this.products[i],
-          price_id: data.id,
-          label: data.product.name,
-          description: data.product.description,
-          active: data.product.active,
-          price: data.unit_amount / 100,
-          quantity: this.products[i].min
-        }
+        if (data){
 
-        item.option && first && (item.quantity += 1,first = false)
-        this.items.push(item)
+          let item = {
+            ...this.products[i],
+            price_id: data.id,
+            label: data.product.name,
+            description: data.product.description,
+            active: data.product.active,
+            price: data.unit_amount / 100,
+            quantity: this.products[i].min
+          }
+
+          item.option && first && (item.quantity += 1,first = false)
+          this.items.push(item)
+
+        }
 
       }
 

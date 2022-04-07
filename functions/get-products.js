@@ -10,6 +10,7 @@ exports.handler = async (event, context) => {
   if (event.httpMethod === "OPTIONS") return {statusCode: 200,headers,};
 
   try {
+    
     let data = JSON.parse(event.body)
     let res = await stripe.prices.retrieve(data.pid,{expand:['product']})
 
