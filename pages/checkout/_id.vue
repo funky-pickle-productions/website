@@ -17,7 +17,7 @@
           <template v-for="(s,i) in steps">
             <div class="checkout-step flex-grow-0 flex-shrink-0" :class="{'opacity-40': !s.complete && step != i + 1}">
               <h3 class="inline-block font-bold text-10 lg:text-12" v-html="s.label"/>
-              <Icon check class="inline-block w-10 ml-05 fill-lime" :class="{'hidden': !s.complete}"/>
+              <Icon check class="inline-block w-10 ml-05 fill-lime" :class="{'hidden': !s.complete && step > i + 1}"/>
             </div>
           </template>
         </div>
@@ -44,8 +44,11 @@
           <ElementPayment
             ref="stripe"
             class="max-w-300 mx-auto"
-            v-if="productData && step == 3"
+            v-if="productData"
+            :class="{hidden:step != 3}"
             :products="productData.products"
+            :total="productData.total"
+            :receiptEmail="receiptEmail"
             @success="handleSuccess"
             @error="handleError"
           />
@@ -111,8 +114,6 @@ export default {
   watch:{
     step(){
       this.updateButtonLabel()
-      if(this.step == 2) this.productData = null
-      if(this.step == 1) this.formData = null
     }
   },
   computed:{
@@ -132,12 +133,16 @@ export default {
     },
     products(){
       return this.data.slices.find(s => s.slice_type == 'products')
+    },
+    receiptEmail(){
+      if (!this.formData) return {}
+      return this.formData.email || null
     }
   },
   methods:{
     formatDate,
     async initQuery(){
-      
+
       this.type = this.$route.query.type
 
       switch(this.type){

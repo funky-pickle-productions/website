@@ -11,13 +11,12 @@
 import config from '@/tailwind.config.js'
 export default {
   props:{
-    products:{type:Array,default:()=>[]}
+    products:{type:Array,default:()=>[]},
+    total:{type:String,default: null},
+    receiptEmail:{type:String,default:null}
   },
   mounted(){
-    this.products.length > 0 && this.initialize()
-  },
-  destroyed(){
-    if (!this.success && this.id) this.cancel()
+    this.products.length > 0 && this.initalize()
   },
   data:()=>({
     stripe:null,
@@ -27,24 +26,44 @@ export default {
     error:false
   }),
   methods:{
-    async cancel(){
-      let response = await fetch("/.netlify/functions/payment-intent", {
+    async updatePaymentIntent(){
+
+      let response = await fetch(`${this.$config.baseUrl}/.netlify/functions/payment-intent`,{
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({type:'cancel',id:this.id}),
-      });
+        body: JSON.stringify({method:'update',products: this.products,id:this.tokens.id,customer: this.customer}),
+      })
+
     },
-    async initialize(){
+    async getTokens(){
+      let tokens = sessionStorage.getItem("fp_stripe_tokens")
+      if(tokens){
+        return JSON.parse(tokens)
+      } else {
+        return await this.createPaymentIntent()
+      }
+    },
+    async createPaymentIntent(){
 
       let response = await fetch(`${this.$config.baseUrl}/.netlify/functions/payment-intent`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({type:'create',products: this.products}),
+        body: JSON.stringify({method:'create', products: this.products}),
       });
 
-      let data = await response.json();
+      let tokens = await response.json()
 
-      if(data){
+      if (tokens){
+        sessionStorage.setItem("fp_stripe_tokens", JSON.stringify(tokens) );
+        return tokens ;
+      }
+
+    },
+    async initalize(){
+
+      this.tokens = await this.getTokens()
+
+      if(this.tokens){
 
         let appearance = {
           theme:'stripe',
@@ -69,22 +88,30 @@ export default {
         }
 
         this.stripe = Stripe(this.$config.stripePublishableKey)
-        this.elements = this.stripe.elements({ appearance, clientSecret: data.client_secret });
+        this.elements = this.stripe.elements({ appearance, clientSecret: this.tokens.clientSecret});
         this.paymentElement = this.elements.create("payment");
         this.paymentElement.on('ready',()=> this.loading = false)
         this.paymentElement.mount(this.$refs.el);
-        this.id = data.id
 
       }
 
     },
     async submit(){
+
+      await this.updatePaymentIntent()
+
+      let confirmParams = {}
+      if (this.receiptEmail) confirmParams.receipt_email = this.receiptEmail
+
+
       let res = await this.stripe.confirmPayment({
         elements: this.elements,
-        redirect: "if_required"
+        redirect: "if_required",
+
       })
       if(res.paymentIntent) {
         this.$emit('success',res.paymentIntent)
+        sessionStorage.removeItem('fp_stripe_tokens');
         this.success = true
       }
       if(res.error) {
