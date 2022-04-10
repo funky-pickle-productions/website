@@ -41,6 +41,12 @@
             "blocks": 1
           }
         }
+      },
+      "soldout": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
       }
     }
   },

@@ -38,7 +38,7 @@
           <div v-if="!paymentLoaded" class="absolute inset-0 z-20 bg-white flex justify-center items-center">
             <Loading/>
           </div>
-          <div :class="{'h-500-px opacity-0':!paymentLoaded}">
+          <div :class="{'h-500px opacity-0':!paymentLoaded}">
             <div ref="stripe" id="payment-element" class="max-w-400px mx-auto"/>
             <Btn :value="status ? status : `Pay ${total}`" @clicked="makePayment"/>
           </div>
@@ -52,8 +52,8 @@
     </div>
   </section>
 
-  <div v-else class="flex justify-center items-center py-40 px-20 lg:px-40">
-    This event is sold out!
+  <div v-else class="flex justify-center items-center py-40 px-20 lg:px-40 bg-lime">
+    <slot name="soldout"/>
   </div>
 
 </template>
@@ -174,14 +174,12 @@ export default {
       if(this.paymentLoaded) return
       this.tokens = sessionStorage.getItem("fp_stripe_tokens");
       if (!this.tokens) {
-        let response = await fetch(
-          `${this.$config.baseUrl}/.netlify/functions/payment-intent`,
-          {
+        let description = this.email ? `${this.paymentDescription} || ${this.email}` : this.paymentDescription
+        let response = await fetch(`${this.$config.baseUrl}/.netlify/functions/payment-intent`,{
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ method: "create", products: this.cart, description: this.paymentDescription }),
-          }
-        );
+            body: JSON.stringify({ method: "create", products: this.cart, description }),
+          });
         this.tokens = await response.json();
         if (this.tokens)
           sessionStorage.setItem(

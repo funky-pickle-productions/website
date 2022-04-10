@@ -33,9 +33,20 @@
             <div class="flex items-center justify-center min-h-400px">
               <div class="text-center">
                 <ElementText :field="checkout.success" />
-                <div class="mt-40 flex flex-row ">
+                <div class="mt-40 flex flex-row justify-center">
                   <nuxt-link :to="`/event/${$route.params.id}`" v-html="'Return to Event'" class="button"/>
                   <button @click="key++" v-html="'Register Another Person'" class="button ml-10"/>
+                </div>
+              </div>
+            </div>
+          </template>
+
+          <template #soldout>
+            <div class="flex items-center justify-center min-h-400px">
+              <div class="text-center">
+                <ElementText :field="checkout.soldout" />
+                <div class="mt-40 flex flex-row justify-center">
+                  <nuxt-link :to="`/event/${$route.params.id}`" v-html="'Return to Event'" class="button"/>
                 </div>
               </div>
             </div>
