@@ -4,18 +4,25 @@ const headers = {
     "Access-Control-Allow-Headers": "Content-Type",
   };
 
+
 exports.handler = async (event, context) => {
   // CORS
   if (event.httpMethod === "OPTIONS") return {statusCode: 200,headers,};
 
   try {
-    let data = JSON.parse(event.body)
-    let res = await stripe.prices.retrieve(data.pid,{expand:['product']})
+
+    let eventData = JSON.parse(event.body)
+    let items = []
+
+    for (let i = 0; i < eventData.items.length; i++){
+      let res = await stripe.prices.retrieve(eventData.items[i],{expand:['product']})
+      res && items.push(res)
+    }
 
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify(res),
+      body: JSON.stringify(items), 
     };
 
   } catch (err) {
