@@ -5,7 +5,7 @@
       <slot name="header"/>
     </div>
 
-    <Steps :steps="steps" :active="active" :success="success" :style="{background: colors.primary || null}"/>
+    <Steps :steps="steps" :active="active" :success="success" :style="{background: colors.primary || null}" id="top"/>
 
     <div v-if="success" class="py-40 px-20 lg:px-40 bg-lime">
       <slot name="success"/>
@@ -19,11 +19,11 @@
       </div>
     </div>
 
-    <div v-else class="py-40 px-20 lg:px-40">
+    <div v-else class="py-40 px-20 lg:px-40" ref="container">
 
       <template v-for="(form, i) in forms">
         <div :class="{ hidden: active != i }">
-          <ElementForm multiColumn :fields="form.items" @submit="(e) => handleForm(e, form)">
+          <ElementForm multiColumn :fields="form.items" @submit="(e) => handleForm(e, form)" test>
             <Btn value="Next" :color="colors.primary"/>
           </ElementForm>
         </div>
@@ -48,7 +48,7 @@
       </template>
 
       <div class="mt-20 text-center" :class="{'opacity-20 pointer-events-none': active == 0}">
-        <button v-html="'Back'" @click="active > 0 && (active -= 1)" />
+        <button v-html="'Back'" @click="active > 0 && previousStep()" />
       </div>
 
     </div>
@@ -95,17 +95,33 @@ export default {
     }
   },
   methods: {
+    nextStep(){
+      gsap.timeline()
+          .to(this.$refs.container,.5,{x:-50,opacity:0,ease:'power4.in'},0)
+          .add(()=>this.active++,'>')
+          .set(this.$refs.container,{x:50,opacity:0},'>')
+          .to(this.$refs.container,.5,{x:0,opacity:1,ease:'power4.out'},'<')
+          .to(window,.75,{ease:'expo.inOut',scrollTo:{y:'#top'}},'<')
+    },
+    previousStep(){
+        gsap.timeline()
+            .to(this.$refs.container,.5,{x:50,opacity:0,ease:'power4.in'},0)
+            .add(()=>this.active--,'>')
+            .set(this.$refs.container,{x:-50,opacity:0},'>')
+            .to(this.$refs.container,.5,{x:0,opacity:1,ease:'power4.out'},'<')
+            .to(window,.75,{ease:'expo.inOut',scrollTo:{y:'#top'}},'<')
+    },
+    handleForm(data, form) {
+      this.$emit("formSubmit", { data, form });
+      if (data.email) this.email = data.email;
+      this.nextStep()
+    },
     async handleProducts(data) {
       this.$emit("productsSubmit", data);
       this.total = data.total;
       this.cart = data.products.map((p) => ({ id: p.id, amount: p.amount }));
       this.getPayment();
-      this.active++;
-    },
-    handleForm(data, form) {
-      this.$emit("formSubmit", { data, form });
-      if (data.email) this.email = data.email;
-      this.active++;
+      this.nextStep()
     },
     async getProducts() {
       if (!this.products) return;

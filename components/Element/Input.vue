@@ -18,6 +18,7 @@ export default {
   props: {
     data: { type: Object, default: null },
     flexWidth: Boolean,
+    test: Boolean
   },
   computed: {
     type() {
@@ -36,7 +37,7 @@ export default {
     },
     validation() {
       let val = "";
-      if (this.data.required) val = "required";
+      if (this.data.required && !this.test) val = "required";
       switch (this.type) {
         case "email":
           val != "" && (val += "|");
@@ -53,14 +54,14 @@ export default {
     validationRules() {
       return {
         emailValidator: ({ value }) => {
-          if (!value && !this.data.required) return true;
+          if (!value && (!this.data.required || this.test)) return true;
           let regex = new RegExp(
             "([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])"
           );
           return regex.test(value);
         },
         phoneValidator: ({ value }) => {
-          if (!value && !this.data.required) return true;
+          if (!value && (!this.data.required || this.test)) return true;
           let regex = new RegExp(
             "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})"
           );

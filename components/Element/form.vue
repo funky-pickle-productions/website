@@ -6,7 +6,7 @@
   >
     <div class="formulate-fields -m-07">
       <template v-for="field in fields">
-        <ElementInput :data="field" :flexWidth="multiColumn" />
+        <ElementInput :data="field" :flexWidth="multiColumn" :test="test"/>
       </template>
     </div>
 
@@ -19,6 +19,7 @@ export default {
   props: {
     multiColumn: Boolean,
     fields: { type: Array, default: () => [] },
+    test: Boolean
   },
 };
 </script>
