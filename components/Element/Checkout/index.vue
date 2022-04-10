@@ -5,7 +5,7 @@
       <slot name="header"/>
     </div>
 
-    <Steps :steps="steps" :active="active" :success="success" :style="{background: colors.primary || null}" id="top"/>
+    <Steps :steps="steps" :active="active" :success="success" :style="{background: colors.primary || null}" id="steps"/>
 
     <div v-if="success" class="py-40 px-20 lg:px-40 bg-lime">
       <slot name="success"/>
@@ -37,12 +37,12 @@
         </div>
       </template>
 
-      <template v-if="productData">
-        <div class="relative min-h-300px" :class="{ hidden: active <= forms.length || success }">
-          <div v-if="!paymentLoaded" class="absolute inset-0 z-20 bg-white flex justify-center items-center">
+      <template>
+        <div class="relative min-h-450px" :class="{ hidden: active <= forms.length || success }">
+          <div v-if="!paymentLoaded" class="absolute -inset-15 z-20 bg-white flex justify-center items-center">
             <Loading/>
           </div>
-          <div ref="stripe" id="payment-element" class="max-w-400px mx-auto"/>
+          <div ref="stripe" id="payment-element" class="max-w-400px mx-auto" :class="{'max-h-450':!paymentLoaded}"/>
           <Btn :value="status ? status : `Pay ${total}`" @clicked="makePayment"/>
         </div>
       </template>
@@ -101,7 +101,7 @@ export default {
           .add(()=>this.active++,'>')
           .set(this.$refs.container,{x:50,opacity:0},'>')
           .to(this.$refs.container,.5,{x:0,opacity:1,ease:'power4.out'},'<')
-          .to(window,.75,{ease:'expo.inOut',scrollTo:{y:'#top'}},'<')
+          .to(window,.75,{ease:'expo.inOut',scrollTo:{y:'#steps'}},'<')
     },
     previousStep(){
         gsap.timeline()
@@ -109,7 +109,7 @@ export default {
             .add(()=>this.active--,'>')
             .set(this.$refs.container,{x:-50,opacity:0},'>')
             .to(this.$refs.container,.5,{x:0,opacity:1,ease:'power4.out'},'<')
-            .to(window,.75,{ease:'expo.inOut',scrollTo:{y:'#top'}},'<')
+            .to(window,.75,{ease:'expo.inOut',scrollTo:{y:'#steps'}},'<')
     },
     handleForm(data, form) {
       this.$emit("formSubmit", { data, form });
@@ -199,7 +199,7 @@ export default {
         this.stripe = Stripe(this.$config.stripePublishableKey);
         this.elements = this.stripe.elements({appearance,clientSecret: this.tokens.clientSecret});
         this.paymentElement = this.elements.create("payment");
-        this.paymentElement.on("ready", () => (this.paymentLoaded = true));
+        this.paymentElement.on("ready", () => setTimeout(()=>this.paymentLoaded = true,500));
         this.paymentElement.mount(this.$refs.stripe);
       }
     },

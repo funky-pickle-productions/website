@@ -7,7 +7,7 @@
       </div>
     </div>
 
-    <section class="gutters pb-space-2x relative z-40">
+    <section class="gutters pb-space-2x relative z-40" ref="section">
 
       <div class="rounded-lg overflow-hidden bg-white graphic-box">
 
@@ -77,6 +77,17 @@ export default {
     if (event && checkout) return {event,checkout}
     error({ statusCode: 404 });
 
+  },
+  mounted(){
+    this.anim = ScrollTrigger.create({
+      trigger:this.$refs.section,
+      start:'top top',
+      end: 'bottom top',
+      onToggle:(e)=> this.$bus.$emit('PAUSE_TOP_NAV',e.isActive)
+    })
+  },
+  destroyed(){
+    this.anim && this.anim.kill()
   },
   watch:{
     key(){
