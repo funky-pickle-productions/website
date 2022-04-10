@@ -89,6 +89,9 @@ export default {
     paymentLoaded: false,
     soldout: false
   }),
+  mounted(){
+    console.log(this.productData)
+  },
   computed:{
     steps(){
       let steps = []
@@ -164,6 +167,8 @@ export default {
 
         this.$store.commit('PRODUCTS',[this.id,productData])
       }
+
+      console.log(productData)
 
       if (productData.length == 0) this.soldout = true
       this.productData = productData
