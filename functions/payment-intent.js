@@ -37,7 +37,7 @@ exports.handler = async (event, context) => {
         paymentIntent = await stripe.paymentIntents.update(data.id,{amount});
 
         return paymentIntent
-               ? { statusCode: 200,headers,body:JSON.stringify({success:true})}
+               ? { statusCode: 200,headers,body:JSON.stringify({success:true,total:amount})}
                : {statusCode: 400,headers,body:JSON.stringify({success:false})};
 
     }

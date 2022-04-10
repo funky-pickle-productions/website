@@ -135,12 +135,14 @@ export default {
         if (this.formData[i].form.primary.action){
 
           let formData = new FormData()
-          let data = {...this.formData[i].data,sheetName:this.eventCheckout.sheet}
-          Object.keys(data).forEach(key => formData.append(key,data[key]))
-          let res = await fetch(this.formData[i].form.primary.action, {method: 'POST',body:formData})
+          let data = this.formData[i].data
 
-          let resData = await res.json()
-          console.log(resData)
+          if (this.eventCheckout.sheet) data.sheetName = this.eventCheckout.sheet
+
+          Object.keys(data).forEach(key => formData.append(key,data[key]))
+
+          await fetch(this.formData[i].form.primary.action, {method: 'POST',body:formData})
+
         }
       }
 

@@ -1,17 +1,9 @@
 <template lang="html">
-  <section class="relative">
-
-    <div class="border-b border-black py-20 px-20 lg:px-40 bg-lime" v-if="$slots.default">
-      <slot name="header"/>
-    </div>
+  <section class="relative" v-if="!soldout">
 
     <Steps :steps="steps" :active="active" :success="success" :style="{background: colors.primary || null}" id="steps"/>
 
-    <div v-if="success" class="py-40 px-20 lg:px-40 bg-lime">
-      <slot name="success"/>
-    </div>
-
-    <div v-else-if="error" class="py-40 px-20 lg:px-40 min-h-400px flex justify-center items-center">
+    <div v-if="error" class="absolute inset-0 bg-white z-20 flex justify-center items-center">
       <div class="text-center">
         <h1 class="font-header font-bold uppercase text-30 mb-20">Error</h1>
         <p class="font-semibold mb-20" v-html="error"/>
@@ -19,17 +11,21 @@
       </div>
     </div>
 
-    <div v-else class="py-40 px-20 lg:px-40" ref="container">
+    <div v-if="success" class="py-40 px-20 lg:px-40 bg-lime">
+      <slot name="success"/>
+    </div>
+
+    <div v-else class="py-40 px-20 lg:px-40" ref="container" :class="{'opacity-0':error}">
 
       <template v-for="(form, i) in forms">
         <div :class="{ hidden: active != i }">
-          <ElementForm multiColumn :fields="form.items" @submit="(e) => handleForm(e, form)" test>
+          <ElementForm multiColumn :fields="form.items" @submit="(e) => handleForm(e, form)">
             <Btn value="Next" :color="colors.primary"/>
           </ElementForm>
         </div>
       </template>
 
-      <template v-if="productData">
+      <template>
         <div :class="{ hidden: active != forms.length }">
           <Products @submit="handleProducts" :products="productData">
             <Btn value="Next" :color="colors.primary" />
@@ -38,12 +34,14 @@
       </template>
 
       <template>
-        <div class="relative min-h-450px" :class="{ hidden: active <= forms.length || success }">
-          <div v-if="!paymentLoaded" class="absolute -inset-15 z-20 bg-white flex justify-center items-center">
+        <div class="relative" :class="{ hidden: active <= forms.length || success }">
+          <div v-if="!paymentLoaded" class="absolute inset-0 z-20 bg-white flex justify-center items-center">
             <Loading/>
           </div>
-          <div ref="stripe" id="payment-element" class="max-w-400px mx-auto" :class="{'max-h-450':!paymentLoaded}"/>
-          <Btn :value="status ? status : `Pay ${total}`" @clicked="makePayment"/>
+          <div :class="{'h-500-px opacity-0':!paymentLoaded}">
+            <div ref="stripe" id="payment-element" class="max-w-400px mx-auto"/>
+            <Btn :value="status ? status : `Pay ${total}`" @clicked="makePayment"/>
+          </div>
         </div>
       </template>
 
@@ -53,6 +51,11 @@
 
     </div>
   </section>
+
+  <div v-else class="flex justify-center items-center py-40 px-20 lg:px-40">
+    This event is sold out!
+  </div>
+
 </template>
 
 <script>
@@ -83,7 +86,8 @@ export default {
     error: null,
     success: false,
     status: null,
-    paymentLoaded: false
+    paymentLoaded: false,
+    soldout: false
   }),
   computed:{
     steps(){
@@ -92,6 +96,9 @@ export default {
       steps.push({label:this.productsTitle})
       steps.push({label:this.paymentTitle})
       return steps
+    },
+    id(){
+      return Object.keys(this.$route.params).map(k => this.$route.params[k]).join('-')
     }
   },
   methods: {
@@ -125,30 +132,42 @@ export default {
     },
     async getProducts() {
       if (!this.products) return;
-      let items = this.products.map((p) => p.pid);
-      let res = await fetch(
-        `${this.$config.baseUrl}/.netlify/functions/get-products`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ items }),
-        }
-      );
-      let data = await res.json();
 
-      data.forEach((item) => {
-        let prod = this.products.find((p) => item.id == p.pid);
-        this.productData.push({
-          id: item.id,
-          name: item.product.name,
-          key: prod.key,
-          description: item.product.description,
-          price: item.unit_amount / 100,
-          max: prod.max,
-          min: prod.min,
-          option: prod.option,
+      let productData = this.$store.state.products[this.id]
+
+      if (!productData){
+
+        productData = []
+
+        let items = this.products.map((p) => p.pid);
+        let res = await fetch(`${this.$config.baseUrl}/.netlify/functions/get-products`,{
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ items }),
+          });
+
+        let data = await res.json();
+
+        data.forEach((item) => {
+          let prod = this.products.find((p) => item.id == p.pid);
+          productData.push({
+            id: item.id,
+            name: item.product.name,
+            key: prod.key,
+            description: prod.description,
+            price: item.unit_amount / 100,
+            max: prod.max,
+            min: prod.min,
+            option: prod.option,
+          });
         });
-      });
+
+        this.$store.commit('PRODUCTS',[this.id,productData])
+      }
+
+      if (productData.length == 0) this.soldout = true
+      this.productData = productData
+
     },
 
     async getPayment() {
@@ -199,7 +218,7 @@ export default {
         this.stripe = Stripe(this.$config.stripePublishableKey);
         this.elements = this.stripe.elements({appearance,clientSecret: this.tokens.clientSecret});
         this.paymentElement = this.elements.create("payment");
-        this.paymentElement.on("ready", () => setTimeout(()=>this.paymentLoaded = true,500));
+        this.paymentElement.on("ready", () => setTimeout(()=>this.paymentLoaded = true,1000));
         this.paymentElement.mount(this.$refs.stripe);
       }
     },
@@ -224,9 +243,10 @@ export default {
       let data = await response.json();
 
       if (data.success) {
-        if (this.email) confirmParams.receipt_email = this.email;
 
         this.status = 'Sending...'
+
+        if (this.email) confirmParams.receipt_email = this.email;
 
         response = await this.stripe.confirmPayment({
           confirmParams,
@@ -236,7 +256,7 @@ export default {
 
         if (response.paymentIntent && response.paymentIntent.status == "succeeded") {
           sessionStorage.removeItem("fp_stripe_tokens");
-          this.$emit("paymentSubmit");
+          this.$emit("paymentSubmit",response.paymentIntent);
           this.success = true;
           return;
         }

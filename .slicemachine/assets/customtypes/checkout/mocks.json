@@ -1,46 +1,60 @@
 {
-  "id": "bfbaedd8-2adc-4efc-91ac-e4ee7fe5c979",
-  "uid": "ut-autem-ab",
+  "id": "6ed736dd-a7d1-46ad-8b55-33269d904fc6",
+  "uid": "laboriosam-quia-itaque",
   "type": "checkout",
   "data": {
-    "title": "streamline back-end systems",
-    "products-title": "facilitate virtual infrastructures",
-    "payment-title": "utilize turn-key action-items",
+    "title": "revolutionize bricks-and-clicks metrics",
+    "products-title": "enhance best-of-breed bandwidth",
+    "payment-title": "grow transparent methodologies",
     "success": [
       {
         "type": "paragraph",
-        "text": "Duis occaecat sunt excepteur quis non velit ex duis. Nostrud do ullamco Lorem et aliquip fugiat voluptate tempor sint aliqua. Id cillum nostrud commodo anim pariatur irure laborum cupidatat.",
+        "text": "Non dolor adipisicing labore reprehenderit enim cillum sunt nisi excepteur adipisicing et. Lorem sint nostrud labore veniam laboris proident sit incididunt.",
         "spans": []
       }
     ],
     "products": [
       {
-        "key": "visualize end-to-end supply-chains",
-        "option": false,
-        "pid": "unleash compelling networks",
-        "min": 2505,
-        "max": 8201
-      },
-      {
-        "key": "repurpose plug-and-play technologies",
+        "key": "embrace world-class infrastructures",
         "option": true,
-        "pid": "revolutionize compelling blockchains",
-        "min": 1357,
-        "max": 2487
+        "pid": "aggregate real-time communities",
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Excepteur dolor do non. Exercitation veniam eu in veniam nisi consequat ea nisi nisi voluptate. Culpa aliqua aute incididunt eiusmod dolor in laboris aliquip quis ut tempor enim ipsum dolore officia.",
+            "spans": []
+          }
+        ],
+        "min": 2221,
+        "max": 8591
       },
       {
-        "key": "iterate scalable e-tailers",
+        "key": "reinvent 24/7 web services",
         "option": false,
-        "pid": "transition bleeding-edge paradigms",
-        "min": 5522,
-        "max": 115
+        "pid": "harness cross-platform communities",
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Nostrud non Lorem elit commodo nisi culpa nulla.",
+            "spans": []
+          }
+        ],
+        "min": 4194,
+        "max": 2767
       },
       {
-        "key": "expedite customized eyeballs",
+        "key": "scale efficient methodologies",
         "option": true,
-        "pid": "e-enable B2B e-markets",
-        "min": 992,
-        "max": 5158
+        "pid": "transform compelling methodologies",
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Enim ex ea tempor dolor velit nostrud. Esse est ut qui dolor esse duis tempor. Nostrud labore sint non non culpa amet ex elit ex elit.",
+            "spans": []
+          }
+        ],
+        "min": 8553,
+        "max": 9217
       }
     ]
   }

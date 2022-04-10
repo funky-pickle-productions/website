@@ -61,6 +61,15 @@
               },
               "type": "Text"
             },
+            "description": {
+              "config": {
+                "label": "Description",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "paragraph,preformatted,heading6,strong,em,list-item,o-list-item,rtl"
+              },
+              "type": "StructuredText"
+            },
             "min": {
               "config": {
                 "label": "Minimum Quantity",

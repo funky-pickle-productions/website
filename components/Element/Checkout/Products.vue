@@ -3,7 +3,8 @@
     <template v-for="(product, i) in data">
       <div
         class="flex flex-row product-box my-05"
-        :class="{ 'bg-lime': product.amount > 0 }"
+        :class="{ 'bg-lime': product.amount > 0, 'cursor-pointer':product.max == 1 }"
+        @click="product.max == 1 && (product.amount == 1 ? remove(i) : add(i))"
       >
         <div
           class="flex-shrink-0 flex-grow-0 flex items-center justify-center bg-black text-white w-30"
@@ -12,16 +13,12 @@
         </div>
 
         <div class="p-10">
-          <h3 class="font-bold text-13 m-0" v-html="product.name" />
-          <p
-            v-if="product.description"
-            class="m-0 text-09 md:text-10"
-            v-html="product.description"
-          />
-          <p
-            v-html="formatCurrency(product.price)"
-            class="mt-10 opacity-70 font-semibold"
-          />
+          <h3 class="font-bold text-13 mb-10" v-html="product.name" />
+          <div v-if="product.description.length > 0" class="product-description text-08">
+            <prismic-rich-text :field="product.description"/>
+          </div>
+
+          <p v-html="formatCurrency(product.price)" class="opacity-70 font-semibold"/>
         </div>
 
         <div class="ml-auto flex-shrink-0 flex-grow-0 flex flex-col">
@@ -43,10 +40,7 @@
           </template>
 
           <template v-else>
-            <button
-              class="product-button flex-auto"
-              @click="product.amount == 1 ? remove(i) : add(i)"
-            >
+            <button class="product-button flex-auto">
               <div class="wrapper">
                 <Icon v-if="product.amount == 1" check class="h-10" />
                 <span v-else>+</span>
@@ -167,5 +161,9 @@ export default {
 
 .product-button:active .wrapper {
   transform: scale(0.8);
+}
+
+.product-description  p{
+  margin-bottom: 1rem;
 }
 </style>
