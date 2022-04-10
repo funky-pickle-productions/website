@@ -1,20 +1,20 @@
 {
-  "id": "cf2b1f81-731e-4d83-befd-92312cefafd2",
-  "uid": "dolorem-molestiae-cumque",
+  "id": "57020582-36a6-4312-894e-fa3994dbbf64",
+  "uid": "aut-fuga-debitis",
   "type": "event",
   "data": {
-    "title": "architect B2C experiences",
-    "date": "2016-02-13",
-    "venue": "empower integrated mindshare",
-    "address": "strategize best-of-breed initiatives",
-    "city": "drive frictionless e-markets",
-    "state": "Oregon",
+    "title": "integrate transparent users",
+    "date": "2013-07-01",
+    "venue": "utilize cutting-edge relationships",
+    "address": "embrace cutting-edge e-commerce",
+    "city": "synthesize seamless e-tailers",
+    "state": "Georgia",
     "map": {
       "latitude": 48.8703712,
       "longitude": 2.3865198
     },
-    "primary": "#1aaf8c",
-    "secondary": "#70e7d0",
+    "primary": "#f99bc1",
+    "secondary": "#635fe7",
     "ball": {
       "dimensions": {
         "width": 900,
@@ -22,7 +22,7 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1607582278043-57198ac8da43?w=900&h=500&fit=crop"
     },
     "banner": {
       "dimensions": {
@@ -31,7 +31,7 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1593642633279-1796119d5482?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=900&h=500&fit=crop"
     },
     "background": {
       "dimensions": {
@@ -40,47 +40,27 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=900&h=500&fit=crop"
     },
     "checkout": [
       {
-        "label": "unleash proactive eyeballs",
+        "label": "utilize real-time functionalities",
+        "link": {
+          "link_type": "Web",
+          "url": "http://twitter.com"
+        },
+        "sheet": "enhance scalable web-readiness",
+        "description": "engineer scalable e-services"
+      },
+      {
+        "label": "exploit intuitive e-markets",
         "link": {
           "link_type": "Web",
           "url": "https://prismic.io"
         },
-        "sheet": "matrix seamless schemas"
-      },
-      {
-        "label": "enhance robust applications",
-        "link": {
-          "link_type": "Web",
-          "url": "https://slicemachine.dev"
-        },
-        "sheet": "mesh revolutionary convergence"
-      },
-      {
-        "label": "empower integrated web services",
-        "link": {
-          "link_type": "Web",
-          "url": "https://prismic.io"
-        },
-        "sheet": "whiteboard 24/7 content"
-      },
-      {
-        "label": "incubate cross-media models",
-        "link": {
-          "link_type": "Web",
-          "url": "http://google.com"
-        },
-        "sheet": "recontextualize next-generation platforms"
+        "sheet": "drive impactful partnerships",
+        "description": "grow innovative eyeballs"
       }
-    ],
-    "links": [
-      {},
-      {},
-      {},
-      {}
     ]
   }
 }

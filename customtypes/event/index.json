@@ -207,18 +207,15 @@
                 "placeholder": ""
               },
               "type": "Text"
+            },
+            "description": {
+              "config": {
+                "label": "Stripe Payment Description",
+                "placeholder": ""
+              },
+              "type": "Text"
             }
           }
-        },
-        "type": "Group"
-      }
-    },
-    "Header": {
-      "links": {
-        "config": {
-          "label": "Links",
-          "placeholder": "",
-          "fields": {}
         },
         "type": "Group"
       }

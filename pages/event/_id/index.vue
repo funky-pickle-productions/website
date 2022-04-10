@@ -26,7 +26,7 @@
               <nuxt-link
                 class="flex-auto max-w-150 text-center button button-lime mx-05"
                 v-html="link.label"
-                :to="{path:`/checkout/${link.link.uid}`,query:{type:'event',uid}}"
+                :to="`/event/${uid}/${link.link.uid}`"
               />
             </template>
           </template>

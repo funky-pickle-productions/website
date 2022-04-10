@@ -7,7 +7,6 @@ import Form from './Form';
 import Introduction from './Introduction';
 import Link from './Link';
 import Press from './Press';
-import Products from './Products';
 import Sponsors from './Sponsors';
 import Table from './Table';
 import Text from './Text';
@@ -20,7 +19,6 @@ export {
 	Introduction,
 	Link,
 	Press,
-	Products,
 	Sponsors,
 	Table,
 	Text,
@@ -34,7 +32,6 @@ export const components = {
 	introduction: Introduction,
 	link: Link,
 	press: Press,
-	products: Products,
 	sponsors: Sponsors,
 	table: Table,
 	text: Text,

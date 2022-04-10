@@ -1,14 +1,46 @@
 {
-  "id": "5db8ff43-49f1-4dda-bef8-a7873d36c0d9",
-  "uid": "enim-sapiente-voluptatem",
+  "id": "bfbaedd8-2adc-4efc-91ac-e4ee7fe5c979",
+  "uid": "ut-autem-ab",
   "type": "checkout",
   "data": {
-    "title": "morph 24/365 infomediaries",
+    "title": "streamline back-end systems",
+    "products-title": "facilitate virtual infrastructures",
+    "payment-title": "utilize turn-key action-items",
     "success": [
       {
         "type": "paragraph",
-        "text": "Proident magna occaecat reprehenderit deserunt irure minim dolore ullamco culpa exercitation. Sunt ipsum culpa nostrud officia aliqua consectetur magna et officia occaecat minim laborum.",
+        "text": "Duis occaecat sunt excepteur quis non velit ex duis. Nostrud do ullamco Lorem et aliquip fugiat voluptate tempor sint aliqua. Id cillum nostrud commodo anim pariatur irure laborum cupidatat.",
         "spans": []
+      }
+    ],
+    "products": [
+      {
+        "key": "visualize end-to-end supply-chains",
+        "option": false,
+        "pid": "unleash compelling networks",
+        "min": 2505,
+        "max": 8201
+      },
+      {
+        "key": "repurpose plug-and-play technologies",
+        "option": true,
+        "pid": "revolutionize compelling blockchains",
+        "min": 1357,
+        "max": 2487
+      },
+      {
+        "key": "iterate scalable e-tailers",
+        "option": false,
+        "pid": "transition bleeding-edge paradigms",
+        "min": 5522,
+        "max": 115
+      },
+      {
+        "key": "expedite customized eyeballs",
+        "option": true,
+        "pid": "e-enable B2B e-markets",
+        "min": 992,
+        "max": 5158
       }
     ]
   }

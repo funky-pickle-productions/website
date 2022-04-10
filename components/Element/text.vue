@@ -36,3 +36,15 @@ export default {
   }
 }
 </script>
+
+<style lang="css">
+  .text-element h1:last-child,
+  .text-element h2:last-child,
+  .text-element h3:last-child,
+  .text-element h4:last-child,
+  .text-element h5:last-child,
+  .text-element h6:last-child,
+  .text-element p:last-child{
+    margin-bottom: 0px;
+  }
+</style>

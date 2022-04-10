@@ -1,0 +1,245 @@
+<template lang="html">
+  <section class="relative">
+
+    <div class="border-b border-black py-20 px-20 lg:px-40 bg-lime" v-if="$slots.default">
+      <slot name="header"/>
+    </div>
+
+    <Steps :steps="steps" :active="active" :success="success" :style="{background: colors.primary || null}"/>
+
+    <div v-if="success" class="py-40 px-20 lg:px-40 bg-lime">
+      <slot name="success"/>
+    </div>
+
+    <div v-else-if="error" class="py-40 px-20 lg:px-40 min-h-400px flex justify-center items-center">
+      <div class="text-center">
+        <h1 class="font-header font-bold uppercase text-30 mb-20">Error</h1>
+        <p class="font-semibold mb-20" v-html="error"/>
+        <button @click="resetPayment" v-html="'Try Again'" class="button"/>
+      </div>
+    </div>
+
+    <div v-else class="py-40 px-20 lg:px-40">
+
+      <template v-for="(form, i) in forms">
+        <div :class="{ hidden: active != i }">
+          <ElementForm multiColumn :fields="form.items" @submit="(e) => handleForm(e, form)">
+            <Btn value="Next" :color="colors.primary"/>
+          </ElementForm>
+        </div>
+      </template>
+
+      <template v-if="productData">
+        <div :class="{ hidden: active != forms.length }">
+          <Products @submit="handleProducts" :products="productData">
+            <Btn value="Next" :color="colors.primary" />
+          </Products>
+        </div>
+      </template>
+
+      <template v-if="productData">
+        <div class="relative min-h-300px" :class="{ hidden: active <= forms.length || success }">
+          <div v-if="!paymentLoaded" class="absolute inset-0 z-20 bg-white flex justify-center items-center">
+            <Loading/>
+          </div>
+          <div ref="stripe" id="payment-element" class="max-w-400px mx-auto"/>
+          <Btn :value="status ? status : `Pay ${total}`" @clicked="makePayment"/>
+        </div>
+      </template>
+
+      <div class="mt-20 text-center" :class="{'opacity-20 pointer-events-none': active == 0}">
+        <button v-html="'Back'" @click="active > 0 && (active -= 1)" />
+      </div>
+
+    </div>
+  </section>
+</template>
+
+<script>
+import config from "@/tailwind.config.js";
+import Btn from './Btn'
+import Steps from './Steps'
+import Products from './Products'
+
+export default {
+  components:{Btn,Steps,Products},
+  props: {
+    forms: { type: Array, defult: () => [] },
+    products: { type: Array, defult: () => [] },
+    productsTitle:{type:String,default:null},
+    paymentTitle:{type:String,default:null},
+    paymentDescription:{type:String,default:'Payment For Goods'},
+    colors:{type:Object,default:()=>({})}
+  },
+  async fetch() {
+    await this.getProducts();
+  },
+  data: () => ({
+    productData: [],
+    active: 0,
+    cart: [],
+    email: null,
+    total: null,
+    error: null,
+    success: false,
+    status: null,
+    paymentLoaded: false
+  }),
+  computed:{
+    steps(){
+      let steps = []
+      this.forms.forEach((f,i) => steps.push({label:f.primary.title}))
+      steps.push({label:this.productsTitle})
+      steps.push({label:this.paymentTitle})
+      return steps
+    }
+  },
+  methods: {
+    async handleProducts(data) {
+      this.$emit("productsSubmit", data);
+      this.total = data.total;
+      this.cart = data.products.map((p) => ({ id: p.id, amount: p.amount }));
+      this.getPayment();
+      this.active++;
+    },
+    handleForm(data, form) {
+      this.$emit("formSubmit", { data, form });
+      if (data.email) this.email = data.email;
+      this.active++;
+    },
+    async getProducts() {
+      if (!this.products) return;
+      let items = this.products.map((p) => p.pid);
+      let res = await fetch(
+        `${this.$config.baseUrl}/.netlify/functions/get-products`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ items }),
+        }
+      );
+      let data = await res.json();
+
+      data.forEach((item) => {
+        let prod = this.products.find((p) => item.id == p.pid);
+        this.productData.push({
+          id: item.id,
+          name: item.product.name,
+          key: prod.key,
+          description: item.product.description,
+          price: item.unit_amount / 100,
+          max: prod.max,
+          min: prod.min,
+          option: prod.option,
+        });
+      });
+    },
+
+    async getPayment() {
+      if(this.paymentLoaded) return
+      this.tokens = sessionStorage.getItem("fp_stripe_tokens");
+      if (!this.tokens) {
+        let response = await fetch(
+          `${this.$config.baseUrl}/.netlify/functions/payment-intent`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ method: "create", products: this.cart, description: this.paymentDescription }),
+          }
+        );
+        this.tokens = await response.json();
+        if (this.tokens)
+          sessionStorage.setItem(
+            "fp_stripe_tokens",
+            JSON.stringify(this.tokens)
+          );
+      } else {
+        this.tokens = JSON.parse(this.tokens);
+      }
+
+      if (this.tokens) {
+        let appearance = {
+          theme: "stripe",
+          variables: {
+            colorPrimary: config.theme.colors.black,
+            fontFamily: "Open Sans",
+          },
+          rules: {
+            ".Input": {
+              boxShadow: `3px 3px 0px ${config.theme.colors.black}`,
+              border: "none",
+              outline: `1px solid ${config.theme.colors.black}`,
+            },
+            ".Label": {
+              opacity: 1,
+              fontSize: "1rem",
+              fontWeight: 500,
+              color: config.theme.colors.black,
+              marginBottom: ".5rem",
+            },
+          },
+        };
+
+        this.stripe = Stripe(this.$config.stripePublishableKey);
+        this.elements = this.stripe.elements({appearance,clientSecret: this.tokens.clientSecret});
+        this.paymentElement = this.elements.create("payment");
+        this.paymentElement.on("ready", () => (this.paymentLoaded = true));
+        this.paymentElement.mount(this.$refs.stripe);
+      }
+    },
+
+    async makePayment() {
+      let response;
+      let confirmParams = {};
+      let error = null
+
+      this.status = 'Verifying...'
+
+      response = await fetch(`${this.$config.baseUrl}/.netlify/functions/payment-intent`,{
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          method: "update",
+          products: this.cart,
+          id: this.tokens.id,
+        }),
+      });
+
+      let data = await response.json();
+
+      if (data.success) {
+        if (this.email) confirmParams.receipt_email = this.email;
+
+        this.status = 'Sending...'
+
+        response = await this.stripe.confirmPayment({
+          confirmParams,
+          elements: this.elements,
+          redirect: "if_required",
+        });
+
+        if (response.paymentIntent && response.paymentIntent.status == "succeeded") {
+          sessionStorage.removeItem("fp_stripe_tokens");
+          this.$emit("paymentSubmit");
+          this.success = true;
+          return;
+        }
+
+        error = response.error.message
+      } else {
+        error = 'Oops! There was a problem, please try again'
+      }
+
+      this.error = error
+      this.status = null
+    },
+
+    async resetPayment(){
+      sessionStorage.removeItem("fp_stripe_tokens");
+      this.paymentLoaded = false
+      this.error = null
+      this.$nextTick(this.getPayment)
+    }
+  },
+};
+</script>

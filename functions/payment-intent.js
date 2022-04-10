@@ -18,17 +18,16 @@ exports.handler = async (event, context) => {
     for(let i = 0; i < data.products.length; i++){
       let product = data.products[i]
       let res = await stripe.prices.retrieve(product.id)
-      amount += res.unit_amount * product.quantity
+      amount += res.unit_amount * product.amount
     }
 
     switch(data.method){
-
 
       case 'create':
         paymentIntent = await stripe.paymentIntents.create({
           currency: "usd",
           amount: amount,
-          description: "Payment for goods"
+          description: data.description
         });
         return { statusCode: 200,headers,body:JSON.stringify({clientSecret:paymentIntent.client_secret,id:paymentIntent.id})};
 

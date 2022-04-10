@@ -61,19 +61,16 @@ main{
 
 .button:hover,
 .button-wrapper button:hover{
-  background: theme('colors.green');
   box-shadow: 7px 7px 0px theme('colors.black');
 }
 
 .button.button-white:hover,
 .button-wrapper.button-white button:hover{
-  background: theme('colors.lime');
   box-shadow: 7px 7px 0px theme('colors.black');
 }
 
 .button.button-lime:hover,
 .button-wrapper.button-lime button:hover{
-  background: white;
   box-shadow: 7px 7px 0px theme('colors.black');
 }
 

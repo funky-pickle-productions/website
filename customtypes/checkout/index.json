@@ -19,6 +19,66 @@
         },
         "type": "Text"
       },
+      "products-title": {
+        "config": {
+          "label": "Products Title",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "payment-title": {
+        "config": {
+          "label": "Payment Title",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "products": {
+        "config": {
+          "label": "Products",
+          "placeholder": "",
+          "fields": {
+            "key": {
+              "config": {
+                "label": "Field Key",
+                "placeholder": ""
+              },
+              "type": "Text"
+            },
+            "option": {
+              "config": {
+                "label": "Required As Option",
+                "placeholder_false": "false",
+                "placeholder_true": "true",
+                "default_value": false
+              },
+              "type": "Boolean"
+            },
+            "pid": {
+              "config": {
+                "label": "Price ID",
+                "placeholder": ""
+              },
+              "type": "Text"
+            },
+            "min": {
+              "config": {
+                "label": "Minimum Quantity",
+                "placeholder": ""
+              },
+              "type": "Number"
+            },
+            "max": {
+              "config": {
+                "label": "Maximum Quantity",
+                "placeholder": ""
+              },
+              "type": "Number"
+            }
+          }
+        },
+        "type": "Group"
+      },
       "success": {
         "config": {
           "label": "Success Message",
@@ -33,9 +93,6 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "products": {
-              "type": "SharedSlice"
-            },
             "form": {
               "type": "SharedSlice"
             }
