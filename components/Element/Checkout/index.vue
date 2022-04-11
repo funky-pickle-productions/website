@@ -19,7 +19,7 @@
 
       <template v-for="(form, i) in forms">
         <div :class="{ hidden: active != i }">
-          <ElementForm multiColumn :fields="form.items" @submit="(e) => handleForm(e, form)">
+          <ElementForm multiColumn :fields="form.items" @submit="(e) => handleForm(e, form)" :test="dev">
             <Btn value="Next" :color="colors.primary"/>
           </ElementForm>
         </div>
@@ -75,9 +75,11 @@ export default {
     colors:{type:Object,default:()=>({})}
   },
   async fetch() {
+    this.dev = true
     await this.getProducts();
   },
   data: () => ({
+    dev:false,
     productData: [],
     active: 0,
     cart: [],
@@ -89,9 +91,6 @@ export default {
     paymentLoaded: false,
     soldout: false
   }),
-  mounted(){
-    console.log(this.productData)
-  },
   computed:{
     steps(){
       let steps = []
@@ -142,7 +141,8 @@ export default {
 
         productData = []
 
-        let items = this.products.map((p) => p.pid);
+        let items = this.products.map((p) => this.dev ? p['test-pid'] : p.pid);
+
         let res = await fetch(`${this.$config.baseUrl}/.netlify/functions/get-products`,{
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -151,24 +151,27 @@ export default {
 
         let data = await res.json();
 
-        data.forEach((item) => {
-          let prod = this.products.find((p) => item.id == p.pid);
-          productData.push({
-            id: item.id,
-            name: item.product.name,
-            key: prod.key,
-            description: prod.description,
-            price: item.unit_amount / 100,
-            max: prod.max,
-            min: prod.min,
-            option: prod.option,
+        if (Array.isArray(data)){
+
+          data.forEach((item) => {
+            let prod = this.products.find((p) => item.id == (this.dev ? p['test-pid'] : p.pid));
+            productData.push({
+              id: item.id,
+              name: item.product.name,
+              key: prod.key,
+              description: prod.description,
+              price: item.unit_amount / 100,
+              max: prod.max,
+              min: prod.min,
+              group: prod.group,
+            });
           });
-        });
 
-        this.$store.commit('PRODUCTS',[this.id,productData])
+          this.$store.commit('PRODUCTS',[this.id,productData])
+
+        }
+
       }
-
-      console.log(productData)
 
       if (productData.length == 0) this.soldout = true
       this.productData = productData

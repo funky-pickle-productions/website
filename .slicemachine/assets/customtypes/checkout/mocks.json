@@ -1,81 +1,57 @@
 {
-  "id": "bc096dc7-477a-4802-a1bc-6016efcaa175",
-  "uid": "facere-consequatur-deserunt",
+  "id": "a6e57dc3-769c-4982-9d7c-5a55f76f5a45",
+  "uid": "debitis-sunt-suscipit",
   "type": "checkout",
   "data": {
-    "title": "engineer value-added e-tailers",
-    "products-title": "reinvent distributed models",
-    "payment-title": "incentivize wireless eyeballs",
+    "title": "maximize enterprise eyeballs",
+    "products-title": "deliver revolutionary experiences",
+    "payment-title": "expedite leading-edge communities",
     "success": [
       {
         "type": "paragraph",
-        "text": "Et exercitation quis irure dolore adipisicing duis cillum sunt Lorem proident duis ipsum irure laborum qui.",
+        "text": "Qui eu eu ullamco labore sunt.",
         "spans": []
       }
     ],
     "soldout": [
       {
         "type": "paragraph",
-        "text": "Ut tempor laborum enim non eiusmod aliqua veniam elit. Cupidatat nulla nostrud commodo aute qui quis. Eiusmod sit nisi aliqua deserunt occaecat magna sit adipisicing eiusmod adipisicing ea.",
+        "text": "Officia ea nisi quis ad laborum pariatur magna ad Lorem et eiusmod excepteur amet proident. Nostrud qui proident magna aliquip fugiat non.",
         "spans": []
       }
     ],
     "products": [
       {
-        "key": "target open-source vortals",
-        "option": true,
-        "pid": "generate magnetic markets",
-        "description": [
-          {
-            "type": "paragraph",
-            "text": "Fugiat laborum elit commodo dolore ullamco fugiat irure enim sit ut.",
-            "spans": []
-          }
-        ],
-        "min": 3345,
-        "max": 3266
-      },
-      {
-        "key": "integrate user-centric content",
+        "key": "transform sticky e-services",
         "option": false,
-        "pid": "expedite magnetic niches",
+        "group": "utilize holistic paradigms",
+        "pid": "evolve seamless blockchains",
+        "test-pid": "e-enable virtual mindshare",
         "description": [
           {
             "type": "paragraph",
-            "text": "Ut commodo eu fugiat ullamco amet cupidatat sunt enim fugiat. Commodo cupidatat amet sint laboris aliquip sunt culpa. Commodo laboris sunt in dolor ullamco labore labore voluptate veniam qui dolore.",
+            "text": "Aliquip occaecat ad aliquip velit. Fugiat occaecat aliqua magna adipisicing magna voluptate irure nulla nisi voluptate Lorem ut. Ullamco nisi do tempor commodo et minim et incididunt eiusmod eu.",
             "spans": []
           }
         ],
-        "min": 9025,
-        "max": 7608
+        "min": 8593,
+        "max": 8273
       },
       {
-        "key": "engage strategic schemas",
+        "key": "cultivate sexy systems",
         "option": true,
-        "pid": "synergize turn-key synergies",
+        "group": "syndicate compelling applications",
+        "pid": "redefine clicks-and-mortar web-readiness",
+        "test-pid": "e-enable sexy interfaces",
         "description": [
           {
             "type": "paragraph",
-            "text": "Aute quis laborum amet aliqua magna elit id.",
+            "text": "Veniam culpa qui quis exercitation mollit et dolor aute elit ipsum laborum Lorem id laborum duis. Nulla irure elit in sunt ex qui Lorem sit culpa cillum ex. Ut officia sunt esse occaecat cupidatat occaecat ipsum sint.",
             "spans": []
           }
         ],
-        "min": 4915,
-        "max": 504
-      },
-      {
-        "key": "harness collaborative metrics",
-        "option": true,
-        "pid": "engineer dynamic initiatives",
-        "description": [
-          {
-            "type": "paragraph",
-            "text": "Veniam amet laboris cupidatat sit sunt deserunt velit commodo amet dolor eiusmod.",
-            "spans": []
-          }
-        ],
-        "min": 3885,
-        "max": 2541
+        "min": 205,
+        "max": 8685
       }
     ]
   }

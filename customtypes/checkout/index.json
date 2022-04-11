@@ -54,9 +54,23 @@
               },
               "type": "Boolean"
             },
+            "group": {
+              "config": {
+                "label": "Product Group ID",
+                "placeholder": ""
+              },
+              "type": "Text"
+            },
             "pid": {
               "config": {
                 "label": "Price ID",
+                "placeholder": ""
+              },
+              "type": "Text"
+            },
+            "test-pid": {
+              "config": {
+                "label": "Test Price ID",
                 "placeholder": ""
               },
               "type": "Text"

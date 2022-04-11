@@ -90,13 +90,22 @@ export default {
   },
   methods: {
     addData() {
-      let optionChosen = false;
-      this.data = this.products.map((i) => {
-        if (i.option && !optionChosen) {
-          optionChosen = true;
-          return { ...i, amount: 1 };
+
+      let groups = {}
+
+      this.data = this.products.map(product => {
+        let amount = 0
+        if (product.group){
+          if (!groups[product.group]){
+            groups[product.group] = true
+            amount = product.min > 0 ? product.min : 0;
+          } else {
+            amount = 0
+          }
+        } else {
+          amount = product.min
         }
-        return { ...i, amount: 0 };
+        return {...product,amount}
       });
     },
 
@@ -110,19 +119,17 @@ export default {
     add(i) {
       if (this.data[i].amount < this.data[i].max) {
         this.data[i].amount += 1;
-        if (this.data[i].option) {
+        if (this.data[i].group) {
           for (let p = 0; p < this.data.length; p++) {
-            if (p != i && this.data[p].option) this.data[p].amount = 0;
+            if (p != i && this.data[p].group == this.data[i].group) this.data[p].amount = 0;
           }
         }
       }
     },
 
     remove(i) {
-      if (this.data[i].option && this.data[i].amount == 1) return;
-      if (this.data[i].amount > this.data[i].min) {
-        this.data[i].amount -= 1;
-      }
+      if (this.data[i].group && this.data[i].min == 1) return;
+      if (this.data[i].amount > this.data[i].min) this.data[i].amount -= 1;
     },
 
     handleSubmit() {
