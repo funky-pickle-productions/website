@@ -21,16 +21,7 @@
           :style="{ background: data.primary || null }"
           ref="stickyHeader"
         >
-          <template v-if="data.links.length > 0">
-            <template v-for="link in data.links">
-              <nuxt-link
-                class="button bg-white mx-05"
-                v-html="link.label"
-                :to="`/event/${uid}${link.link.uid ? '/' + link.link.uid : ''}`"
-              />
-            </template>
-          </template>
-          <h3 v-else class="text-white text-16">Registration Coming Soon</h3>
+          <h3 class="text-white text-16">Registration Coming Soon</h3>
         </div>
       </StickyHeader>
     </div>
