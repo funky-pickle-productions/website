@@ -29,6 +29,7 @@ export default {
       { src: "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.0/ScrollTrigger.min.js" },
       { src: "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollToPlugin.min.js" },
       {src:"https://unpkg.com/swiper@8/swiper-bundle.min.js"},
+      {src:"https://js.stripe.com/v3/"}
     ]
   },
   css: ['@/assets/main.css'],
@@ -49,6 +50,7 @@ export default {
   },
   publicRuntimeConfig: {
     stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
+    baseUrl: process.env.NODE_ENV == 'production' ? 'https://www.funkypickle.com' : 'http://localhost:8888'
   },
   generate: {
     fallback: "404.html",

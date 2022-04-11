@@ -1,11 +1,11 @@
 <template lang="html">
   <div class="carousel-element" v-if="slides">
     <div class="relative">
-      <div class="swiper z-10" ref="swiper" :class="{'overflow-hidden -m-10':overflowHidden}">
+      <div class="swiper z-10" ref="swiper" :class="{'overflow-hidden':overflowHidden}">
         <div class="swiper-wrapper h-auto items-stretch relative">
 
           <template v-for="(slide,i) in slides">
-            <div class="swiper-slide h-auto" :class="{'p-10':overflowHidden}">
+            <div class="swiper-slide h-auto" :class="slideClass">
               <slot :slide="{...slide,slideIndex:i}"/>
             </div>
           </template>
@@ -30,7 +30,8 @@ export default {
   props:{
     slides:{type:Array,default:null},
     options:{type:Object,default:()=>({})},
-    overflowHidden:Boolean
+    overflowHidden:Boolean,
+    slideClass:{type:String,default:null},
   },
   mounted(){
 

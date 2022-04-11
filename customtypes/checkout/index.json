@@ -1,0 +1,127 @@
+{
+  "id": "checkout",
+  "label": "Checkout",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "Uid",
+          "placeholder": ""
+        },
+        "type": "UID"
+      },
+      "title": {
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "products-title": {
+        "config": {
+          "label": "Products Title",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "payment-title": {
+        "config": {
+          "label": "Payment Title",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "products": {
+        "config": {
+          "label": "Products",
+          "placeholder": "",
+          "fields": {
+            "key": {
+              "config": {
+                "label": "Field Key",
+                "placeholder": ""
+              },
+              "type": "Text"
+            },
+            "group": {
+              "config": {
+                "label": "Product Group ID",
+                "placeholder": ""
+              },
+              "type": "Text"
+            },
+            "pid": {
+              "config": {
+                "label": "Price ID",
+                "placeholder": ""
+              },
+              "type": "Text"
+            },
+            "test-pid": {
+              "config": {
+                "label": "Test Price ID",
+                "placeholder": ""
+              },
+              "type": "Text"
+            },
+            "description": {
+              "config": {
+                "label": "Description",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "paragraph,preformatted,heading6,strong,em,list-item,o-list-item,rtl"
+              },
+              "type": "StructuredText"
+            },
+            "min": {
+              "config": {
+                "label": "Minimum Quantity",
+                "placeholder": ""
+              },
+              "type": "Number"
+            },
+            "max": {
+              "config": {
+                "label": "Maximum Quantity",
+                "placeholder": ""
+              },
+              "type": "Number"
+            }
+          }
+        },
+        "type": "Group"
+      },
+      "success": {
+        "config": {
+          "label": "Success Message",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        },
+        "type": "StructuredText"
+      },
+      "soldout": {
+        "config": {
+          "label": "Sold Out Message",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,list-item,o-list-item,rtl"
+        },
+        "type": "StructuredText"
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "form": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

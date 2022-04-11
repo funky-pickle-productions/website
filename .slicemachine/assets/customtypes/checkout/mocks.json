@@ -1,0 +1,116 @@
+{
+  "id": "ab30c3b7-eb62-4a38-982a-56460e74d697",
+  "uid": "cupiditate-autem-eveniet",
+  "type": "checkout",
+  "data": {
+    "title": "grow customized e-commerce",
+    "products-title": "engineer rich blockchains",
+    "payment-title": "redefine sticky infrastructures",
+    "success": [
+      {
+        "type": "paragraph",
+        "text": "Veniam amet elit ut commodo elit quis adipisicing aliqua.",
+        "spans": []
+      }
+    ],
+    "soldout": [
+      {
+        "type": "paragraph",
+        "text": "Et aute officia elit do eiusmod enim culpa labore occaecat dolor deserunt nostrud. Aute excepteur enim minim esse cillum aliquip sint excepteur excepteur.",
+        "spans": []
+      }
+    ],
+    "products": [
+      {
+        "key": "monetize sticky metrics",
+        "group": "transform integrated channels",
+        "pid": "maximize impactful e-tailers",
+        "test-pid": "cultivate extensible methodologies",
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Consequat anim dolore id magna labore aliqua dolor minim labore. Elit quis do magna proident irure proident ut aliquip occaecat nostrud irure qui.",
+            "spans": []
+          }
+        ],
+        "min": 1433,
+        "max": 5479
+      },
+      {
+        "key": "transition dot-com markets",
+        "group": "deploy transparent ROI",
+        "pid": "whiteboard intuitive functionalities",
+        "test-pid": "embrace distributed ROI",
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Sunt enim id irure sint consectetur duis proident. Veniam sint quis nulla in eu. Ullamco culpa sit amet ex sit culpa labore ex deserunt et tempor.",
+            "spans": []
+          }
+        ],
+        "min": 7782,
+        "max": 455
+      },
+      {
+        "key": "synergize mission-critical relationships",
+        "group": "synergize cross-platform synergies",
+        "pid": "whiteboard global e-tailers",
+        "test-pid": "architect visionary ROI",
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Dolor dolor dolor in ullamco consequat Lorem sit esse excepteur proident dolor consequat dolor.",
+            "spans": []
+          }
+        ],
+        "min": 6078,
+        "max": 9294
+      },
+      {
+        "key": "engineer innovative e-business",
+        "group": "scale holistic infomediaries",
+        "pid": "drive value-added platforms",
+        "test-pid": "mesh 24/7 web services",
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Duis voluptate esse dolore ullamco labore. Occaecat esse ullamco incididunt Lorem laboris nostrud tempor commodo cupidatat esse magna fugiat reprehenderit laboris. Proident pariatur sint non ipsum mollit eu elit sint eiusmod.",
+            "spans": []
+          }
+        ],
+        "min": 3932,
+        "max": 5109
+      },
+      {
+        "key": "scale scalable vortals",
+        "group": "brand B2B web-readiness",
+        "pid": "aggregate world-class partnerships",
+        "test-pid": "matrix dynamic architectures",
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Dolor anim sit do ad in est enim cupidatat laboris in esse aute mollit dolore.",
+            "spans": []
+          }
+        ],
+        "min": 2997,
+        "max": 9450
+      },
+      {
+        "key": "deploy B2C methodologies",
+        "group": "integrate sticky blockchains",
+        "pid": "cultivate collaborative content",
+        "test-pid": "matrix 24/7 e-commerce",
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Ipsum consectetur veniam Lorem aliqua laboris ut cupidatat cillum.",
+            "spans": []
+          }
+        ],
+        "min": 9797,
+        "max": 9438
+      }
+    ]
+  }
+}

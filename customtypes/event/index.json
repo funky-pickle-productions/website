@@ -178,24 +178,24 @@
         "type": "Image"
       }
     },
-    "Header": {
-      "links": {
+    "Checkout": {
+      "checkout": {
         "config": {
-          "label": "Links",
+          "label": "Checkout",
           "placeholder": "",
           "fields": {
             "label": {
               "config": {
-                "label": "Event Header Button Label",
+                "label": "Button Label",
                 "placeholder": "A label for the event header button"
               },
               "type": "Text"
             },
             "link": {
               "config": {
-                "label": "Form Link",
+                "label": "Link",
                 "customtypes": [
-                  "form"
+                  "checkout"
                 ],
                 "select": "document"
               },
@@ -204,6 +204,13 @@
             "sheet": {
               "config": {
                 "label": "Google Sheet Tab Name",
+                "placeholder": ""
+              },
+              "type": "Text"
+            },
+            "description": {
+              "config": {
+                "label": "Stripe Payment Description",
                 "placeholder": ""
               },
               "type": "Text"

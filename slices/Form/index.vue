@@ -1,14 +1,21 @@
 <template lang="html">
   <section class="form-section">
-    <div :class="{'rounded-lg overflow-hidden graphic-box': !inline}">
+    <div class="rounded-lg overflow-hidden graphic-box">
 
       <div v-if="title" class="pl-20 md:pl-50 p-10 bg-lime border-b border-black">
         <h3 v-html="title" class="font-header uppercase text-25"/>
       </div>
 
-      <div :class="{'bg-white p-20 md:px-50 md:py-40':!inline}">
-        <prismic-rich-text v-if="description" :field="description" class="mb-30 font-bold text-15"/>
-        <ElementForm :fields="slice.items" :action="this.slice.primary.action" :multiColumn="!this.slice.primary.inline"/>
+      <div class="bg-white p-20 md:px-50 md:py-40">
+
+        <ElementText v-if="description" :field="description" class="mb-30"/>
+
+        <ElementForm :fields="slice.items" multiColumn @submit="handleSubmit">
+          <div class="mt-40">
+            <button class="button" type="submit" name="submit" v-html="label"/>
+          </div>
+        </ElementForm>
+
       </div>
 
     </div>
@@ -18,7 +25,11 @@
 <script>
 export default {
   name:"FormSlice",
-  props:['slice','useContainer'],
+  props:['slice'],
+  data:()=>({
+    label: 'Submit',
+    sent: false
+  }),
   computed:{
     inline(){
       return this.slice.primary.inline
@@ -29,6 +40,21 @@ export default {
     description(){
       return this.slice.primary.description.length > 0
            ? this.slice.primary.description : null
+    },
+    action(){
+      return this.slice.primary.action
+    }
+  },
+  methods:{
+    async handleSubmit(data){
+      if (this.sent) return
+
+      let formData = new FormData()
+      Object.keys(data).forEach(key => formData.append(key,data[key]))
+      this.label = "Sending..."
+      await fetch(this.action, {method: 'POST',body:formData})
+      this.label = "Sent!"
+      this.sent = true
     }
   }
 }

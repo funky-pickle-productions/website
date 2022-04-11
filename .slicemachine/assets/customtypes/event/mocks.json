@@ -1,20 +1,20 @@
 {
-  "id": "1365be40-c862-4ca3-8a35-39d9146f13d6",
-  "uid": "voluptates-excepturi-vero",
+  "id": "57020582-36a6-4312-894e-fa3994dbbf64",
+  "uid": "aut-fuga-debitis",
   "type": "event",
   "data": {
-    "title": "streamline revolutionary deliverables",
-    "date": "2018-08-16",
-    "venue": "aggregate bleeding-edge infomediaries",
-    "address": "implement open-source markets",
-    "city": "embrace proactive metrics",
-    "state": "South Dakota",
+    "title": "integrate transparent users",
+    "date": "2013-07-01",
+    "venue": "utilize cutting-edge relationships",
+    "address": "embrace cutting-edge e-commerce",
+    "city": "synthesize seamless e-tailers",
+    "state": "Georgia",
     "map": {
-      "latitude": 48.8583736,
-      "longitude": 2.2922926
+      "latitude": 48.8703712,
+      "longitude": 2.3865198
     },
-    "primary": "#055602",
-    "secondary": "#74b969",
+    "primary": "#f99bc1",
+    "secondary": "#635fe7",
     "ball": {
       "dimensions": {
         "width": 900,
@@ -22,7 +22,7 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1607582278043-57198ac8da43?w=900&h=500&fit=crop"
     },
     "banner": {
       "dimensions": {
@@ -31,7 +31,7 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1601933973783-43cf8a7d4c5f?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=900&h=500&fit=crop"
     },
     "background": {
       "dimensions": {
@@ -40,24 +40,26 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1587905069134-008460d7a636?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=900&h=500&fit=crop"
     },
-    "links": [
+    "checkout": [
       {
-        "label": "empower innovative ROI",
-        "link": {
-          "link_type": "Web",
-          "url": "http://google.com"
-        },
-        "sheet": "brand front-end portals"
-      },
-      {
-        "label": "synthesize synergistic channels",
+        "label": "utilize real-time functionalities",
         "link": {
           "link_type": "Web",
           "url": "http://twitter.com"
         },
-        "sheet": "expedite plug-and-play architectures"
+        "sheet": "enhance scalable web-readiness",
+        "description": "engineer scalable e-services"
+      },
+      {
+        "label": "exploit intuitive e-markets",
+        "link": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        },
+        "sheet": "drive impactful partnerships",
+        "description": "grow innovative eyeballs"
       }
     ]
   }

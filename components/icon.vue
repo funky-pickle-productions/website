@@ -1,5 +1,10 @@
 <template lang="html">
-  <svg v-if="arrow || icon == 'arrow'" class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 371.45 371.43">
+
+  <svg v-if="check || icon == 'check'" class="check" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 333 319">
+    <path class="fil0" d="M54 154l64 74 187 -222c14,-15 36,1 25,18l-184 281c-14,18 -33,20 -49,2l-93 -111c-18,-26 28,-63 50,-42z"/>
+  </svg>
+
+  <svg v-else-if="arrow || icon == 'arrow'" class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 371.45 371.43">
     <path d="M43.83,0V37.77H307L0,344.73l26.71,26.7,307-307V327.6h37.77V0Z" />
   </svg>
 
@@ -150,6 +155,7 @@
 <script>
 export default {
   props: {
+    check: Boolean,
     arrow: Boolean,
     arrows: Boolean,
     wayfinder: Boolean,

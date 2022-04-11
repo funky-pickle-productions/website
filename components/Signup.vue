@@ -5,8 +5,12 @@
       <div class="flex-auto mb-20 xl:mb-0 xl:mr-30">
         <prismic-rich-text :field="data.title" class="font-header font-bold uppercase leading-09 text-40 sm:text-50"/>
       </div>
-      <div class="flex-auto w-400px max-w-4/5">
-        <ElementForm :fields="data.form[0].items" buttonLabel="Signup" :action="data.form[0].primary.action"/>
+      <div class="flex-auto w-400px max-w-4/5" v-if="data.form">
+        <ElementForm :fields="data.form[0].items" buttonLabel="Signup" @submit="handleSubmit">
+          <div class="mt-40">
+            <button class="button" type="submit" name="submit" v-html="label"/>
+          </div>
+        </ElementForm>
       </div>
     </div>
 
@@ -20,8 +24,25 @@
 <script>
 import {mapState} from 'vuex'
 export default {
+  data:()=>({
+    label: 'Signup',
+    sent: false
+  }),
   computed: mapState({
     data: state => state.settings.signup
-  })
+  }),
+  methods:{
+    async handleSubmit(data){
+      if (this.sent) return
+
+      let action = this.data.form[0].primary.action
+      let formData = new FormData()
+      Object.keys(data).forEach(key => formData.append(key,data[key]))
+      this.label = "Sending..."
+      await fetch(action, {method: 'POST',body:formData})
+      this.label = "Sent!"
+      this.sent = true
+    }
+  }
 }
 </script>

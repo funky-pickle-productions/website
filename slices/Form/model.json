@@ -55,7 +55,8 @@
               "tel",
               "textarea",
               "select",
-              "radio"
+              "radio",
+              "date"
             ],
             "default_value": "text"
           },

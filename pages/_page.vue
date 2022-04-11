@@ -1,7 +1,6 @@
 <template lang="html">
   <main id="page" :key="$route.path">
     <Landing
-      v-if="data.title"
       :image="data.image"
       :video="data.video"
       :title="data.title"

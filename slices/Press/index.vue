@@ -2,7 +2,7 @@
   <section v-if="slides.length > 0" class="press-section overflow-hidden">
 
     <Title v-if="title" :value="title" class="mb-40"/>
-    <prismic-rich-text v-if="description" :field="description" class="mb-40"/>
+    <ElementText v-if="description" :field="description" class="mb-40"/>
 
     <ElementCarousel :slides="slides" v-slot="{slide}">
       <div class="press-item swiper-slide h-full min-h-300 flex flex-row items-stretch">

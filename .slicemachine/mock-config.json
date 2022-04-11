@@ -3,7 +3,8 @@
     "events": {},
     "home": {},
     "event": {
-      "forms": {}
+      "forms": {},
+      "checkout": {}
     },
     "settings": {
       "signup-title": {
@@ -28,7 +29,26 @@
       }
     },
     "registration": {},
-    "form": {}
+    "form": {},
+    "event-registration": {
+      "form": {}
+    },
+    "checkout": {
+      "products": {
+        "description": {
+          "config": {
+            "patternType": "PARAGRAPH",
+            "blocks": 1
+          }
+        }
+      },
+      "soldout": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
+    }
   },
   "slices": {
     "Events": {
@@ -142,6 +162,12 @@
     "Bio": {
       "default": {
         "primary": {}
+      }
+    },
+    "Products": {
+      "default": {
+        "primary": {},
+        "items": {}
       }
     }
   }
