@@ -7,6 +7,7 @@ export default {
   props:['field','calloutColor'],
   methods:{
     serializer(type, element, content, children,item){
+      console.log(type, element, content, children,item)
       switch(type){
         case 'heading1':
         return `<h1 class="text-40 mb-35 font-bold font-header uppercase leading-09">${children}</h1>`
@@ -24,6 +25,8 @@ export default {
         return `<p class="mb-15">${children.join('')}</p>`
         case 'span':
         return content
+        case 'hyperlink':
+        return `<a href="${element.data.url}" target="${element.data.target}" class="font-semibold underline text-${this.calloutColor || 'pink'}">${children.join('')}</a>`
         case 'list-item':
         return `<li class="list-disc ml-10 pl-05 marker:text-${this.calloutColor || 'pink'} font-medium">${children.join('')}</li>`
         case "group-list-item":

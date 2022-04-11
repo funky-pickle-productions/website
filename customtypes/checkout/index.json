@@ -45,15 +45,6 @@
               },
               "type": "Text"
             },
-            "option": {
-              "config": {
-                "label": "Required As Option",
-                "placeholder_false": "false",
-                "placeholder_true": "true",
-                "default_value": false
-              },
-              "type": "Boolean"
-            },
             "group": {
               "config": {
                 "label": "Product Group ID",

@@ -75,7 +75,7 @@ export default {
     colors:{type:Object,default:()=>({})}
   },
   mounted(){
-    this.dev = true
+    this.dev = false
     this.getProducts();
   },
   data: () => ({
@@ -125,7 +125,7 @@ export default {
       if (data.email) this.email = data.email;
       this.nextStep()
     },
-    async handleProducts(data) {
+    handleProducts(data) {
       this.$emit("productsSubmit", data);
       this.total = data.total;
       this.cart = data.products.map((p) => ({ id: p.id, amount: p.amount }));
@@ -189,11 +189,7 @@ export default {
             body: JSON.stringify({ method: "create", products: this.cart, description }),
           });
         this.tokens = await response.json();
-        if (this.tokens)
-          sessionStorage.setItem(
-            "fp_stripe_tokens",
-            JSON.stringify(this.tokens)
-          );
+        if (this.tokens) sessionStorage.setItem("fp_stripe_tokens",JSON.stringify(this.tokens));
       } else {
         this.tokens = JSON.parse(this.tokens);
       }

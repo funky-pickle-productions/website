@@ -8,7 +8,7 @@
 
       <div class="bg-white p-20 md:px-50 md:py-40">
 
-        <prismic-rich-text v-if="description" :field="description" class="mb-30 font-bold text-15"/>
+        <ElementText v-if="description" :field="description" class="mb-30"/>
 
         <ElementForm :fields="slice.items" multiColumn @submit="handleSubmit">
           <div class="mt-40">

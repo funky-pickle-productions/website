@@ -11,23 +11,19 @@
         <prismic-image :field="data.banner" class="rounded-lg graphic-box" />
       </div>
 
-      <div class="gutters py-space">
-        <h1 v-html="data.title" class="font-header font-bold text-center uppercase leading-09 text-30 md:text-50"/>
+      <div class="gutters py-space text-center">
+        <h1 v-html="data.title" class="font-header font-bold uppercase leading-09 text-30 md:text-50"/>
+        <div class="inline-flex flex-row items-center mt-40" :style="{ fill: data.primary }">
+          <Icon calendar class="pr-10 h-20"/>
+          <h3 class="font-bold text-13 md:text-16" v-html="startDate"/>
+        </div>
       </div>
 
       <StickyHeader scrollId="#event" :height="90">
-        <div
-          class="h-full font-bold flex justify-center items-center"
-          :style="{ background: data.primary || null }"
-          ref="stickyHeader"
-        >
+        <div class="h-full font-bold flex justify-center items-center" :style="{ background: data.primary || null }" ref="stickyHeader">
           <template v-if="data.checkout.length > 0">
             <template v-for="link in data.checkout">
-              <nuxt-link
-                class="flex-auto max-w-150 text-center button button-lime mx-05"
-                v-html="link.label"
-                :to="`/event/${uid}/${link.link.uid}`"
-              />
+              <nuxt-link class="flex-auto max-w-150 text-center button button-lime mx-05" v-html="link.label" :to="`/event/${uid}/${link.link.uid}`"/>
             </template>
           </template>
           <h3 v-else class="text-white text-16">Registration Coming Soon</h3>
@@ -35,23 +31,20 @@
       </StickyHeader>
     </div>
 
-    <div class="relative z-10 gutters pt-space-2x" :style="{ fill: data.primary }">
-      <div class="-m-05 flex flex-row flex-wrap">
-        <EventDate :date="data.date" class="m-05 flex-auto" />
-        <EventWeather :uid="uid" class="m-05 flex-auto" />
-        <EventLocation
-          class="m-05 flex-initial w-full"
-          :address="data.address"
-          :map="data.map"
-          :city="data.city"
-          :state="data.state"
-          :venue="data.venue"
-        />
-      </div>
+    <div class="relative z-10 gutters pt-space">
+      <EventInfo
+        :address="data.address"
+        :map="data.map"
+        :city="data.city"
+        :state="data.state"
+        :venue="data.venue"
+        :uid="uid"
+        :color="data.primary"
+      />
     </div>
 
     <div
-      class="relative z-10 gutters pt-space-2x"
+      class="relative z-10 gutters pt-space"
       :class="{ 'flex flex-row pb-space': slices, 'pb-space-2x': !slices }"
       ref="slices"
     >
@@ -94,7 +87,7 @@
 </template>
 
 <script>
-import { random } from "@/assets/helpers";
+import { random, formatDate } from "@/assets/helpers";
 import config from "@/tailwind.config.js";
 import { components } from "@/slices";
 import mixins from '@/mixins/mixins'
@@ -139,7 +132,7 @@ export default {
 
         this.sidebarAnim = ScrollTrigger.create({
           trigger: this.$refs.slices,
-          start: () => `top top`,
+          start: () => `top top+=${sticky.offsetHeight}`,
           end: () => `bottom top+=${sidebar.offsetHeight + sticky.offsetHeight + this.getSpace() * 3}`,
           pin: this.$refs.sidebar,
           pinSpacing: false,
@@ -152,6 +145,9 @@ export default {
     this.sidebarAnim && this.sidebarAnim.kill();
   },
   computed: {
+    startDate(){
+      return formatDate(this.data.date,'dddd, mmmm dd, yyyy')
+    },
     slices() {
       if (!this.data.slices || this.data.slices.length == 0) return null;
 
