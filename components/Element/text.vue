@@ -7,7 +7,7 @@ export default {
   props:['field','calloutColor'],
   methods:{
     serializer(type, element, content, children,item){
-      console.log(type, element, content, children,item)
+
       switch(type){
         case 'heading1':
         return `<h1 class="text-40 mb-35 font-bold font-header uppercase leading-09">${children}</h1>`
