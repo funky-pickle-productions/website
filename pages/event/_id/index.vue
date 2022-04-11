@@ -43,14 +43,9 @@
       />
     </div>
 
-    <div
-      class="relative z-10 gutters pt-space"
-      :class="{ 'flex flex-row pb-space': slices, 'pb-space-2x': !slices }"
-      ref="slices"
-    >
-      <template v-if="slices">
+    <div class="relative z-10 gutters pt-space" >
 
-        <div class="flex-auto">
+      <template v-if="slices">
           <template v-for="(slice, i) in slices">
             <component
               class="pb-space"
@@ -59,24 +54,7 @@
               :id="slice.id"
             />
           </template>
-        </div>
-
-        <div class="flex-initial hidden xl:block pl-20">
-          <aside ref="sidebar" class="flex flex-col">
-            <template v-for="(slice, i) in slices">
-              <button
-                v-if="slice.primary.title"
-                v-html="slice.primary.title"
-                @click="() => scrollTo(slice.id)"
-                class="button bg-pink text-white"
-                :class="{ 'mb-05': i < slices.length - 1 }"
-              />
-            </template>
-          </aside>
-        </div>
-
       </template>
-
       <div v-else class="text-center">
         <h1 class="inline-block font-bold text-16 leading-12 graphic-box rounded-lg text-white p-20" :style="{ background: data.primary }">
           More Information Coming Soon!
@@ -125,24 +103,7 @@ export default {
     setTimeout(() => {
       gsap.set("#event .bg-pink", { background: this.data.primary });
       gsap.set("#event .bg-green", { background: this.data.secondary });
-
-      if (this.slices) {
-        let sticky = this.$refs.stickyHeader;
-        let sidebar = this.$refs.sidebar;
-
-        this.sidebarAnim = ScrollTrigger.create({
-          trigger: this.$refs.slices,
-          start: () => `top top+=${sticky.offsetHeight}`,
-          end: () => `bottom top+=${sidebar.offsetHeight + sticky.offsetHeight + this.getSpace() * 3}`,
-          pin: this.$refs.sidebar,
-          pinSpacing: false,
-          invalidateOnRefresh: true,
-        });
-      }
-    }, 500);
-  },
-  destroyed() {
-    this.sidebarAnim && this.sidebarAnim.kill();
+    })
   },
   computed: {
     startDate(){

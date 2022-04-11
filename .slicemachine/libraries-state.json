@@ -123,6 +123,15 @@
                     "allowTargetBlank": true,
                     "multi": "paragraph,strong,em,hyperlink"
                   }
+                },
+                "vertical": {
+                  "config": {
+                    "label": "Always Display As Vertical",
+                    "placeholder_false": "false",
+                    "placeholder_true": "true",
+                    "default_value": false
+                  },
+                  "type": "Boolean"
                 }
               },
               "items": {
@@ -178,23 +187,23 @@
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?w=900&h=500&fit=crop"
+                  "url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e?w=900&h=500&fit=crop"
                 },
                 "link": {
                   "link_type": "Web",
-                  "url": "https://prismic.io"
+                  "url": "http://twitter.com"
                 },
                 "title": [
                   {
                     "type": "heading1",
-                    "text": "Envisioneer frictionless paradigms",
+                    "text": "Productize enterprise experiences",
                     "spans": []
                   }
                 ],
                 "description": [
                   {
                     "type": "paragraph",
-                    "text": "Et do ullamco deserunt laborum cupidatat quis. Elit eu id minim id. Consectetur eiusmod consequat labore qui sit labore consequat consectetur occaecat consequat veniam.",
+                    "text": "Duis ad dolore amet laborum aliquip magna laborum excepteur labore aute fugiat culpa. Enim pariatur enim enim pariatur.",
                     "spans": []
                   }
                 ]
@@ -207,7 +216,7 @@
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1600861194802-a2b11076bc51?w=900&h=500&fit=crop"
+                  "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764?w=900&h=500&fit=crop"
                 },
                 "link": {
                   "link_type": "Web",
@@ -216,29 +225,117 @@
                 "title": [
                   {
                     "type": "heading1",
-                    "text": "Synthesize cross-platform functionalities",
+                    "text": "Evolve sexy interfaces",
                     "spans": []
                   }
                 ],
                 "description": [
                   {
                     "type": "paragraph",
-                    "text": "Aute sunt labore sunt minim cillum eu exercitation ea consequat tempor.",
+                    "text": "Sit minim Lorem exercitation quis adipisicing sunt elit adipisicing pariatur adipisicing exercitation aliqua ad duis.",
+                    "spans": []
+                  }
+                ]
+              },
+              {
+                "image": {
+                  "dimensions": {
+                    "width": 900,
+                    "height": 500
+                  },
+                  "alt": "Placeholder image",
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1579931794097-0ad001e51edb?w=900&h=500&fit=crop"
+                },
+                "link": {
+                  "link_type": "Web",
+                  "url": "https://prismic.io"
+                },
+                "title": [
+                  {
+                    "type": "heading1",
+                    "text": "Benchmark sticky systems",
+                    "spans": []
+                  }
+                ],
+                "description": [
+                  {
+                    "type": "paragraph",
+                    "text": "Enim est qui labore esse non incididunt occaecat qui amet dolor eu eu occaecat id proident. Anim dolore reprehenderit ullamco incididunt eu occaecat duis aliqua exercitation deserunt irure aute eu esse ad.",
+                    "spans": []
+                  }
+                ]
+              },
+              {
+                "image": {
+                  "dimensions": {
+                    "width": 900,
+                    "height": 500
+                  },
+                  "alt": "Placeholder image",
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1560762484-813fc97650a0?w=900&h=500&fit=crop"
+                },
+                "link": {
+                  "link_type": "Web",
+                  "url": "https://slicemachine.dev"
+                },
+                "title": [
+                  {
+                    "type": "heading1",
+                    "text": "Deliver rich architectures",
+                    "spans": []
+                  }
+                ],
+                "description": [
+                  {
+                    "type": "paragraph",
+                    "text": "Nostrud laborum veniam aute eu. Velit ut ullamco proident laboris adipisicing do dolor deserunt est laborum exercitation.",
+                    "spans": []
+                  }
+                ]
+              },
+              {
+                "image": {
+                  "dimensions": {
+                    "width": 900,
+                    "height": 500
+                  },
+                  "alt": "Placeholder image",
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1587905069134-008460d7a636?w=900&h=500&fit=crop"
+                },
+                "link": {
+                  "link_type": "Web",
+                  "url": "https://prismic.io"
+                },
+                "title": [
+                  {
+                    "type": "heading1",
+                    "text": "Optimize bleeding-edge web-readiness",
+                    "spans": []
+                  }
+                ],
+                "description": [
+                  {
+                    "type": "paragraph",
+                    "text": "Et deserunt amet culpa Lorem exercitation ad amet excepteur magna nulla nostrud reprehenderit id consectetur incididunt. Exercitation minim do duis ipsum proident cupidatat occaecat laborum tempor ullamco nulla cupidatat excepteur consectetur aute.",
                     "spans": []
                   }
                 ]
               }
             ],
             "primary": {
-              "publish": false,
-              "title": "deploy cutting-edge e-tailers",
+              "publish": true,
+              "title": "transform leading-edge convergence",
               "description": [
                 {
                   "type": "paragraph",
-                  "text": "Id exercitation nostrud eu laboris magna nulla consectetur cillum cupidatat ex anim mollit do esse nulla. Est eiusmod adipisicing non duis qui enim dolore laboris. Deserunt enim magna aute sint cillum anim quis mollit.",
+                  "text": "Velit et velit irure nulla labore in ipsum do sit voluptate dolore adipisicing magna. Deserunt sunt nisi consectetur est aliquip commodo amet.",
                   "spans": []
                 }
-              ]
+              ],
+              "vertical": true
             }
           }
         },
