@@ -74,9 +74,9 @@ export default {
     paymentDescription:{type:String,default:'Payment For Goods'},
     colors:{type:Object,default:()=>({})}
   },
-  async fetch() {
+  mounted(){
     this.dev = true
-    await this.getProducts();
+    this.getProducts();
   },
   data: () => ({
     dev:false,
