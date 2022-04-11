@@ -75,7 +75,7 @@ export default {
     colors:{type:Object,default:()=>({})}
   },
   mounted(){
-    this.dev = true
+    this.dev = false
     this.getProducts();
   },
   data: () => ({
