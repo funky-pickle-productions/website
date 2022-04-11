@@ -81,7 +81,7 @@ export default {
   padding: 0.75rem 1.25rem;
   border-radius: 0.25rem;
   box-shadow: 3px 3px 0px theme("colors.black");
-  outline: 1px solid theme("colors.black");
+  border: 1px solid theme("colors.black");
   width: 100%;
   margin: 0px;
   background: white;
@@ -96,7 +96,7 @@ export default {
 [data-is-showing-errors="true"] input,
 [data-is-showing-errors="true"] select,
 [data-is-showing-errors="true"] textarea {
-  outline: 1px solid theme("colors.pink");
+  border: 1px solid theme("colors.pink");
   box-shadow: 3px 3px 0px theme("colors.pink");
 }
 [data-is-showing-errors="true"] label {

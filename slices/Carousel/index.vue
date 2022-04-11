@@ -1,5 +1,5 @@
 <template>
-  <section v-if="slides.length > 0" class="carousel-section">
+  <section v-if="slides.length > 0" class="carousel-section w-full">
 
     <Title v-if="title" :value="title" class="mb-40"/>
     <div class="graphic-box rounded-lg bg-white overflow-hidden">
@@ -7,7 +7,7 @@
         <ElementText :field="description"/>
       </div>
       <div class="px-20 pb-20">
-        <ElementCarousel :slides="slides" v-slot="{slide}" :options="{slidesPerView: 'auto'}" overflowHidden slideClass="">
+        <ElementCarousel :slides="slides" v-slot="{slide}" :options="{slidesPerView: 'auto'}" overflowHidden>
           <div class="">
             <div class="pb-400px bg-cover" :style="{backgroundImage:`url('${slide.image.url}')`}"/>
             <div class="bg-white pt-20">

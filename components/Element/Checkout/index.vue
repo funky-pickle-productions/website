@@ -134,15 +134,10 @@ export default {
     },
     async getProducts() {
       if (!this.products) return;
-
       let productData = this.$store.state.products[this.id]
-
       if (!productData){
-
         productData = []
-
         let items = this.products.map((p) => this.dev ? p['test-pid'] : p.pid);
-
         let res = await fetch(`${this.$config.baseUrl}/.netlify/functions/get-products`,{
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -152,7 +147,6 @@ export default {
         let data = await res.json();
 
         if (Array.isArray(data)){
-
           data.forEach((item) => {
             let prod = this.products.find((p) => item.id == (this.dev ? p['test-pid'] : p.pid));
             productData.push({
@@ -166,16 +160,11 @@ export default {
               group: prod.group,
             });
           });
-
           this.$store.commit('PRODUCTS',[this.id,productData])
-
         }
-
       }
-
       if (productData.length == 0) this.soldout = true
       this.productData = productData
-
     },
 
     async getPayment() {
@@ -197,6 +186,7 @@ export default {
       if (this.tokens) {
         let appearance = {
           theme: "stripe",
+          fonts:[{cssSrc: 'https://fonts.googleapis.com/css?family=Open+Sans'}],
           variables: {
             colorPrimary: config.theme.colors.black,
             fontFamily: "Open Sans",
@@ -204,8 +194,7 @@ export default {
           rules: {
             ".Input": {
               boxShadow: `3px 3px 0px ${config.theme.colors.black}`,
-              border: "none",
-              outline: `1px solid ${config.theme.colors.black}`,
+              border: `1px solid ${config.theme.colors.black}`,
             },
             ".Label": {
               opacity: 1,
