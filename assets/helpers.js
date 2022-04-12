@@ -87,9 +87,8 @@ export function getPosition(el){
 
 
 export function formatDate(date,format = "mmm dd, yyyy") {
-  if (!date) return;
 
-  date = toDate(date)
+  date = !date ? new Date() : toDate(date)
 
   format = format.replace('mmmm',getMonth(date, "long"))
   format = format.replace('mmm',getMonth(date, "short"))
