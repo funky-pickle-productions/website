@@ -11,11 +11,20 @@
         <prismic-image :field="data.banner" class="rounded-lg graphic-box" />
       </div>
 
-      <div class="gutters py-space text-center">
+      <div class="gutters pt-space text-center">
         <h1 v-html="data.title" class="font-header font-bold uppercase leading-09 text-30 md:text-50"/>
         <div class="inline-flex flex-row items-center mt-40" :style="{ fill: data.primary }">
           <Icon calendar class="pr-10 h-20"/>
           <h3 class="font-bold text-13 md:text-16" v-html="startDate"/>
+        </div>
+      </div>
+
+      <div class="gutters py-space">
+        <div class="graphic-box p-20 bg-lime text-center">
+          <h3 class="max-w-600px inline-block text-13"><b>Get Funky (Intermediate)</b> and <b>Social Scramble (Happy Hour Fun)</b> are currenty full, please join the waitlist here:</h3>
+          <div class="text-center mt-20">
+            <nuxt-link to="/waiting-list" class="button" v-html="'Join Waitlist'"/>
+          </div>
         </div>
       </div>
 
