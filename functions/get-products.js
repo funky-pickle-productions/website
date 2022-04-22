@@ -11,18 +11,29 @@ exports.handler = async (event, context) => {
 
   try {
 
-    let eventData = JSON.parse(event.body)
-    let items = []
+    let data = JSON.parse(event.body)
+    let pids = []
+    let products = []
 
-    for (let i = 0; i < eventData.items.length; i++){
-      let res = await stripe.prices.retrieve(eventData.items[i],{expand:['product']})
-      res && items.push(res)
+    if (data.token){
+      let buff = new Buffer.from(data.token, 'base64');
+      let token = buff.toString('ascii');
+      pids = token.split(',')
+    } else {
+      data.products.forEach(p =>{
+        !p.soldout && pids.push(p.pid)
+      })
+    }
+
+    for (let i = 0; i < pids.length; i++){
+      let res = await stripe.prices.retrieve(pids[i],{expand:['product']})
+      res && products.push({...res,pid:pids[i]})
     }
 
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify(items),
+      body: JSON.stringify({products}),
     };
 
   } catch (err) {

@@ -1,5 +1,5 @@
 <template lang="html">
-  <section class="relative" v-if="!soldout">
+  <section class="relative" v-if="productData.length > 0">
 
     <Steps :steps="steps" :active="active" :success="success" :style="{background: colors.primary || null}" id="steps"/>
 
@@ -73,8 +73,7 @@ export default {
     paymentTitle:{type:String,default:null},
     paymentDescription:{type:String,default:'Payment For Goods'},
     colors:{type:Object,default:()=>({})},
-    ignoreSoldout:{type:Boolean,default: false},
-    refs:{type: Array, default: null}
+    token:{type:String,default:null}
   },
   mounted(){
     this.dev = false
@@ -90,8 +89,7 @@ export default {
     error: null,
     success: false,
     status: null,
-    paymentLoaded: false,
-    soldout: false
+    paymentLoaded: false
   }),
   computed:{
     steps(){
@@ -138,55 +136,31 @@ export default {
     },
     async getProducts() {
 
-      if (!this.products) return;
-      let productData = this.$store.state.products[this.id]
-
-      if (!productData){
-        productData = []
-        let items = this.products.map((p) => p.pid);
+        let products = this.products.map((p) => ({pid:p.pid,soldout:p.soldout}));
         let res = await fetch(`${this.$config.baseUrl}/.netlify/functions/get-products`,{
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ items }),
+            body: JSON.stringify({ products, token: this.token }),
           });
 
         let data = await res.json();
 
-        if (Array.isArray(data)){
-          data.forEach((item) => {
-            let prod = this.products.find((p) => item.id == (this.dev ? p['test-pid'] : p.pid));
-            productData.push({
-              ref: prod.ref,
-              soldout: prod.soldout,
-              id: item.id,
-              name: item.product.name,
-              key: prod.key,
-              description: prod.description,
-              price: item.unit_amount / 100,
-              max: prod.max,
-              min: prod.min,
-              group: prod.group,
-            });
+        console.log(data)
+
+        data.products.forEach((item) => {
+          let prod = this.products.find((p) => item.pid == p.pid);
+          this.productData.push({
+            id: item.id,
+            name: item.product.name,
+            key: prod.key,
+            description: prod.description,
+            price: item.unit_amount / 100,
+            max: prod.max,
+            min: prod.min,
+            group: prod.group,
           });
-          this.$store.commit('PRODUCTS',[this.id,productData])
-        }
-      }
+        });
 
-      if (this.refs){
-        let arr = []
-        this.refs.forEach(ref => {
-          let product = productData.find(f => f.ref == ref)
-          product && arr.push(product)
-        })
-        productData = arr
-      }
-
-      if (this.ignoreSoldout){
-        this.productData = productData
-      } else {
-        this.productData = productData.filter(p => !p.soldout)
-        if (this.productData.length == 0) this.soldout = true
-      }
     },
 
     async getPayment() {

@@ -17,11 +17,10 @@
         </div>
 
         <ElementCheckout
-          :refs="refs"
           :key="key"
           :colors="colors"
           :forms="forms"
-          :ignoreSoldout="pw"
+          :token="token"
           :products="checkout.products"
           :paymentDescription="eventCheckout.description"
           :productsTitle="checkout['products-title']"
@@ -115,13 +114,8 @@ export default {
     key: 0
   }),
   computed:{
-    refs(){
-      if (!this.query.refs) return null
-      return makeArray(this.query.refs)
-    },
-    pw(){
-      if (!this.query.pw) return null
-      return this.query.pw == this.checkout.password
+    token(){
+      return this.query.token || null
     },
     colors(){
       if (!this.event) return {}
