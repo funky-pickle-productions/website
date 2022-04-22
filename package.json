@@ -23,7 +23,7 @@
     "@nuxtjs/prismic": "^1.4.0",
     "@nuxtjs/tailwindcss": "^4.2.0",
     "postcss": "^8.3.5",
-    "slice-machine-ui": "^0.3.1",
+    "slice-machine-ui": "^0.3.7",
     "vue-stripe-elements-plus": "^1.0.3"
   }
 }

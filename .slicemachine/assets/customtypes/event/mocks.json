@@ -1,20 +1,20 @@
 {
-  "id": "57020582-36a6-4312-894e-fa3994dbbf64",
-  "uid": "aut-fuga-debitis",
+  "id": "6617caf3-7ef8-4060-ac9a-c14fa216eec8",
+  "uid": "est-nemo-inventore",
   "type": "event",
   "data": {
-    "title": "integrate transparent users",
-    "date": "2013-07-01",
-    "venue": "utilize cutting-edge relationships",
-    "address": "embrace cutting-edge e-commerce",
-    "city": "synthesize seamless e-tailers",
-    "state": "Georgia",
+    "title": "recontextualize interactive networks",
+    "date": "2015-10-23",
+    "venue": "streamline transparent eyeballs",
+    "address": "facilitate viral e-tailers",
+    "city": "integrate strategic infomediaries",
+    "state": "Maine",
     "map": {
-      "latitude": 48.8703712,
-      "longitude": 2.3865198
+      "latitude": 48.8583736,
+      "longitude": 2.2922926
     },
-    "primary": "#f99bc1",
-    "secondary": "#635fe7",
+    "primary": "#bb3be3",
+    "secondary": "#951b8d",
     "ball": {
       "dimensions": {
         "width": 900,
@@ -22,7 +22,7 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1607582278043-57198ac8da43?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1600861194802-a2b11076bc51?w=900&h=500&fit=crop"
     },
     "banner": {
       "dimensions": {
@@ -31,7 +31,7 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117?w=900&h=500&fit=crop"
     },
     "background": {
       "dimensions": {
@@ -40,26 +40,44 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1571126770897-2d612d1f7b89?w=900&h=500&fit=crop"
     },
     "checkout": [
       {
-        "label": "utilize real-time functionalities",
+        "label": "redefine seamless bandwidth",
         "link": {
           "link_type": "Web",
-          "url": "http://twitter.com"
+          "url": "https://slicemachine.dev"
         },
-        "sheet": "enhance scalable web-readiness",
-        "description": "engineer scalable e-services"
+        "sheet": "expedite real-time applications",
+        "description": "repurpose leading-edge eyeballs"
       },
       {
-        "label": "exploit intuitive e-markets",
+        "label": "strategize rich e-commerce",
         "link": {
           "link_type": "Web",
           "url": "https://prismic.io"
         },
-        "sheet": "drive impactful partnerships",
-        "description": "grow innovative eyeballs"
+        "sheet": "engineer integrated systems",
+        "description": "productize value-added users"
+      },
+      {
+        "label": "scale world-class e-markets",
+        "link": {
+          "link_type": "Web",
+          "url": "http://twitter.com"
+        },
+        "sheet": "whiteboard virtual supply-chains",
+        "description": "evolve magnetic e-services"
+      },
+      {
+        "label": "integrate enterprise e-business",
+        "link": {
+          "link_type": "Web",
+          "url": "http://twitter.com"
+        },
+        "sheet": "iterate open-source eyeballs",
+        "description": "recontextualize B2C vortals"
       }
     ]
   }

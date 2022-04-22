@@ -31,6 +31,10 @@ export function pause(dur = 1000) {
   return new Promise((next) => setTimeout(next, dur));
 }
 
+export function makeArray(i){
+  return Array.isArray(i) ? i : !i ? [] : [i]
+}
+
 
 export function toDate(d) {
   if (d.indexOf("T") > 0) d = d.split("T")[0];
@@ -83,6 +87,13 @@ export function getPosition(el){
     height: hPos,
     width: wPos,
   };
+}
+
+export function formatCurrency(amt) {
+  return amt.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
 }
 
 

@@ -17,9 +17,11 @@
         </div>
 
         <ElementCheckout
+          :refs="refs"
           :key="key"
           :colors="colors"
           :forms="forms"
+          :ignoreSoldout="pw"
           :products="checkout.products"
           :paymentDescription="eventCheckout.description"
           :productsTitle="checkout['products-title']"
@@ -62,9 +64,10 @@
 
 <script>
 import mixins from '@/mixins/mixins'
+import {makeArray} from '@/assets/helpers'
 export default {
   mixins:[mixins],
-  async asyncData({ error, store, params, $prismic, payload }){
+  async asyncData({ error, store, params, query, $prismic, payload }){
     let checkout = store.state.checkouts[params.checkout] || null
     let event = store.state.events[params.id] || null
     let res
@@ -85,7 +88,7 @@ export default {
       }
     }
 
-    if (event && checkout) return {event,checkout}
+    if (event && checkout) return {event,checkout,query}
     error({ statusCode: 404 });
 
   },
@@ -112,6 +115,14 @@ export default {
     key: 0
   }),
   computed:{
+    refs(){
+      if (!this.query.refs) return null
+      return makeArray(this.query.refs)
+    },
+    pw(){
+      if (!this.query.pw) return null
+      return this.query.pw == this.checkout.password
+    },
     colors(){
       if (!this.event) return {}
       return {
@@ -132,8 +143,8 @@ export default {
     }
   },
   methods:{
-    handleFormSubmit({data,form}){
-      this.formData.push({data,form})
+    handleFormSubmit(data){
+      this.formData.push(data)
     },
     async handleProductsSubmit(data){
       for (let i = 0; i < this.formData.length; i++){
@@ -144,14 +155,11 @@ export default {
 
       for (let i = 0; i < this.formData.length; i++){
         if (this.formData[i].form.primary.action){
-
           let formData = new FormData()
           let data = this.formData[i].data
 
           if (this.eventCheckout.sheet) data.sheetName = this.eventCheckout.sheet
-
           Object.keys(data).forEach(key => formData.append(key,data[key]))
-
           await fetch(this.formData[i].form.primary.action, {method: 'POST',body:formData})
 
         }

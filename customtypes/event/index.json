@@ -182,7 +182,6 @@
       "checkout": {
         "config": {
           "label": "Checkout",
-          "placeholder": "",
           "fields": {
             "label": {
               "config": {

@@ -33,11 +33,33 @@
         },
         "type": "Text"
       },
+      "password": {
+        "type": "Text",
+        "config": {
+          "label": "Password",
+          "placeholder": ""
+        }
+      },
       "products": {
         "config": {
           "label": "Products",
-          "placeholder": "",
           "fields": {
+            "soldout": {
+              "type": "Boolean",
+              "config": {
+                "label": "Soldout",
+                "default_value": false,
+                "placeholder_true": "true",
+                "placeholder_false": "false"
+              }
+            },
+            "ref": {
+              "type": "Text",
+              "config": {
+                "label": "Ref",
+                "placeholder": ""
+              }
+            },
             "key": {
               "config": {
                 "label": "Field Key",

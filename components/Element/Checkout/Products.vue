@@ -51,8 +51,9 @@
       </div>
     </template>
 
-    <div class="mt-20 text-13 text-right">
-      <h3 v-html="`Total: ${total}`" />
+    <div class="mt-20 text-13 flex flex-row justify-between" :class="{'text-pink':error}">
+      <p class="font-semibold mr-20" :class="{hidden: !error}" v-html="'You Must Choose a Product.'"/>
+      <h3 class="flex-auto text-right" v-html="`Total: ${total}`" />
     </div>
 
     <slot />
@@ -66,6 +67,7 @@ export default {
   },
   data: () => ({
     data: [],
+    error: false
   }),
   watch: {
     products() {
@@ -117,6 +119,7 @@ export default {
     },
 
     add(i) {
+      this.error = false
       if (this.data[i].amount < this.data[i].max) {
         this.data[i].amount += 1;
         if (this.data[i].group) {
@@ -135,7 +138,12 @@ export default {
     handleSubmit() {
       let products = [];
       this.data.forEach((product) => product.amount > 0 && products.push(product));
-      this.$emit("submit", { products, total: this.total });
+
+      if (products.length > 0){
+        this.$emit("submit", { products, total: this.total });
+      } else {
+        this.error = true
+      }
     },
   },
 };

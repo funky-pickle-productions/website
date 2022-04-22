@@ -72,7 +72,9 @@ export default {
     productsTitle:{type:String,default:null},
     paymentTitle:{type:String,default:null},
     paymentDescription:{type:String,default:'Payment For Goods'},
-    colors:{type:Object,default:()=>({})}
+    colors:{type:Object,default:()=>({})},
+    ignoreSoldout:{type:Boolean,default: false},
+    refs:{type: Array, default: null}
   },
   mounted(){
     this.dev = false
@@ -126,18 +128,22 @@ export default {
       this.nextStep()
     },
     handleProducts(data) {
-      this.$emit("productsSubmit", data);
       this.total = data.total;
       this.cart = data.products.map((p) => ({ id: p.id, amount: p.amount }));
-      this.getPayment();
-      this.nextStep()
+      if(this.cart.length > 0){
+        this.getPayment();
+        this.$emit("productsSubmit", data);
+        this.nextStep()
+      }
     },
     async getProducts() {
+
       if (!this.products) return;
       let productData = this.$store.state.products[this.id]
+
       if (!productData){
         productData = []
-        let items = this.products.map((p) => this.dev ? p['test-pid'] : p.pid);
+        let items = this.products.map((p) => p.pid);
         let res = await fetch(`${this.$config.baseUrl}/.netlify/functions/get-products`,{
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -150,6 +156,8 @@ export default {
           data.forEach((item) => {
             let prod = this.products.find((p) => item.id == (this.dev ? p['test-pid'] : p.pid));
             productData.push({
+              ref: prod.ref,
+              soldout: prod.soldout,
               id: item.id,
               name: item.product.name,
               key: prod.key,
@@ -163,12 +171,27 @@ export default {
           this.$store.commit('PRODUCTS',[this.id,productData])
         }
       }
-      if (productData.length == 0) this.soldout = true
-      this.productData = productData
+
+      if (this.refs){
+        let arr = []
+        this.refs.forEach(ref => {
+          let product = productData.find(f => f.ref == ref)
+          product && arr.push(product)
+        })
+        productData = arr
+      }
+
+      if (this.ignoreSoldout){
+        this.productData = productData
+      } else {
+        this.productData = productData.filter(p => !p.soldout)
+        if (this.productData.length == 0) this.soldout = true
+      }
     },
 
     async getPayment() {
       if(this.paymentLoaded) return
+
       this.tokens = sessionStorage.getItem("fp_stripe_tokens");
       if (!this.tokens) {
         let description = this.email ? `${this.paymentDescription} || ${this.email}` : this.paymentDescription
