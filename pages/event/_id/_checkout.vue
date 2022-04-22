@@ -20,7 +20,7 @@
           :key="key"
           :colors="colors"
           :forms="forms"
-          :token="token"
+          :token="$route.query.token || null"
           :products="checkout.products"
           :paymentDescription="eventCheckout.description"
           :productsTitle="checkout['products-title']"
@@ -66,7 +66,7 @@ import mixins from '@/mixins/mixins'
 import {makeArray} from '@/assets/helpers'
 export default {
   mixins:[mixins],
-  async asyncData({ error, store, params, query, $prismic, payload }){
+  async asyncData({ error, store, params, $prismic, payload }){
     let checkout = store.state.checkouts[params.checkout] || null
     let event = store.state.events[params.id] || null
     let res
@@ -87,7 +87,7 @@ export default {
       }
     }
 
-    if (event && checkout) return {event,checkout,query}
+    if (event && checkout) return {event,checkout}
     error({ statusCode: 404 });
 
   },
@@ -114,9 +114,6 @@ export default {
     key: 0
   }),
   computed:{
-    token(){
-      return this.query.token || null
-    },
     colors(){
       if (!this.event) return {}
       return {
