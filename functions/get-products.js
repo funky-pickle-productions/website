@@ -15,6 +15,9 @@ exports.handler = async (event, context) => {
     let pids = []
     let products = []
 
+    console.log('data:')
+    console.log(data)
+
     if (data.token){
       let buff = new Buffer.from(data.token, 'base64');
       let token = buff.toString('ascii');
