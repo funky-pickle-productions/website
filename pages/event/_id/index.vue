@@ -23,7 +23,7 @@
         <div class="graphic-box p-20 bg-lime text-center">
           <h3 class="font-header text-23 uppercase" v-html="`Update ${today}`"/>
           <p class="max-w-600px inline-block text-13 mt-20">
-            Whoa! <b>Get Funky (Intermediate)</b> and <b>Social Scramble (Happy Hour Fun)</b> are currently at capacity. We are working to make more playing spots available. Please join our waitlist for updates when more spots become available. Thank you for your enthusiasm for this year’s event!
+            Wow, that was quick! Funky Pickle Ventnor Classic is currently at capacity, but don’t fret! We are working to create space for more players to get in on the fun! Please join our waitlist for updates when more spots become available. Thank you for your excitement and support for this year’s event!
           </p>
           <div class="text-center mt-20">
             <nuxt-link to="/waiting-list" class="button" v-html="'Join Waitlist'"/>

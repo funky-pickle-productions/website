@@ -45,7 +45,8 @@
                   "type": "StructuredText"
                 }
               },
-              "items": {}
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
         },
@@ -70,7 +71,6 @@
         },
         "meta": {
           "fileName": "index",
-          "isDirectory": true,
           "extension": "vue"
         },
         "screenshotPaths": {
@@ -147,7 +147,8 @@
                   "config": {
                     "label": "Link",
                     "placeholder": "",
-                    "allowTargetBlank": false
+                    "allowTargetBlank": false,
+                    "select": null
                   },
                   "type": "Link"
                 },
@@ -169,7 +170,8 @@
                   },
                   "type": "StructuredText"
                 }
-              }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
         },
@@ -341,7 +343,6 @@
         },
         "meta": {
           "fileName": "index",
-          "isDirectory": true,
           "extension": "vue"
         },
         "screenshotPaths": {
@@ -403,7 +404,8 @@
                   "type": "Number"
                 }
               },
-              "items": {}
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
         },
@@ -429,7 +431,6 @@
         },
         "meta": {
           "fileName": "index",
-          "isDirectory": true,
           "extension": "vue"
         },
         "screenshotPaths": {
@@ -546,7 +547,8 @@
                   },
                   "type": "Text"
                 }
-              }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
         },
@@ -597,7 +599,6 @@
         },
         "meta": {
           "fileName": "index",
-          "isDirectory": true,
           "extension": "vue"
         },
         "screenshotPaths": {
@@ -660,7 +661,8 @@
                   "type": "Select"
                 }
               },
-              "items": {}
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
         },
@@ -685,7 +687,6 @@
         },
         "meta": {
           "fileName": "index",
-          "isDirectory": true,
           "extension": "vue"
         },
         "screenshotPaths": {
@@ -725,12 +726,14 @@
                   "config": {
                     "label": "Link",
                     "placeholder": "",
-                    "allowTargetBlank": false
+                    "allowTargetBlank": false,
+                    "select": null
                   },
                   "type": "Link"
                 }
               },
-              "items": {}
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
         },
@@ -751,7 +754,6 @@
         },
         "meta": {
           "fileName": "index",
-          "isDirectory": true,
           "extension": "vue"
         },
         "screenshotPaths": {
@@ -842,11 +844,13 @@
                   "config": {
                     "label": "Link",
                     "placeholder": "",
-                    "allowTargetBlank": false
+                    "allowTargetBlank": false,
+                    "select": null
                   },
                   "type": "Link"
                 }
-              }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
         },
@@ -944,7 +948,6 @@
         },
         "meta": {
           "fileName": "index",
-          "isDirectory": true,
           "extension": "vue"
         },
         "screenshotPaths": {
@@ -1011,11 +1014,13 @@
                   "config": {
                     "label": "Link",
                     "placeholder": "",
-                    "allowTargetBlank": false
+                    "allowTargetBlank": false,
+                    "select": null
                   },
                   "type": "Link"
                 }
-              }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
         },
@@ -1086,7 +1091,6 @@
         },
         "meta": {
           "fileName": "index",
-          "isDirectory": true,
           "extension": "vue"
         },
         "screenshotPaths": {
@@ -1163,7 +1167,8 @@
                   },
                   "type": "Text"
                 }
-              }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
         },
@@ -1200,7 +1205,6 @@
         },
         "meta": {
           "fileName": "index",
-          "isDirectory": true,
           "extension": "vue"
         },
         "screenshotPaths": {
@@ -1285,7 +1289,8 @@
                   "type": "StructuredText"
                 }
               },
-              "items": {}
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
         },
@@ -1333,7 +1338,6 @@
         },
         "meta": {
           "fileName": "index",
-          "isDirectory": true,
           "extension": "vue"
         },
         "screenshotPaths": {
