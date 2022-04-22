@@ -1,5 +1,5 @@
 <template lang="html">
-  <section class="relative" v-if="soldout">
+  <section class="relative" v-if="!soldout">
 
     <Steps :steps="steps" :active="active" :success="success" :style="{background: colors.primary || null}" id="steps"/>
 
