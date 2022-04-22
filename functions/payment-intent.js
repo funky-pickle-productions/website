@@ -13,6 +13,9 @@ exports.handler = async (event, context) => {
   let amount = 0
   let paymentIntent = null
 
+  console.log('data:')
+  console.log(data)
+
   try {
 
     for(let i = 0; i < data.products.length; i++){
