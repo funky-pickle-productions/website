@@ -137,8 +137,6 @@ export default {
     },
     async getProducts() {
 
-      console.log(this.token)
-
         let products = this.products.map((p) => ({pid:p.pid,soldout:p.soldout}));
         let res = await fetch(`${this.$config.baseUrl}/.netlify/functions/get-products`,{
             method: "POST",
@@ -151,7 +149,7 @@ export default {
         data.products.forEach((item) => {
           let prod = this.products.find((p) => item.pid == p.pid);
           this.productData.push({
-            id: item.id,
+            id: item.pid,
             name: item.product.name,
             key: prod.key,
             description: prod.description,
