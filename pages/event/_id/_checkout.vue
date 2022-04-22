@@ -20,6 +20,7 @@
           :key="key"
           :colors="colors"
           :forms="forms"
+          :token="$route.query.token || null"
           :products="checkout.products"
           :paymentDescription="eventCheckout.description"
           :productsTitle="checkout['products-title']"
