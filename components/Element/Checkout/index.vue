@@ -1,5 +1,5 @@
 <template lang="html">
-  <section class="relative" v-if="productData.length > 0">
+  <section class="relative" v-if="soldout">
 
     <Steps :steps="steps" :active="active" :success="success" :style="{background: colors.primary || null}" id="steps"/>
 
@@ -89,7 +89,8 @@ export default {
     error: null,
     success: false,
     status: null,
-    paymentLoaded: false
+    paymentLoaded: false,
+    soldout: false
   }),
   computed:{
     steps(){
@@ -145,8 +146,6 @@ export default {
 
         let data = await res.json();
 
-        console.log(data)
-
         data.products.forEach((item) => {
           let prod = this.products.find((p) => item.pid == p.pid);
           this.productData.push({
@@ -160,6 +159,8 @@ export default {
             group: prod.group,
           });
         });
+
+        this.soldout = this.productData.length == 0
 
     },
 
