@@ -490,6 +490,13 @@
                     "placeholder": ""
                   },
                   "type": "Text"
+                },
+                "sheet": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Sheet (Optional)",
+                    "placeholder": ""
+                  }
                 }
               },
               "items": {
@@ -559,41 +566,42 @@
             "slice_type": "form",
             "items": [
               {
-                "type": "select",
-                "required": false,
-                "label": "revolutionize 24/365 convergence",
-                "key": "evolve extensible infomediaries",
-                "placeholder": "strategize impactful infrastructures",
-                "options": "target end-to-end portals"
-              },
-              {
                 "type": "text",
                 "required": false,
-                "label": "reinvent granular web services",
-                "key": "transition transparent partnerships",
-                "placeholder": "productize ubiquitous networks",
-                "options": "expedite dot-com ROI"
+                "label": "evolve web-enabled functionalities",
+                "key": "reinvent strategic applications",
+                "placeholder": "engage viral convergence",
+                "options": "productize interactive functionalities"
               },
               {
                 "type": "text",
                 "required": true,
-                "label": "utilize killer experiences",
-                "key": "e-enable compelling supply-chains",
-                "placeholder": "deliver e-business deliverables",
-                "options": "repurpose dot-com schemas"
+                "label": "productize granular blockchains",
+                "key": "empower plug-and-play niches",
+                "placeholder": "optimize compelling paradigms",
+                "options": "exploit mission-critical deliverables"
+              },
+              {
+                "type": "email",
+                "required": true,
+                "label": "monetize vertical initiatives",
+                "key": "mesh killer portals",
+                "placeholder": "innovate best-of-breed paradigms",
+                "options": "iterate strategic users"
               }
             ],
             "primary": {
               "publish": true,
-              "title": "drive sexy web services",
+              "title": "synergize 24/7 networks",
               "description": [
                 {
                   "type": "paragraph",
-                  "text": "Ea deserunt commodo commodo. Cillum ea consequat aliquip sunt ullamco. Mollit eiusmod culpa aliquip culpa do nulla anim ex nisi laborum sit do exercitation.",
+                  "text": "Proident do laboris ut ullamco consequat eiusmod ipsum nisi commodo eiusmod amet ad consectetur.",
                   "spans": []
                 }
               ],
-              "action": "deliver intuitive schemas"
+              "action": "exploit cross-platform markets",
+              "sheet": "syndicate cutting-edge portals"
             }
           }
         },
