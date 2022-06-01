@@ -49,6 +49,8 @@ export default {
     async handleSubmit(data){
       if (this.sent) return
 
+      if (this.slice.primary.sheet) data.sheetName = this.slice.primary.sheet
+
       let formData = new FormData()
       Object.keys(data).forEach(key => formData.append(key,data[key]))
       this.label = "Sending..."
