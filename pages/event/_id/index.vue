@@ -47,7 +47,7 @@
 
       <template v-if="slices">
 
-        <div class="flex-auto">
+        <div class="flex-auto" style="min-width: 0px;">
           <template v-for="(slice, i) in slices">
             <component
               class="pb-space"
@@ -58,7 +58,7 @@
           </template>
         </div>
 
-        <div class="flex-initial hidden xl:block pl-20">
+        <div class="flex-auto hidden xl:block pl-20">
           <aside ref="sidebar" class="flex flex-col">
             <template v-for="(slice, i) in slices">
               <button
