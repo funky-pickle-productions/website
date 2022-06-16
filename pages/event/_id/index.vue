@@ -23,7 +23,7 @@
         <div class="h-full font-bold flex justify-center items-center" :style="{ background: data.primary || null }" ref="stickyHeader">
           <template v-if="data.checkout.length > 0">
             <template v-for="link in data.checkout">
-              <nuxt-link class="flex-auto max-w-150 text-center button button-lime mx-05" v-html="link.label" :to="`/event/${uid}/${link.link.uid}`"/>
+              <nuxt-link v-if="!link.hidden" class="flex-auto max-w-150 text-center button button-lime mx-05" v-html="link.label" :to="`/event/${uid}/${link.link.uid}`"/>
             </template>
           </template>
           <h3 v-else class="text-white text-16">Registration Coming Soon</h3>

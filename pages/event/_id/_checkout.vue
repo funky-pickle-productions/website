@@ -36,7 +36,6 @@
                 <ElementText :field="checkout.success" />
                 <div class="mt-40 flex flex-row justify-center">
                   <nuxt-link :to="`/event/${$route.params.id}`" v-html="'Return to Event'" class="button"/>
-                  <button @click="key++" v-html="'Register Another Person'" class="button ml-10"/>
                 </div>
               </div>
             </div>
@@ -149,7 +148,12 @@ export default {
           let formData = new FormData()
           let data = this.formData[i].data
 
-          if (this.eventCheckout.sheet) data.sheetName = this.eventCheckout.sheet
+          if (this.eventCheckout.sheet){
+            data.sheetName = this.eventCheckout.sheet
+          } else if(this.formData[i].form.primary.sheet){
+            data.sheetName = this.formData[i].form.primary.sheet
+          }
+
           Object.keys(data).forEach(key => formData.append(key,data[key]))
           await fetch(this.formData[i].form.primary.action, {method: 'POST',body:formData})
 
