@@ -3,17 +3,16 @@
 
     <Title v-if="title" :value="title" class="mb-40"/>
 
-    <div class="graphic-box rounded-lg bg-white">
-      <div class="px-20 pt-20" v-if="description">
-        <ElementText :field="description"/>
-      </div>
-      <div class="flex flex-row flex-wrap items-stretch justify-center p-20">
-        <template v-for="(sponsor,i) in sponsors">
-            <div :key="i" class="sponsor p-10 w-1/2 lg:w-1/3">
-              <img class="image" :src="sponsor.logo.url"/>
-            </div>
-        </template>
-      </div>
+    <div class="flex flex-wrap -m-05">
+
+      <template v-for="(sponsor,i) in sponsors">
+
+        <a :href="sponsor.link.url" target="_blank" class="flex-auto graphic-box rounded-lg bg-white flex items-center justify-center m-05 p-10">
+          <img class="image max-h-100px max-w-150px" :src="sponsor.logo.url"/>
+        </a>
+
+      </template>
+
     </div>
 
   </section>
