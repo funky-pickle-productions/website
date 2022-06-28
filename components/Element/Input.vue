@@ -26,6 +26,7 @@ export default {
     options() {
       if (!this.data.options) return null;
       switch (this.type) {
+        case "checkbox":
         case "radio":
           let o = {};
           this.data.options.split(",").forEach((v) => (o[v] = v));
@@ -120,4 +121,51 @@ export default {
   right: 1em;
   position: absolute;
 }
+
+/* ------------------------- BOX ------------------------- */
+
+.formulate-input[data-classification="group"][data-type="radio"],
+.formulate-input[data-classification="group"][data-type="checkbox"]{
+  flex: 1 1 100%;
+}
+
+.formulate-input[data-classification="box"] input{
+  display: block;
+  height: 1rem;
+  width: 1rem;
+  padding: 0px;
+  border: 1px solid theme('colors.black');
+}
+
+.formulate-input[data-classification="box"] label.formulate-input-label--after{
+  margin: 0px;
+  display: block;
+  margin-left: 1rem;
+  margin-right: .5rem;
+}
+
+.formulate-input[data-classification="box"] .formulate-input-element-decorator{
+  display:none;
+}
+
+.formulate-input[data-classification="box"] > .formulate-input-wrapper{
+  display: flex;
+  align-items: center;
+}
+
+.formulate-input[data-classification="box"][data-has-value="true"] input{
+  background: theme('colors.blue');
+}
+
+.formulate-input[data-type="checkbox"] .formulate-input-element--group,
+.formulate-input[data-type="radio"] .formulate-input-element--group{
+
+}
+
+.formulate-input[data-classification="box"].formulate-input-group-item{
+  margin-left: 0px;
+  margin-right: 1rem;
+  flex: 0 0 auto;
+}
+
 </style>
