@@ -63,7 +63,8 @@
               "textarea",
               "select",
               "radio",
-              "date"
+              "date",
+              "checkbox"
             ],
             "default_value": "text"
           },

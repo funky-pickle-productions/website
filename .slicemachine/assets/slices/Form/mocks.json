@@ -6,41 +6,49 @@
     "items": [
       {
         "type": "text",
-        "required": false,
-        "label": "evolve web-enabled functionalities",
-        "key": "reinvent strategic applications",
-        "placeholder": "engage viral convergence",
-        "options": "productize interactive functionalities"
+        "required": true,
+        "label": "harness cutting-edge markets",
+        "key": "revolutionize leading-edge ROI",
+        "placeholder": "utilize vertical content",
+        "options": "expedite intuitive users"
+      },
+      {
+        "type": "textarea",
+        "required": true,
+        "label": "streamline rich users",
+        "key": "scale cutting-edge web-readiness",
+        "placeholder": "engineer strategic markets",
+        "options": "extend back-end communities"
       },
       {
         "type": "text",
-        "required": true,
-        "label": "productize granular blockchains",
-        "key": "empower plug-and-play niches",
-        "placeholder": "optimize compelling paradigms",
-        "options": "exploit mission-critical deliverables"
+        "required": false,
+        "label": "monetize turn-key interfaces",
+        "key": "facilitate magnetic platforms",
+        "placeholder": "engage best-of-breed portals",
+        "options": "synthesize dot-com communities"
       },
       {
-        "type": "email",
-        "required": true,
-        "label": "monetize vertical initiatives",
-        "key": "mesh killer portals",
-        "placeholder": "innovate best-of-breed paradigms",
-        "options": "iterate strategic users"
+        "type": "textarea",
+        "required": false,
+        "label": "implement transparent e-business",
+        "key": "synthesize clicks-and-mortar solutions",
+        "placeholder": "cultivate impactful technologies",
+        "options": "innovate synergistic initiatives"
       }
     ],
     "primary": {
       "publish": true,
-      "title": "synergize 24/7 networks",
+      "title": "deliver enterprise functionalities",
       "description": [
         {
           "type": "paragraph",
-          "text": "Proident do laboris ut ullamco consequat eiusmod ipsum nisi commodo eiusmod amet ad consectetur.",
+          "text": "Aute velit sint enim labore cillum id magna consectetur amet amet esse velit exercitation. Fugiat ut laborum irure laborum consectetur aliqua eu proident. Commodo enim consequat elit reprehenderit aute magna ipsum.",
           "spans": []
         }
       ],
-      "action": "exploit cross-platform markets",
-      "sheet": "syndicate cutting-edge portals"
+      "action": "revolutionize seamless niches",
+      "sheet": "drive enterprise metrics"
     }
   }
 ]
