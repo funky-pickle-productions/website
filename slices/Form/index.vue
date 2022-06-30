@@ -8,7 +8,12 @@
 
       <div class="bg-white p-20 md:px-50 md:py-40">
 
-        <ElementText v-if="description" :field="description" class="mb-30"/>
+        <ElementText
+          v-if="description && Array.isArray(description) && description[0].text !=''"
+          :field="description"
+          class="mb-30"
+          calloutColor="pink"
+        />
 
         <ElementForm :fields="slice.items" multiColumn @submit="handleSubmit">
           <div class="mt-40">

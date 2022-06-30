@@ -5,50 +5,50 @@
     "slice_type": "form",
     "items": [
       {
-        "type": "text",
-        "required": true,
-        "label": "harness cutting-edge markets",
-        "key": "revolutionize leading-edge ROI",
-        "placeholder": "utilize vertical content",
-        "options": "expedite intuitive users"
-      },
-      {
-        "type": "textarea",
-        "required": true,
-        "label": "streamline rich users",
-        "key": "scale cutting-edge web-readiness",
-        "placeholder": "engineer strategic markets",
-        "options": "extend back-end communities"
+        "type": "email",
+        "required": false,
+        "label": "recontextualize dynamic web services",
+        "key": "engineer enterprise web services",
+        "placeholder": "expedite proactive functionalities",
+        "options": "matrix dynamic e-tailers"
       },
       {
         "type": "text",
         "required": false,
-        "label": "monetize turn-key interfaces",
-        "key": "facilitate magnetic platforms",
-        "placeholder": "engage best-of-breed portals",
-        "options": "synthesize dot-com communities"
+        "label": "aggregate proactive functionalities",
+        "key": "mesh back-end models",
+        "placeholder": "revolutionize cross-platform systems",
+        "options": "scale turn-key blockchains"
+      },
+      {
+        "type": "radio",
+        "required": true,
+        "label": "utilize viral blockchains",
+        "key": "transform magnetic networks",
+        "placeholder": "integrate dynamic e-business",
+        "options": "deliver sexy applications"
       },
       {
         "type": "textarea",
-        "required": false,
-        "label": "implement transparent e-business",
-        "key": "synthesize clicks-and-mortar solutions",
-        "placeholder": "cultivate impactful technologies",
-        "options": "innovate synergistic initiatives"
+        "required": true,
+        "label": "benchmark granular infomediaries",
+        "key": "embrace end-to-end networks",
+        "placeholder": "enable 24/7 content",
+        "options": "target mission-critical infomediaries"
       }
     ],
     "primary": {
       "publish": true,
-      "title": "deliver enterprise functionalities",
+      "title": "orchestrate global networks",
       "description": [
         {
           "type": "paragraph",
-          "text": "Aute velit sint enim labore cillum id magna consectetur amet amet esse velit exercitation. Fugiat ut laborum irure laborum consectetur aliqua eu proident. Commodo enim consequat elit reprehenderit aute magna ipsum.",
+          "text": "Duis sunt eiusmod ut ex quis duis cillum exercitation adipisicing reprehenderit commodo cillum ipsum. Magna et adipisicing non tempor.",
           "spans": []
         }
       ],
-      "action": "revolutionize seamless niches",
-      "sheet": "drive enterprise metrics"
+      "action": "enhance strategic web-readiness",
+      "sheet": "productize B2C deliverables"
     }
   }
 ]

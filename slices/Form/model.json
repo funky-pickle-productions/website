@@ -33,7 +33,7 @@
             "label": "Description",
             "placeholder": "A nice description for your form",
             "allowTargetBlank": true,
-            "single": "paragraph"
+            "multi": "paragraph,heading1,heading2,heading3,heading4,heading5,heading6,strong,em"
           }
         },
         "action": {
