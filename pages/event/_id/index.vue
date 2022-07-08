@@ -183,4 +183,11 @@ export default {
 #event .page-content > div:first-child {
   margin-top: 0px;
 }
+
+@media screen and (min-width: theme('screens.lg')){
+  #event .text-content{
+    padding-left: 3rem;
+    padding-right: 3rem;
+  } 
+}
 </style>
