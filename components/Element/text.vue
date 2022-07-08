@@ -25,8 +25,7 @@ export default {
         return `<h6 class="text-13 md:text-14 mt-20 font-semibold">${children.join('')}</h6>`
         case 'paragraph':
         return `<p class="mb-15">${children.join('')}</p>`
-        case 'span':
-        return content
+        case 'hyperlink':
         return `<a href="${element.data.url}" target="${element.data.target}" class="font-semibold underline text-${this.calloutColor || 'pink'}">${children.join('')}</a>`
         case 'list-item':
         return `<li class="list-disc ml-10 pl-05 marker:text-${this.calloutColor || 'pink'} font-medium">${children.join('')}</li>`
@@ -39,7 +38,7 @@ export default {
         default:
         return content
       }
-      return null
+
     }
   }
 }
