@@ -1,1 +1,1 @@
-{"ventnor-classic":{"coord":{"lon":-74.4726,"lat":39.3402},"weather":[{"id":801,"main":"Clouds","description":"few clouds","icon":"02d"}],"base":"stations","main":{"temp":303.09,"feels_like":306.69,"temp_min":299.83,"temp_max":307.15,"pressure":1011,"humidity":64},"visibility":10000,"wind":{"speed":3.6,"deg":260},"clouds":{"all":20},"dt":1659034112,"sys":{"type":2,"id":2006197,"country":"US","sunrise":1659002049,"sunset":1659053663},"timezone":-14400,"id":4504598,"name":"Ventnor City","cod":200}}
+{}
