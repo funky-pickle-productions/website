@@ -29,7 +29,7 @@ export default{
   actions:{
     async EVENTS_LIST({commit}){
 
-      let date = getDateOffset(1);
+      let date = getDateOffset(-1);
       let res = await this.$prismic.api.query([
         this.$prismic.predicates.at("document.type", "event"),
         this.$prismic.predicates.date.after("my.event.date", date)
