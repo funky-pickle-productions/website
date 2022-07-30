@@ -2,8 +2,8 @@
   <div class="graphic-box rounded-lg bg-white overflow-hidden">
     <div class="fill-white text-white bg-black">
 
-      <Marquee>
-        <div class="p-10 px-20 flex flex-row items-center" v-if="Object.keys(weatherData) > 0">
+      <Marquee v-if="Object.keys(weatherData) > 0">
+        <div class="p-10 px-20 flex flex-row items-center">
           <icon :icon="weatherData.icon" class="inline-block w-20"/>
           <h3 v-html="weatherData.temp" class="font-bold ml-10"/>
           <Label class="ml-10">Feels Like:</Label>
