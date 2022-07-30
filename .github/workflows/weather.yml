@@ -15,7 +15,7 @@ jobs:
         with:
           ACCESS_TOKEN: ${{secrets.PRISMIC_ACCESS_TOKEN}}
           END_POINT: ${{secrets.PRISMIC_END_POINT}}
-          QUERY: '[[at(document.type, "event")][date.after(my.event.date,{{date,1}})]]'
+          QUERY: '[[at(document.type, "event")][date.after(my.event.date,{{date,-1}})]]'
           FIELDS: id:uid,data.city,data.state,data.map.longitude,data.map.latitude
       - name: get weather data
         uses: seanmart/get-open-weather-action@master
