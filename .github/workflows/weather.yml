@@ -25,9 +25,11 @@ jobs:
           DATA: ${{steps.get-prismic-data.outputs.DATA}}
       - name: replace file
         run: |
+          if [${{toJson(steps.get-weather-data.outputs.DATA)}} != {}]; then
           echo ${{toJson(steps.get-weather-data.outputs.DATA)}} > assets/weather.json
           git add assets/weather.json
           git config --global user.name 'Sean Metcalf'
           git config --global user.email 'sean@seanmart.com'
           git commit -m "updated weather"
           git push origin master
+          fi
