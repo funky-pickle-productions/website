@@ -122,16 +122,15 @@ export default {
       gsap.set("#event .bg-pink", { background: this.data.primary });
       gsap.set("#event .text-pink", { color: this.data.primary });
       if (this.slices) {
-        let sticky = this.$refs.stickyHeader;
+        let sticky = this.$refs.stickyHeader || null;
         let stickyHeight = ()=> sticky ? sticky.offsetHeight : 0
-        
         this.sidebarAnim = ScrollTrigger.create({
           trigger: this.$refs.slices,
           start: () => `top top+=${stickyHeight()}`,
-          end: () => `bottom top+=${stickyHeight() * 2 + this.getSpace() * 3}`,
+          end: () => `bottom bottom-=${stickyHeight() + stickyHeight() + this.getSpace() * 3}`,
           pin: this.$refs.sidebar,
           pinSpacing: false,
-          invalidateOnRefresh: true,
+          invalidateOnRefresh: true
         });
       }
     })
