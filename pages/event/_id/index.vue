@@ -19,14 +19,18 @@
         </div>
       </div>
 
-      <StickyHeader scrollId="#event" :height="90">
-        <div class="h-full font-bold flex justify-center items-center" :style="{ background: data.primary || null }" ref="stickyHeader">
-          <template v-if="data.checkout.length > 0">
-            <template v-for="link in data.checkout">
-              <nuxt-link v-if="!link.hidden" class="flex-auto max-w-150 text-center button button-lime mx-05" v-html="link.label" :to="`/event/${uid}/${link.link.uid}`"/>
-            </template>
+      <StickyHeader scrollId="#event" :height="90" v-if="links.length > 0">
+        <div class="h-full font-bold flex justify-center items-center gap-10" :style="{ background: data.primary || null }" ref="stickyHeader">
+          <template v-for="(link, i) in links">
+              <a
+                :key="i"
+                v-if="link.link.link_type == 'Web'"
+                :href="link.link.url"
+                target="_blank"
+                v-html="link.label"
+                class="button button-lime"
+              />
           </template>
-          <h3 v-else class="text-white text-16">Registration Coming Soon</h3>
         </div>
       </StickyHeader>
     </div>
@@ -113,24 +117,18 @@ export default {
     if (data) return { data, uid };
     error({ statusCode: 404 });
   },
-  data: () => ({
-    data: null,
-    uid: null,
-    components,
-  }),
   mounted() {
     setTimeout(() => {
       gsap.set("#event .bg-pink", { background: this.data.primary });
       gsap.set("#event .text-pink", { color: this.data.primary });
-
       if (this.slices) {
         let sticky = this.$refs.stickyHeader;
-        let sidebar = this.$refs.sidebar;
-
+        let stickyHeight = ()=> sticky ? sticky.offsetHeight : 0
+        
         this.sidebarAnim = ScrollTrigger.create({
           trigger: this.$refs.slices,
-          start: () => `top top+=${sticky.offsetHeight}`,
-          end: () => `bottom top+=${sidebar.offsetHeight + sticky.offsetHeight + this.getSpace() * 3}`,
+          start: () => `top top+=${stickyHeight()}`,
+          end: () => `bottom top+=${stickyHeight() * 2 + this.getSpace() * 3}`,
           pin: this.$refs.sidebar,
           pinSpacing: false,
           invalidateOnRefresh: true,
@@ -141,7 +139,15 @@ export default {
   destroyed() {
     this.sidebarAnim && this.sidebarAnim.kill();
   },
+  data: () => ({
+    data: null,
+    uid: null,
+    components,
+  }),
   computed: {
+    links(){
+      return this.data.links || []
+    },
     startDate(){
       return formatDate(this.data.date,'dddd, mmmm dd, yyyy')
     },
