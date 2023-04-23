@@ -32,7 +32,7 @@ export default{
       let date = getDateOffset(-1);
       let res = await this.$prismic.api.query([
         this.$prismic.predicates.at("document.type", "event"),
-        this.$prismic.predicates.date.after("my.event.end", date)
+        this.$prismic.predicates.date.after("my.event.start", date)
       ], {
         graphQuery: `{
         event
@@ -47,7 +47,7 @@ export default{
         date
         }
         }`,
-        orderings: "[my.event.date]",
+        orderings: "[my.event.start]",
       });
 
       commit("LIST", ["events", res.results]);
