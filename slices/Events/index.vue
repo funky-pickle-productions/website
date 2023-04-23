@@ -10,8 +10,8 @@
 
         <div class="relative z-10 h-170 flex-grow-0 flex-shrink-0 flex flex-col justify-center text-center text-white overflow-hidden pb-40 bg-black lg:pb-0 lg:pr-40 lg:h-auto lg:w-150">
           <h3 class="relative z-10 font-header font-bold leading-09 uppercase text-50 lg:text-20">
-            <span class="lg:block" v-html="getMonth(event.data.date)" />
-            <span class="lg:block lg:text-60" v-html="getDay(event.data.date)" />
+            <span class="lg:block" v-html="getMonth(event.data.start)" />
+            <span class="lg:block lg:text-60" v-html="getDay(event.data.start)" />
           </h3>
           <div
             v-if="event.data.background.url"
