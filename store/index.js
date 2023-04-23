@@ -44,7 +44,8 @@ export default{
         background
         ball
         uid
-        date
+        start
+        end
         }
         }`,
         orderings: "[my.event.start]",
